@@ -1,0 +1,9 @@
+<h2>Resend activation instructions</h2>
+
+<% semantic_form_for :activation, :url => activation_path, :method => :post do |f| %>
+  <%= f.error_messages %>
+  <%= f.input :email %>
+  <% f.buttons do %>
+    <%= f.submit "Resend confirmation instructions" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,16 @@
+<% title 'Editing My Info' -%>
+
+<% semantic_form_for @user do |f| %>
+  <%= f.error_messages %>
+  <% f.inputs :name => "Change your password" do  %>
+    <%= f.input :old_password, :as => :password, :label => "Current password", :param_only => true %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation%>
+  <% end %>
+  <% f.inputs :name => "Edit my infos" do %>
+    <%= f.input :username %>
+  <% end %>
+  <% f.buttons do %>
+    <%= f.submit "Submit" %>
+  <% end %>
+<% end %>

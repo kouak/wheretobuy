@@ -1,0 +1,15 @@
+<% title "User" %>
+
+<p>
+  <strong>Email:</strong>
+  <%=h @user.email %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%=h @user.username %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_account_path %>
+</p>

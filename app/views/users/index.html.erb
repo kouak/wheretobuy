@@ -1,0 +1,16 @@
+<% title "Users" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% if @user %>
+    <% @user.each do |user| %>
+      <tr>
+        <td><%=h user.to_s %></td>
+        <td><%= link_to "Show", user %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
