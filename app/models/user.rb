@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of :username
   validates_length_of :username, :in => 2..30, :allow_nil => true, :allow_blank => true
-  # validates password change from account page
   
+  
+  # validates password change from account page
   
   validate_on_update do |record|
     if record.validates_password_change

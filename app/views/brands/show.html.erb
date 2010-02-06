@@ -1,0 +1,16 @@
+<% title "Brand" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @brand.name %>
+</p>
+<p>
+  <strong>Url:</strong>
+  <%=h @brand.url %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_brand_path(@brand) %> |
+  <%= link_to "Destroy", @brand, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", brands_path %>
+</p>
