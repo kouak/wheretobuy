@@ -11,5 +11,5 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_account_path %>
+  <%= link_to "Edit", edit_account_path %> | <%= link_to pluralize(@user.comments_count, 'Comment'), polymorphic_url([@user, :comments])%>
 </p>

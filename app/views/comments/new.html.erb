@@ -1,0 +1,5 @@
+<% title "New Comment - " + @commentable.to_s %>
+
+<%= render :partial => 'form' %>
+
+<p><%= link_to "Back to List", polymorphic_path(@commentable) %></p>

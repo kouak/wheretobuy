@@ -1,0 +1,28 @@
+<% title "Comment" %>
+
+<p>
+  <strong>User:</strong>
+  <%=h @comment.author.to_s %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%=h @comment.status %>
+</p>
+<p>
+  <strong>Body:</strong>
+  <%=h @comment.body %>
+</p>
+<p>
+  <strong>Resource:</strong>
+  <%=h @comment.resource_id %>
+</p>
+<p>
+  <strong>Resource Type:</strong>
+  <%=h @comment.resource_type %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_polymorphic_path([@commentable, @comment]) %> |
+  <%= link_to "Destroy", polymorphic_path([@commentable, @comment]), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", polymorphic_path([@commentable, :comments]) %>
+</p>

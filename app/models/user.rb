@@ -2,7 +2,11 @@ class User < ActiveRecord::Base
   acts_as_authentic do |c|
     c.login_field = 'email'
   end # block optional
+  
+  has_many :written_comments, :class_name => "Comments", :foreign_key => "author_id" # written comments
+  has_many :comments, :as => :resource
 
+  attr_accessible :comments_count
   attr_accessible :email, :username, :password, :password_confirmation, :old_password
   attr_accessor :validates_password_change, :old_password
   

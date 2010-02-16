@@ -4,8 +4,8 @@
   <tr>
     <th>Name</th>
   </tr>
-  <% if @user %>
-    <% @user.each do |user| %>
+  <% if @users %>
+    <% @users.each do |user| %>
       <tr>
         <td><%=h user.to_s %></td>
         <td><%= link_to "Show", user %></td>

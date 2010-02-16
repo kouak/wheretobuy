@@ -1,0 +1,10 @@
+<% @comment ||= Comment.new %>
+<% semantic_form_for [@commentable, @comment] do |f| %>
+  <%= f.error_messages %>
+  <% f.inputs do %>
+    <%= f.input :body %>
+  <% end %>
+  <% f.buttons do %>
+    <%= f.submit %>
+  <% end %>
+<% end %>

@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :brands
+
+  map.resources :brands, :has_many => :comments
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -11,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :account, :controller => :users
   
-  map.resources :users
+  map.resources :users, :has_many => :comments
   
   map.activate '/activate/:activation_code', :controller => 'activations', :action => 'activate'
   
