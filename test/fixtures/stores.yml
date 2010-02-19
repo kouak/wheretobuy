@@ -1,0 +1,13 @@
+one:
+  name: MyString
+  url: MyString
+  address: MyString
+  city_id: 1
+  online_shop: false
+
+two:
+  name: MyString
+  url: MyString
+  address: MyString
+  city_id: 1
+  online_shop: false

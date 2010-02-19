@@ -1,5 +1,34 @@
-<% title 'Editing My Info' -%>
-
+<% title 'Editing My Info' %>
+<%= javascript_include_tag 'jquery/jquery.autocomplete' %>
+<%= stylesheet_link_tag 'jquery/jquery.autocomplete' %>
+<script type="text/javascript">
+$(document).ready(function() {
+  
+  var city_autocomplete = $('#city_autocomplete').autocomplete({
+    serviceUrl: '<%= autocomplete_cities_path :format => 'json' %>',
+    paramName: 'search',
+    minChars: 2,
+    params: {country_id : $('#city_country_filter').val() },
+  });
+  
+  checkCityCountryFilter(); // Initial filter
+  
+  $('#city_country_filter').change(checkCityCountryFilter);
+  
+  function checkCityCountryFilter() { // Utility function to reset autocomplete state
+    var country_id = parseInt($('#city_country_filter').val());
+    if(isNaN(country_id)) { // No country selected => disable autocomplete
+      city_autocomplete.disable();
+    }
+    else {
+      city_autocomplete.clearCache(); 
+      city_autocomplete.setOptions({params: {country_id : country_id }});
+      city_autocomplete.enable();
+    }
+  }
+  
+})
+</script>
 <% semantic_form_for @user do |f| %>
   <%= f.error_messages %>
   <% f.inputs :name => "Change your password" do  %>
@@ -9,6 +38,8 @@
   <% end %>
   <% f.inputs :name => "Edit my infos" do %>
     <%= f.input :username %>
+    <%= f.input :country_id, :as => :select, :collection => Country.all, :input_html => {:id => 'city_country_filter'} %>
+    <%= f.input :city_name, :input_html => {:id => 'city_autocomplete', :class => 'ui-autocomplete'} %>
   <% end %>
   <% f.buttons do %>
     <%= f.submit "Submit" %>

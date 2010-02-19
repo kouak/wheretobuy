@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100215171729) do
+ActiveRecord::Schema.define(:version => 20100217225110) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -19,12 +19,38 @@ ActiveRecord::Schema.define(:version => 20100215171729) do
     t.integer  "comments_count"
   end
 
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
     t.integer  "status"
     t.text     "body"
     t.integer  "resource_id"
     t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stores", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "address"
+    t.integer  "city_id"
+    t.integer  "country_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "online_shop", :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20100215171729) do
     t.string   "username"
     t.boolean  "active"
     t.integer  "comments_count"
+    t.integer  "city_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

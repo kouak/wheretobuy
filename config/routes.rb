@@ -1,6 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :stores
+  
+  map.resources :cities, :only => [:autocomplete], :collection => {:autocomplete => :get}
 
-  map.resources :brands, :has_many => :comments
+  map.resources :countries, :only => [:index, :show] do |country|
+    country.resources :cities, :collection => {:autocomplete => :get}
+  end
+
+  map.resources :brands, :has_many => :comments, :only => [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
 

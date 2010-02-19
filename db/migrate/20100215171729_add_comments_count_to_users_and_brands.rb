@@ -4,9 +4,11 @@ class AddCommentsCountToUsersAndBrands < ActiveRecord::Migration
     add_column :brands, :comments_count, :integer
     User.all.each do |u|
       u.comments_count = u.comments.count
+      u.save!
     end
     Brand.all.each do |b|
       b.comments_count = b.comments.count
+      b.save!
     end
   end
 

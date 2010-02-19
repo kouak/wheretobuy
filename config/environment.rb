@@ -12,6 +12,9 @@ Rails::Initializer.run do |config|
   config.gem 'formtastic'
   config.gem 'authlogic'
   config.gem 'will_paginate'
+  config.gem 'rails-geocoder', :lib => 'geocoder'
+  # config.gem 'ym4r'
+  
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
