@@ -2,10 +2,12 @@
 
 <% semantic_form_for @user do |f| -%>
   <%= f.error_messages %>
-  <%= f.input :email %>
-  <%= f.input :username %>
-  <%= f.input :sex, :as => :select, :collection => [["Male", false], ["Female", true]]%>
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
+  <% f.inputs do %>
+    <%= f.input :email %>
+    <%= f.input :username %>
+    <%= f.input :sex, :as => :radio, :collection => [["Male", User::MALE], ["Female", User::FEMALE]] %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+  <% end %>
   <%= f.submit "Sign Up" %>
 <% end -%>

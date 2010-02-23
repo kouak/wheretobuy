@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20100223171409) do
     t.integer  "comments_count"
     t.integer  "city_id"
     t.integer  "country_id",          :default => 0
-    t.boolean  "sex",                 :default => false # default = male
+    t.boolean  "sex",                 :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

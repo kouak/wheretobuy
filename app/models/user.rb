@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
     c.login_field = 'email'
   end # block optional
   
+  MALE = false
+  FEMALE = true
   
   has_many :written_comments, :class_name => "Comments", :foreign_key => "author_id" # written comments
   has_many :sent_votes, :class_name => "Vote", :foreign_key => "voter_id"
@@ -11,11 +13,12 @@ class User < ActiveRecord::Base
   belongs_to :country
 
   attr_accessible :comments_count
-  attr_accessible :email, :username, :password, :password_confirmation, :old_password, :country_id, :city_name
+  attr_accessible :email, :username, :password, :password_confirmation, :old_password, :country_id, :city_name, :sex
   attr_accessor :validates_password_change, :old_password, :city_name
   
   validates_uniqueness_of :username
   validates_length_of :username, :in => 2..30, :allow_nil => true, :allow_blank => true
+  validates_inclusion_of :sex, :in => [true, false]
   
   before_validation :set_city_id
   

@@ -11,7 +11,7 @@ module Votes::ActsAsVoter
     Vote.find(:first, :conditions => [
       "voter_id = ? AND votable_id = ? AND votable_type = ?",
       self.id, votable.id, votable.class.name]
-    ).destroy
+    ).try(:destroy)
   end
   
   def voted_for?(votable)
