@@ -1,44 +1,56 @@
 class VotesController < ApplicationController
+  before_filter :set_votable_or_redirect
+  before_filter :require_user
+  
   def index
-    @votes = Votes.all
+    @votes = @votable.votes.all
   end
   
-  def show
-    @votes = Votes.find(params[:id])
-  end
-  
-  def new
-    @votes = Votes.new
-  end
-  
-  def create
-    @votes = Votes.new(params[:votes])
-    if @votes.save
-      flash[:notice] = "Successfully created votes."
-      redirect_to @votes
-    else
-      render :action => 'new'
+  def vote_for
+    @current_user.vote_for(@votable)
+    respond_to do |format|
+      format.json { render :json => true }
+      format.html {
+        flash[:notice] = "Voted up !"
+        redirect_to @votable
+      }
     end
   end
   
-  def edit
-    @votes = Votes.find(params[:id])
-  end
-  
-  def update
-    @votes = Votes.find(params[:id])
-    if @votes.update_attributes(params[:votes])
-      flash[:notice] = "Successfully updated votes."
-      redirect_to @votes
-    else
-      render :action => 'edit'
+  def vote_against
+    @current_user.vote_against(@votable)
+    respond_to do |format|
+      format.json { render :json => true }
+      format.html {
+        flash[:notice] = "Voted down !"
+        redirect_to @votable
+      }
     end
   end
   
-  def destroy
-    @votes = Votes.find(params[:id])
-    @votes.destroy
-    flash[:notice] = "Successfully destroyed votes."
-    redirect_to votes_url
+  def vote_nil
+    @current_user.vote_nil(@votable)
+    respond_to do |format|
+      format.json { render :json => true }
+      format.html {
+        flash[:notice] = "Removed vote !"
+        redirect_to @votable
+      }
+    end
+  end
+  
+  private
+  def set_votable_or_redirect
+    @votable = find_votable
+    redirect_to home if @votable.nil?
+  end
+  
+  def find_votable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+    nil
   end
 end

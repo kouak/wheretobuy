@@ -1,13 +1,11 @@
 <% title 'Sign Up' -%>
 
-<% form_for @user do |f| -%>
+<% semantic_form_for @user do |f| -%>
   <%= f.error_messages %>
-  <p><%= f.label :email %></p>
-  <p><%= f.text_field :email %></p>
-  <p><%= f.label :password %></p>
-  <p><%= f.password_field :password %></p>
-  <p><%= f.label :password_confirmation %></p>
-  <p><%= f.password_field :password_confirmation %></p>
-  
-  <p class="submit"><%= f.submit "Sign Up" %></p>
+  <%= f.input :email %>
+  <%= f.input :username %>
+  <%= f.input :sex, :as => :select, :collection => [["Male", false], ["Female", true]]%>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.submit "Sign Up" %>
 <% end -%>

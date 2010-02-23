@@ -8,6 +8,9 @@
 
 require 'open-uri'
 
+User.delete_all
+User.create!(:email => 'benjamin.beret@gmail.com', :password => 'secret', :password_confirmation => 'secret').activate!
+
 Country.delete_all
 open("http://openconcept.ca/sites/openconcept.ca/files/country_code_drupal_0.txt") do |countries|
   countries.read.each_line do |country|
@@ -40,9 +43,6 @@ end
 Vote.delete_all
 [
   {:vote => 1},
-  {:vote => 1},
-  {:vote => 1},
-  {:vote => -1}
 ].each do |v|
   Vote.create!(:voter => User.first, :votable => Brand.first, :score => v[:vote])
 end

@@ -10,7 +10,9 @@ ActionController::Routing::Routes.draw do |map|
     country.resources :cities
   end
 
-  map.resources :brands, :has_many => :comments
+  map.resources :brands, :has_many => :comments do |brand|
+    brand.resources :votes, :only => [:index], :collection => {:vote_for => :post, :vote_against => :post, :vote_nil => :post}
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
 

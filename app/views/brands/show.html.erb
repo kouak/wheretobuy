@@ -1,5 +1,13 @@
 <% title "Brand" %>
-
+<div id="score-container">
+  <strong><%= @brand.score.to_i %></strong>
+  <%
+  # TODO : Add jQuery for this !
+  %>
+  <%= link_to "+", vote_for_brand_votes_path(@brand), :method => :post -%> /
+  <%= link_to "0", vote_nil_brand_votes_path(@brand), :method => :post -%> /
+  <%= link_to "-", vote_against_brand_votes_path(@brand), :method => :post -%>
+</div>
 <p>
   <strong>Name:</strong>
   <%=h @brand.name %>
