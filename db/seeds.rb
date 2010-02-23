@@ -43,9 +43,23 @@ Brand.find_by_sql('delete from sqlite_sequence where name = "brands"')
   Brand.create!(b)
 end
 
+# Votes
 Vote.delete_all
 [
   {:vote => 1},
 ].each do |v|
   Vote.create!(:voter => User.first, :votable => Brand.first, :score => v[:vote])
+end
+
+# Brand Types
+BrandType.delete_all
+BrandType.find_by_sql('delete from sqlite_sequence where name = "brand_types"')
+[
+  'Men',
+  'Women',
+  'Kids',
+  'Shoes',
+  'Accessories'
+].each do |bt|
+  BrandType.create!(:name => bt)
 end

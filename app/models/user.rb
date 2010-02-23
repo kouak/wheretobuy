@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   MALE = false
   FEMALE = true
   
-  has_many :written_comments, :class_name => "Comments", :foreign_key => "author_id" # written comments
+  has_many :written_comments, :class_name => "Comment", :foreign_key => "author_id" # written comments
   has_many :sent_votes, :class_name => "Vote", :foreign_key => "voter_id"
   has_many :comments, :as => :resource
   belongs_to :city

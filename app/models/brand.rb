@@ -1,5 +1,5 @@
 class Brand < ActiveRecord::Base
-  attr_accessible :comments_count
+  attr_accessible :comments_count, :brand_type_ids
   attr_accessible :name, :url
   
   validates_presence_of :name
@@ -9,6 +9,8 @@ class Brand < ActiveRecord::Base
   
   has_many :comments, :as => :resource
   has_many :votes, :as => :votable
+  
+  has_and_belongs_to_many :brand_types
   
   include Votes::ActsAsVotable # lib/votes/acts_as_votable.rb
   

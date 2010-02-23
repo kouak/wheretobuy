@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100223171409) do
+ActiveRecord::Schema.define(:version => 20100223204327) do
+
+  create_table "brand_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "brand_types_brands", :id => false, :force => true do |t|
+    t.integer "brand_id"
+    t.integer "brand_type_id"
+  end
 
   create_table "brands", :force => true do |t|
     t.string   "name"
