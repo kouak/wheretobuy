@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100217225110) do
+ActiveRecord::Schema.define(:version => 20100222174758) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -73,9 +73,20 @@ ActiveRecord::Schema.define(:version => 20100217225110) do
     t.boolean  "active"
     t.integer  "comments_count"
     t.integer  "city_id"
+    t.integer  "country_id",          :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.integer  "voter_id"
+    t.integer  "voter_sex"
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

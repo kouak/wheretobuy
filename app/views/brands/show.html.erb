@@ -14,3 +14,9 @@
   <%= link_to "Destroy", @brand, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", brands_path %>
 </p>
+
+<%
+  # TODO = use an helper to do this
+  @commentable = @brand 
+%>
+<%= render :partial => "comments/index" %>

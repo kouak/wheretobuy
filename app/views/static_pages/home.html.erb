@@ -1,0 +1,28 @@
+<% title "Home page" %>
+
+<div id="brands">
+  <h2>Featured brands</h2>
+  <ul>
+  <% @brands.each do |brand| %>
+    <li><%= link_to brand.to_s, brand %></li>
+  <% end %>
+  </ul>
+</div>
+
+<div id="users">
+  <h2>Featured users</h2>
+  <ul>
+  <% @users.each do |user| %>
+    <li><%= link_to user.to_s, user %></li>
+  <% end %>
+  </ul>
+</div>
+
+<div id="cities">
+  <h2>Featured cities</h2>
+  <ul>
+  <% @cities.each do |city| %>
+    <li><%= link_to city.to_s, [city.country, city] %></li>
+  <% end %>
+  </ul>
+</div>

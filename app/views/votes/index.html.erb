@@ -1,0 +1,25 @@
+<% title "Votes" %>
+
+<table>
+  <tr>
+    <th>Voter</th>
+    <th>Voter Sex</th>
+    <th>Votable</th>
+    <th>Votable Type</th>
+    <th>Score</th>
+  </tr>
+  <% for votes in @votes %>
+    <tr>
+      <td><%=h votes.voter_id %></td>
+      <td><%=h votes.voter_sex %></td>
+      <td><%=h votes.votable_id %></td>
+      <td><%=h votes.votable_type %></td>
+      <td><%=h votes.score %></td>
+      <td><%= link_to "Show", votes %></td>
+      <td><%= link_to "Edit", edit_votes_path(votes) %></td>
+      <td><%= link_to "Destroy", votes, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Votes", new_votes_path %></p>

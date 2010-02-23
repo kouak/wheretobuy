@@ -6,6 +6,7 @@ class Comment < ActiveRecord::Base
   validates_length_of :body, :minimum => 2
   validates_presence_of :author
   
-  default_scope :order => 'created_at DESC' # new comments first
+  default_scope :order => 'created_at DESC' # new comments first  
+  named_scope :recent,       lambda { |*args| {:conditions => ["created_at > ?", (args.first || 2.weeks.ago).to_s(:db)]} }
   
 end

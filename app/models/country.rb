@@ -2,6 +2,7 @@ class Country < ActiveRecord::Base
   attr_accessible :name
   has_many :stores
   has_many :cities
+  has_many :users
   
   
   # friendly urls

@@ -1,13 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :votes
+
+
   map.resources :stores
   
   map.resources :cities, :only => [:autocomplete], :collection => {:autocomplete => :get}
 
   map.resources :countries, :only => [:index, :show] do |country|
-    country.resources :cities, :collection => {:autocomplete => :get}
+    country.resources :cities
   end
 
-  map.resources :brands, :has_many => :comments, :only => [:index, :show]
+  map.resources :brands, :has_many => :comments
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -27,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :password_resets, :only => [:new, :create, :update, :edit]
   
-  map.root :controller => :users, :action => :index
+  map.root :controller => :static_pages, :action => :home
   
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'

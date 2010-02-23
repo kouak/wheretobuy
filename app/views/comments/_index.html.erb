@@ -1,0 +1,9 @@
+<%= will_paginate @comments %>
+
+<% if !@comments.nil? %>
+  <%= render :partial => 'comments/comment', :collection => @comments %>
+<% else %>
+  <%= "Aucun commentaire" %>
+<% end %>
+
+<%= render :partial => 'comments/form' %>

@@ -16,10 +16,11 @@ class CommentsController < ApplicationController
     @commentable.comments << @comment
     if @comment.save
       flash[:notice] = "Successfully created comment."
-      redirect_to polymorphic_url([@commentable, :comments])
+      redirect_to @commentable
     else
-      set_paginated_comments
-      render 'index'
+      # TODO : Ajax
+      flash[:error] = @comment.errors.full_messages.to_s
+      redirect_to @commentable
     end
   end
   

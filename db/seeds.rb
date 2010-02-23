@@ -25,3 +25,24 @@ City.delete_all
   country = Country.find_by_name(c[:country])
   City.create!(:name => c[:name], :country_id => country.try(:id))
 end
+
+
+# Brands
+Brand.delete_all
+Brand.find_by_sql('delete from sqlite_sequence where name = "brands"')
+[
+  {:id => 1, :name => 'A.P.C', :url => 'http://www.apc.fr/'},
+  {:id => 2, :name => 'Rick Owens'}
+].each do |b|
+  Brand.create!(b)
+end
+
+Vote.delete_all
+[
+  {:vote => 1},
+  {:vote => 1},
+  {:vote => 1},
+  {:vote => -1}
+].each do |v|
+  Vote.create!(:voter => User.first, :votable => Brand.first, :score => v[:vote])
+end

@@ -3,7 +3,7 @@ class CitiesController < ApplicationController
   before_filter :get_country_if_nested
 
   def index
-    @country.cities.all
+    @cities = @country.cities.all
   end
   
   def show
@@ -43,7 +43,7 @@ class CitiesController < ApplicationController
     if params[:query].blank?
       q = '%'
     else
-      q = '%' + params[:query] + '%'
+      q = params[:query] + '%'
     end
     
     if params[:country_id].blank?

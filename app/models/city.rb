@@ -5,6 +5,13 @@ class City < ActiveRecord::Base
   
   validates_presence_of :name
   validate :ensure_country_exists
+  
+  named_scope :featured,
+    :limit => 5,
+    :joins => [:users],
+    :select => "cities.*, count(users.id) as activity",
+    :order => "activity DESC",
+    :group => "users.city_id"
 
   def ensure_country_exists
     errors.add('Country') unless Country.find_by_id(self.country_id)
