@@ -1,20 +1,27 @@
 <% title "Brand history" %>
-
-<table>
-  <tr>
-    <th>From</th>
-    <th>Summary</th>
-    <th>Version</th>
-  </tr>
-  <% if !@versions.blank? %>
-    <% for v in @versions %>
-      <tr>
-        <td style="border-top: 1px solid #000;"><%= v.user %></td>
-        <td style="border-top: 1px solid #000;"><%= v.changes['version_comment']? v.changes['version_comment'].shift : '' %></td>
-        <td style="border-top: 1px solid #000;"><%= link_to "Version #{v.number}", brand_brand_wiki_path(:version => v.number) %></td>
-      </tr>
-    <% end %>
-  <% else %>
+<% semantic_form_for :compare, :url => diff_brand_brand_wiki_path(@brand), :html => { :method => :get } do |f| %>
+  <table>
+    <tr>
+      <th colspan="2"><%= f.submit "Compare" %></th>
+      <th>From</th>
+      <th>Summary</th>
+      <th>Version</th>
+    </tr>
+    <% if !@versions.blank? %>
+      <% @versions.each_with_index do |v, i| %>
+        <tr>
+          <td style="border-top: 1px solid #000;"><%= radio_button(nil, 'v1', v.number) %></td>
+          <td style="border-top: 1px solid #000;"><%= radio_button(nil, 'v2', v.number) %></td>
+          <td style="border-top: 1px solid #000;">
+            <%= v.user %><br />
+            <%= v.created_at %>
+          </td>
+          <td style="border-top: 1px solid #000;"><%= v.changes['version_comment']? v.changes['version_comment'].shift : '' %></td>
+          <td style="border-top: 1px solid #000;"><%= link_to "Version #{v.number}", (i == 0) ? brand_brand_wiki_path : brand_brand_wiki_path(:version => v.number) %></td>
+        </tr>
+      <% end %>
+    <% else %>
     
-  <% end %>
-</table>
+    <% end %>
+  </table>
+<% end %>

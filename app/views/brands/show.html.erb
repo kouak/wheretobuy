@@ -20,10 +20,11 @@
   </p>
   <p>
     <strong>Description:</strong>
-    <% if @brand.brand_wiki.nil? -%>
+    <% if @brand.brand_wiki.nil? %>
       <%= link_to "Add a description", edit_brand_brand_wiki_path(@brand) %>
     <% else %>
-      <%=h @brand.brand_wiki.bio %> |
+      <%=h @brand.brand_wiki.bio %><br/>
+      <%= link_to "More", brand_brand_wiki_path(@brand) %> |
       <%= link_to "Edit", edit_brand_brand_wiki_path(@brand) %>
     <% end %>
   </p>

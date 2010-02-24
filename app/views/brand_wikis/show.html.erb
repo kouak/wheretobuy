@@ -1,12 +1,15 @@
 <% title "Brand Wiki" %>
-
+<% current_version = @last_version == @brand_wiki.version %>
+<p>
+  <% if current_version %>
+    You're viewing the current version (<%= @last_version %>) of this wiki
+  <% else %>
+    You're viewing version <%= @brand_wiki.version %> of this article. <%= link_to "View current version.", brand_brand_wiki_path %>
+  <% end %>
+</p>   
 <p>
   <strong>Brand:</strong>
-  <%=h @brand_wiki.brand.to_s %>
-</p>
-<p>
-  <strong>Version Comment:</strong>
-  <%=h @brand_wiki.version_comment %>
+  <%= link_to @brand, brand_path(@brand) %>
 </p>
 <p>
   <strong>Bio:</strong>
@@ -18,7 +21,12 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_brand_wiki_path(@brand_wiki) %> |
-  <%= link_to "Destroy", @brand_wiki, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", brand_wikis_path %>
+  <strong>Version Comment:</strong>
+  <%=h @brand_wiki.version_comment %>
+  <br/><span id="author">-- By <%=h @brand_wiki.editor %> on <%=h @brand_wiki.updated_at %></span>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_brand_brand_wiki_path(@brand, :version => params[:version]) %> |
+  <%= link_to "History", history_brand_brand_wiki_path %>
 </p>

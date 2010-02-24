@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   
   has_many :written_comments, :class_name => "Comment", :foreign_key => "author_id" # written comments
   has_many :sent_votes, :class_name => "Vote", :foreign_key => "voter_id"
+  has_many :brand_wiki_editions, :class_name => "BrandWiki", :foreign_key => "editor_id"
   has_many :comments, :as => :resource
   belongs_to :city
   belongs_to :country
