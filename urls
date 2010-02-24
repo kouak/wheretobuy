@@ -1,0 +1,15 @@
+/                       Home
+/brands/                See all brands (last.fm/music/ like)
+  /brand_slug/          See specific brand (last.fm/music/David+Guetta/ like)
+    /wiki/              Brand biography (last.fm like)
+    /wiki/history       Brand bio history
+    /wiki/edit          Brand bio edition
+    /wiki/diff          Brand bio versions comparison
+    /vote(up|down|nil)  Vote for brand
+    /comments/          Brand comments (nested restful : create)
+    /tags/              Brand tags (nested restful)
+    /fans/              Users fans of this brand
+  /+tags/               Popular tags for brands
+    /tag_slug/          Brands tagged tag_slug
+  /+add/           Add a brand which doesn't exist yet (redirect from inexistant slug, suggestion : brands/apc/ => did you mean "A.P.C" ?)
+  /+search
