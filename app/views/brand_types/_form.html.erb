@@ -1,8 +1,5 @@
-<% form_for @brand_type do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p><%= f.submit "Submit" %></p>
-<% end %>
+<% semantic_form_for @brand_type do %>
+  <%= f.errors_messages %>
+  <%= f.inputs %>
+  <%= f.submit %>
+<% end %>  

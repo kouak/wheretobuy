@@ -1,0 +1,24 @@
+<% title "Brand Wiki" %>
+
+<p>
+  <strong>Brand:</strong>
+  <%=h @brand_wiki.brand.to_s %>
+</p>
+<p>
+  <strong>Version Comment:</strong>
+  <%=h @brand_wiki.version_comment %>
+</p>
+<p>
+  <strong>Bio:</strong>
+  <%=h @brand_wiki.bio %>
+</p>
+<p>
+  <strong>Url:</strong>
+  <%=h @brand_wiki.url %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_brand_wiki_path(@brand_wiki) %> |
+  <%= link_to "Destroy", @brand_wiki, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", brand_wikis_path %>
+</p>

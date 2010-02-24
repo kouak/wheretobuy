@@ -12,13 +12,24 @@
   <strong>Name:</strong>
   <%=h @brand.name %>
 </p>
-<p>
-  <strong>Url:</strong>
-  <%=h @brand.url %>
-</p>
+
+<div id="brand_wiki">
+  <p>
+    <strong>Url:</strong>
+    <%=h @brand.brand_wiki.try(:url) %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <% if @brand.brand_wiki.nil? -%>
+      <%= link_to "Add a description", edit_brand_brand_wiki_path(@brand) %>
+    <% else %>
+      <%=h @brand.brand_wiki.bio %> |
+      <%= link_to "Edit", edit_brand_brand_wiki_path(@brand) %>
+    <% end %>
+  </p>
+</div>
 
 <p>
-  <%= link_to "Edit", edit_brand_path(@brand) %> |
   <%= link_to "Destroy", @brand, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", brands_path %>
 </p>

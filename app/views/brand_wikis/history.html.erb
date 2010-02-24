@@ -1,0 +1,20 @@
+<% title "Brand history" %>
+
+<table>
+  <tr>
+    <th>From</th>
+    <th>Summary</th>
+    <th>Version</th>
+  </tr>
+  <% if !@versions.blank? %>
+    <% for v in @versions %>
+      <tr>
+        <td style="border-top: 1px solid #000;"><%= v.user %></td>
+        <td style="border-top: 1px solid #000;"><%= v.changes['version_comment']? v.changes['version_comment'].shift : '' %></td>
+        <td style="border-top: 1px solid #000;"><%= link_to "Version #{v.number}", brand_brand_wiki_path(:version => v.number) %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    
+  <% end %>
+</table>

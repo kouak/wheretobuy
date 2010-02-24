@@ -1,0 +1,21 @@
+<% 
+# Ugly hack to force new input
+@brand_wiki.version_comment = nil 
+%>
+<% semantic_form_for @brand_wiki, :url => brand_brand_wiki_path(@brand) do |f| %>
+  <%= f.error_messages %>
+  <% f.inputs do %>
+    <%= f.input :bio %>
+    <%= f.input :url %>
+    <%= f.input :version_comment %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+<p>
+  <strong>Version:</strong>
+  <%= @brand_wiki.try(:version) %>
+</p>
+<p>
+  <strong>Last editor:</strong>
+  <%= @brand_wiki.versions.try(:last).try(:user) %>
+</p>

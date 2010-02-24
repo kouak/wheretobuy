@@ -14,6 +14,7 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate'
   #config.gem 'rails-geocoder', :lib => 'geocoder'
   config.gem 'factory_girl'
+  config.gem 'vestal_versions'
   # config.gem 'ym4r'
   
   # Settings in config/environments/* take precedence over those specified here.

@@ -4,7 +4,7 @@ class BrandsController < ApplicationController
   end
   
   def show
-    @brand = Brand.find(params[:id], :include => :votes)
+    @brand = Brand.find(params[:id], :include => [:votes, :brand_wiki])
     @comments = @brand.comments.paginate(:page => params[:page], :per_page => 2)
   end
   

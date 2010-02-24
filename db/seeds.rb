@@ -37,7 +37,7 @@ end
 Brand.delete_all
 Brand.find_by_sql('delete from sqlite_sequence where name = "brands"')
 [
-  {:id => 1, :name => 'A.P.C', :url => 'http://www.apc.fr/'},
+  {:id => 1, :name => 'A.P.C'},
   {:id => 2, :name => 'Rick Owens'}
 ].each do |b|
   Brand.create!(b)
