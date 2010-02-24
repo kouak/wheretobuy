@@ -2,7 +2,7 @@
 <% current_version = @last_version == @brand_wiki.version %>
 <p>
   <% if current_version %>
-    You're viewing the current version (<%= @last_version %>) of this wiki
+    You're viewing the current version of this wiki (version <%= @last_version %> by <%=h @brand_wiki.editor %>)
   <% else %>
     You're viewing version <%= @brand_wiki.version %> of this article. <%= link_to "View current version.", brand_brand_wiki_path %>
   <% end %>

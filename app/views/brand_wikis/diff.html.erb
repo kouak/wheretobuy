@@ -1,11 +1,95 @@
 <% title "Brand Wiki - Differences"%>
+<%= javascript_include_tag 'wiki/difflib', 'wiki/diffview' %>
+<script type="text/javascript" charset="utf-8">
+  function diffUsingJS () {
+    // get the baseText and newText values from the two textboxes, and split them into lines
+    var base = difflib.stringAsLines('<%= escape_javascript(@changes['bio'][1]) %>');
+    var newtxt = difflib.stringAsLines('<%= escape_javascript(@changes['bio'][0]) %>');
+    // create a SequenceMatcher instance that diffs the two sets of lines
+    var sm = new difflib.SequenceMatcher(base, newtxt);
+    // get the opcodes from the SequenceMatcher instance
+    // opcodes is a list of 3-tuples describing what changes should be made to the base text
+    //      in order to yield the new text
+    var opcodes = sm.get_opcodes();
+    var diffoutputdiv = $("div#bio-diff");
+    while (diffoutputdiv.firstChild) diffoutputdiv.removeChild(diffoutputdiv.firstChild);
 
-<h2>Version 1</h2>
-<pre>
-<%= @changes.to_yaml %>
-</pre>
+    // build the diff view and add it to the current DOM
+    diffoutputdiv.append(
+      diffview.buildView({
+        baseTextLines:base,
+        newTextLines:newtxt,
+        opcodes:opcodes,
+        // set the display titles for each resource
+        baseTextName:"Version <%= params[:v2].to_i %>",
+        newTextName:"Version <%= params[:v1].to_i %>",
+        contextSize:null,
+        viewType: 0, // Vertical view 
+      })
+    );
+  }
+  $(document).ready(function() {
+    diffUsingJS();
+  });
+</script>
+<style type="text/css">
+table.diff {
+	border-collapse:collapse;
+	border:1px solid darkgray;
+}
+table.diff tbody { 
+	font-family:Courier, monospace
+}
+table.diff tbody th {
+	font-family:verdana,arial,'Bitstream Vera Sans',helvetica,sans-serif;
+	background:#EED;
+	font-size:11px;
+	font-weight:normal;
+	border:1px solid #BBC;
+	color:#886;
+	padding:.3em .5em .1em 2em;
+	text-align:right;
+	vertical-align:top
+}
+table.diff thead {
+	border-bottom:1px solid #BBC;
+	background:#EFEFEF;
+	font-family:Verdana
+}
+table.diff thead th.texttitle {
+	text-align:left
+}
+table.diff tbody td {
+	padding:0px .4em;
+	padding-top:.4em;
+	vertical-align:top;
+}
+table.diff .empty {
+	background-color:#DDD;
+}
+table.diff .replace {
+	background-color:#FD8
+}
+table.diff .delete {
+	background-color:#E99;
+}
+table.diff .skip {
+	background-color:#EFEFEF;
+	border:1px solid #AAA;
+	border-right:1px solid #BBC;
+}
+table.diff .insert {
+	background-color:#9E9
+}
+table.diff th.author {
+	text-align:right;
+	border-top:1px solid #BBC;
+	background:#EFEFEF
+}
+</style>
 
-<h2>Version 2</h2>
-<pre>
+<h2>Changes</h2>
 <%= @changes.to_yaml %>
-</pre>
+
+<h2>Bio</h2>
+<div id="bio-diff"></div>

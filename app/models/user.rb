@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
     c.login_field = 'email'
   end # block optional
   
+  # Sex field constants
   MALE = false
   FEMALE = true
   
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
   attr_accessor :validates_password_change, :old_password, :city_name
   
   validates_uniqueness_of :username
-  validates_length_of :username, :in => 2..30, :allow_nil => true, :allow_blank => true
+  validates_length_of :username, :in => 2..30
   validates_inclusion_of :sex, :in => [true, false]
   
   before_validation :set_city_id

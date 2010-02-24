@@ -19,7 +19,8 @@ class BrandWikisController < ApplicationController
   end
   
   def history # show history of updates
-    @versions = @brand.brand_wiki.versions.reverse
+    @brand_wiki = @brand.brand_wiki
+    @versions = @brand.brand_wiki.history
   end
   
   def diff # show differences between versions

@@ -1,4 +1,8 @@
 <% title "Brand history" %>
+<pre>
+<%= @versions.to_yaml %>
+<%= @brand_wiki.version %>
+</pre>
 <% semantic_form_for :compare, :url => diff_brand_brand_wiki_path(@brand), :html => { :method => :get } do |f| %>
   <table>
     <tr>
@@ -8,20 +12,18 @@
       <th>Version</th>
     </tr>
     <% if !@versions.blank? %>
-      <% @versions.each_with_index do |v, i| %>
+      <% @versions.each do |v| %>
         <tr>
-          <td style="border-top: 1px solid #000;"><%= radio_button(nil, 'v1', v.number) %></td>
-          <td style="border-top: 1px solid #000;"><%= radio_button(nil, 'v2', v.number) %></td>
+          <td style="border-top: 1px solid #000;"><%= radio_button(nil, 'v1', v[:version]) %></td>
+          <td style="border-top: 1px solid #000;"><%= radio_button(nil, 'v2', v[:version]) %></td>
           <td style="border-top: 1px solid #000;">
-            <%= v.user %><br />
-            <%= v.created_at %>
+            <%= v[:editor] %><br />
+            <%= v[:time] %>
           </td>
-          <td style="border-top: 1px solid #000;"><%= v.changes['version_comment']? v.changes['version_comment'].shift : '' %></td>
-          <td style="border-top: 1px solid #000;"><%= link_to "Version #{v.number}", (i == 0) ? brand_brand_wiki_path : brand_brand_wiki_path(:version => v.number) %></td>
+          <td style="border-top: 1px solid #000;"><%= v[:version_comment] %></td>
+          <td style="border-top: 1px solid #000;"><%= link_to "Version #{v[:version]}", (v[:version] == @brand_wiki.version) ? brand_brand_wiki_path : brand_brand_wiki_path(:version => v[:version]) %></td>
         </tr>
       <% end %>
-    <% else %>
-    
     <% end %>
   </table>
 <% end %>
