@@ -5,19 +5,6 @@ class UserTest < ActiveSupport::TestCase
     assert Factory.build(:user).valid?
   end
   
-  def test_add_vote
-    b = Factory.create(:brand)
-    voter = Factory.create(:user)
-    assert voter.vote_for(b)
-    assert b.votes.count == 1
-  end
-  
-  def test_add_vote_with_wrong_input
-    voter = Factory.create(:user)
-    assert_raises(ArgumentError) { voter.vote_for(nil) }
-    assert_raises(ArgumentError) { voter.vote_for(Factory.create(:brand), nil) }
-  end
-  
   def test_voted_on?
     voter = Factory.create(:user)
     b = Factory.create(:brand)

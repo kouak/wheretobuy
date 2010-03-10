@@ -1,3 +1,5 @@
+require 'lib/votes/acts_as_voter'
+
 class User < ActiveRecord::Base
   acts_as_authentic do |c|
     c.login_field = 'email'
@@ -8,7 +10,6 @@ class User < ActiveRecord::Base
   FEMALE = true
   
   has_many :written_comments, :class_name => "Comment", :foreign_key => "author_id" # written comments
-  has_many :sent_votes, :class_name => "Vote", :foreign_key => "voter_id"
   has_many :brand_wiki_editions, :class_name => "BrandWiki", :foreign_key => "editor_id"
   has_many :comments, :as => :resource
   belongs_to :city
@@ -24,6 +25,8 @@ class User < ActiveRecord::Base
   
   before_validation :set_city_id
   
+  acts_as_voter
+  
   
   # validates password change from account page
   
@@ -34,8 +37,6 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
-  include Votes::ActsAsVoter # lib/acts_as_voter.rb
   
   def active?
     active

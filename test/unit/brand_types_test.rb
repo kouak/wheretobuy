@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class BrandTypesTest < ActiveSupport::TestCase
+class BrandTypeTest < ActiveSupport::TestCase
   def test_should_be_valid
-    assert BrandTypes.new.valid?
+    assert Factory.build(:brand_type).valid?
   end
 end

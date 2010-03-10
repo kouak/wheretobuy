@@ -3,37 +3,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <title><%= h(yield(:title) || "Where to buy") %></title>
-  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js' 
+  <%= #javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js' 
   %>
-  <%= javascript_include_tag 'application', 'jquery/jquery-inspect' %>
-  <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes' %>
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag 'screen.css', 'base.css', :media => 'screen, projection' %>
+
+  <%= stylesheet_link_tag 'print.css', :media => 'print' %>
+  <!--[if lt IE 8]>
+    <%= stylesheet_link_tag 'ie6.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'ie.css', :media => 'screen, projection' %>
+  <![endif]-->
   <%= yield(:head) %>
 </head>
-<body>
-  <div id="container">
-    <p><%= link_to 'Home', root_path %></p>
+<body class="bp three-col">
+  <div id="topbar">
+    <div id="header-wrap" class="container">
+        <div id="header">
+          <h1><%= link_to 'Fashi.on', root_path %></h1>
 
-    <div id="user_login_box" style="float:right">
-      <% if user_signed_in? %>
-        <%= current_user %> |
-        <%= link_to 'My account', account_path %> |
-        <%= link_to 'Sign out', user_session_path, :method => :delete %>
-      <% else %>
-        <%= link_to 'Sign up', new_user_path %>
-        <%= link_to 'Sign in', new_user_session_path %>
-      <% end %>
+          <div id="user_login_box">
+            <% if user_signed_in? %>
+              <%= content_tag('span', h(current_user)) %> |
+              <%= link_to 'My account', account_path, :id => 'my_account' %> |
+              <%= link_to 'Sign out', user_session_path, :method => :delete %>
+            <% else %>
+              <%= link_to 'Sign up', new_user_path %> |
+              <%= link_to 'Sign in', new_user_session_path %>
+            <% end %>
+          </div>
+          <div id="search">
+            <% top_search_box %>
+          </div>
+          <div id="main_navigation">
+            <%= navigation_menu %>
+          </div>
+      </div>
     </div>
-    <div style="clear:both"></div>
+  </div>
+  <div id="container">
+    <div id="content">
+      <% if show_title? -%>
+      <h1><%=h yield(:title) %></h1>
+      <% end -%>
 
-    <% if show_title? %>
-    <h1><%=h yield(:title) %></h1>
-    <% end %>
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :p, content_tag(:span, nil) +  msg, :id => "flash", :class => name %>
+      <% end -%>
 
-    <% flash.each do |name, msg| %>
-    <%= content_tag :p, content_tag(:span, nil) +  msg, :id => "flash", :class => name %>
-    <% end %>
-
-    <%= yield %>
+      <%= yield %>
+    </div>
+    <div id="footer">
+      <p>This is a footer ... ©©©</p>
+    </div>
   </div>
 </body>
 </html>

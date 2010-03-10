@@ -1,0 +1,40 @@
+@import screen.sass
+ 
+=flash_padding
+  margin: 10px 0
+  padding: 5px 8px
+ 
+body.bp
+  #flash_notice
+    +flash_padding
+    color= !notice_color
+    background-color= !notice_bg_color
+    border= "solid" 1px !notice_border_color
+  #flash_error
+    +flash_padding
+    color= !error_color
+    background-color= !error_bg_color
+    border= "solid" 1px !error_border_color
+  .fieldWithErrors
+    display: inline
+  #errorExplanation
+    margin-bottom: 20px
+    padding: 0 0 12px 0
+    border= 2px "solid" !error_border_color
+    background-color= !error_bg_color
+    width: 400px
+    h2
+      margin: 0
+      padding: 8px
+      text-align: left
+      font-weight: bold
+      font-size: 12px
+      color= !error_color
+    p
+      margin-bottom: 0
+      padding: 8px
+    ul
+      margin: 2px 24px
+      li
+        font-size: 12px
+        list-style: disc

@@ -36,6 +36,15 @@ class BrandsController < ApplicationController
     end
   end
   
+  def search
+    if params[:q].nil? || params[:q].size == 0
+      redirect_to brands_url
+    end
+    
+    @brands = Brand.search(params[:q].to_s)
+    
+  end
+  
   def destroy
     @brand = Brand.find(params[:id])
     @brand.destroy

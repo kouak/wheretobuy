@@ -1,0 +1,53 @@
+@import blueprint
+@import theme
+
+#brands-wrapper
+  +column(16)
+  +colborder(!border_color)
+  
+#brands-search
+  margin-bottom= 40px
+
+
+#brands-taglist
+  +column(4)
+  ul
+    display= "block"
+    li
+      display= "block"
+      font-family= "Lucida Grande"
+      border-bottom= 1px "solid" !border_color
+      font-size= 1.1em
+      line-height= 2em
+      font-weight= "bold"
+      padding-left= 1em
+      a
+        color= !complement_support_color
+        font-weight= "normal"
+        text-decoration= "none"
+        &:hover
+          text-decoration= "underline"
+
+#brands-list
+  +column(10)
+  +prepend(1)
+  div.brand
+    +clearfix
+    margin-bottom= 10px
+    padding-bottom= 10px
+    border-bottom= 1px "solid" !border_color
+    span.brand-picture
+      margin= 0 10px 0 0
+      padding-top= 0
+      float= "left"
+      border= 1px "solid" "black"
+    h3
+      display= "block"
+      padding= 0
+      margin= 0
+    span.score
+      padding= 0
+      margin= 0
+
+#recommendations
+  +column(6, true)

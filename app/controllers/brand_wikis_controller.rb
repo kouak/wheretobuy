@@ -8,7 +8,7 @@ class BrandWikisController < ApplicationController
     @last_version = @brand_wiki.version
     @brand_wiki.revert_to(params[:version].to_i) if params[:version]
     if @brand_wiki.nil?
-      flash[:warning] = "This brand does not have information yet."
+      flash[:warning] = "This brand does not have information yet. Feel free to contribute !"
       redirect_to @brand.nil? ? home : @brand
     end
   end
@@ -24,9 +24,10 @@ class BrandWikisController < ApplicationController
   end
   
   def diff # show differences between versions
-    v1 = params[:v1].to_i == 0 ? :last : params[:v1].to_i
-    v2 = params[:v2].to_i == 0 ? :first : params[:v2].to_i
+    v1 = params[:v1].to_i == 0 ? 1 : params[:v1].to_i
+    v2 = params[:v2].to_i == 0 ? :last : params[:v2].to_i
     @changes = @brand.brand_wiki.differences_between(v1, v2)
+    @brand_wiki = @brand.brand_wiki
   end
   
   def update

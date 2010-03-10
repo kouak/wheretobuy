@@ -6,13 +6,31 @@ class BrandWiki < ActiveRecord::Base
   belongs_to :brand
   belongs_to :editor, :class_name => 'User'
   
+  
+  validates_length_of :bio, :minimum => 5
+  validates_presence_of :editor_id
   validates_format_of :url, :with => URI::regexp(%w(http)), :allow_blank => true
   
   def differences_between(v1, v2)
-    changes_between(v1, v2)
+    v1 = versions.number_at(v1) || 1
+    v2 = versions.number_at(v2) || 1
+    rtn = {'version' => [v1, v2]}
+    if v1 != v2
+      rtn.merge!(changes_between(v1, v2))
+    end
+    rtn
   end
   
-  # returns full version history
+  # returns full version history regardless of current version
+  def full_history
+    current_version = version # Save current version
+    revert_to(:last) # Go back to the latest
+    rtn = history # Pull history
+    revert_to(current_version) # and go back to initial state
+    rtn
+  end
+  
+  # returns history before current version
   def history
     if versions.count == 0
       return nil

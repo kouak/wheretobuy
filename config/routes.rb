@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
     country.resources :cities
   end
 
-  map.resources :brands do |brand|
+  map.resources :brands, :collection => {:search => :get} do |brand|
     brand.resources :comments
     brand.resource :brand_wiki, :except => [:index, :new, :create], :member => {:history => :get, :diff => :get}
     brand.resources :votes, :only => [:index], :collection => {:vote_for => :post, :vote_against => :post, :vote_nil => :post}
@@ -19,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
 
 
+  map.search '/search', :controller => 'search', :action => :index
   map.login '/login', :controller => 'user_sessions', :action => :new
   map.create_login '/login', :controller => 'user_sessions', :action => :create, :method => :post
   map.logout '/logout', :controller => 'user_sessions', :action => :destroy

@@ -5,4 +5,10 @@ class BrandTest < ActiveSupport::TestCase
     assert Factory.build(:brand).valid?
   end
   
+  def test_uniqueness_validation
+    brand = Factory.create(:brand)
+    brand1 = Brand.new(:name => brand.name)
+    assert !brand1.valid?
+  end
+  
 end

@@ -1,4 +1,4 @@
 Factory.define :brand do |u|
   u.name 'brand-name'
-  u.url 'http://www.apc.fr/'
+  u.brand_types {|b| [b.association :brand_type]}
 end

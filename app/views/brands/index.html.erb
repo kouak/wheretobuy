@@ -1,16 +1,40 @@
-<% title "Brands" %>
+<% title "Find brands" %>
+<%= stylesheet_link_tag 'brands/index' %>
 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
+<div id="brands-wrapper">
+  <div id="brands-search">
+    <h3>Search brands</h3>
+    <% search_box %>
+  </div>
+
+  <div id="brands-taglist">
+    <ul>
+      <li>All</li>
+      <li><%= link_to 'classic', '#' %></li>
+      <li><%= link_to 'dark', '#' %></li>
+    </ul>
+    <br />
+  </div>
+  <div id="brands-list">
+    <% for brand in @brands %>
+      <div class="brand">
+        <span class="brand-picture">
+          <%= image_tag 'blank-profile-150x150.png', :width => "80", :height => "80" %>
+        </span>
+        <h3><%= link_to h(brand.name), brand %></h3>
+        <span class="score">
+          128,345 pageviews, 1,231 fans
+        </span>
+      </div>
+    <% end %>
+    <p><%= link_to "New Brand", new_brand_path %></p>
+  </div>
+</div>
+<div id="recommendations">
+  <h3>See recommendations :</h3>
   <% for brand in @brands %>
-    <tr>
-      <td><%=h brand.name %></td>
-      <td><%= link_to "Show", brand %></td>
-      <td><%= link_to "Destroy", brand, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+    <div class="recommendation">
+      <%= link_to h(brand.name), brand %>
+    </div> 
   <% end %>
-</table>
-
-<p><%= link_to "New Brand", new_brand_path %></p>
+</div>

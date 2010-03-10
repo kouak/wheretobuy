@@ -8,6 +8,6 @@
     <%= f.input :sex, :as => :radio, :collection => [["Male", User::MALE], ["Female", User::FEMALE]] %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
+    <%= f.submit "Sign up" %>
   <% end %>
-  <%= f.submit "Sign Up" %>
 <% end -%>

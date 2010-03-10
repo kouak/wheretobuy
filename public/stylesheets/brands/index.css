@@ -1,0 +1,110 @@
+/* line 4, ../../../app/stylesheets/brands/index.sass */
+#brands-wrapper {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 630px;
+  padding-right: 24px;
+  margin-right: 25px;
+  border-right: 1px solid #b1ad69;
+}
+/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html #brands-wrapper {
+  overflow-x: hidden;
+}
+
+/* line 8, ../../../app/stylesheets/brands/index.sass */
+#brands-search {
+  margin-bottom: 40px;
+}
+
+/* line 12, ../../../app/stylesheets/brands/index.sass */
+#brands-taglist {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 150px;
+}
+/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html #brands-taglist {
+  overflow-x: hidden;
+}
+/* line 14, ../../../app/stylesheets/brands/index.sass */
+#brands-taglist ul {
+  display: block;
+}
+/* line 16, ../../../app/stylesheets/brands/index.sass */
+#brands-taglist ul li {
+  display: block;
+  font-family: Lucida Grande;
+  border-bottom: 1px solid #b1ad69;
+  font-size: 1.1em;
+  line-height: 2em;
+  font-weight: bold;
+  padding-left: 1em;
+}
+/* line 24, ../../../app/stylesheets/brands/index.sass */
+#brands-taglist ul li a {
+  color: #ff8800;
+  font-weight: normal;
+  text-decoration: none;
+}
+/* line 28, ../../../app/stylesheets/brands/index.sass */
+#brands-taglist ul li a:hover {
+  text-decoration: underline;
+}
+
+/* line 31, ../../../app/stylesheets/brands/index.sass */
+#brands-list {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 390px;
+  padding-left: 40px;
+}
+/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html #brands-list {
+  overflow-x: hidden;
+}
+/* line 34, ../../../app/stylesheets/brands/index.sass */
+#brands-list div.brand {
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #b1ad69;
+}
+/* line 5, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+#brands-list div.brand {
+  display: block;
+}
+/* line 39, ../../../app/stylesheets/brands/index.sass */
+#brands-list div.brand span.brand-picture {
+  margin: 0 10px 0 0;
+  padding-top: 0;
+  float: left;
+  border: 1px solid black;
+}
+/* line 44, ../../../app/stylesheets/brands/index.sass */
+#brands-list div.brand h3 {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+/* line 48, ../../../app/stylesheets/brands/index.sass */
+#brands-list div.brand span.score {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 52, ../../../app/stylesheets/brands/index.sass */
+#recommendations {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 230px;
+}
+/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html #recommendations {
+  overflow-x: hidden;
+}
