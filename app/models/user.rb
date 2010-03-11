@@ -1,3 +1,4 @@
+require 'lib/votes/acts_as_voter'
 class User < ActiveRecord::Base
   acts_as_authentic do |c|
     c.login_field = 'email'
