@@ -1,42 +1,41 @@
-<% title "Brand" %>
-<div id="score-container">
-  <strong><%= @brand.score.to_i %></strong>
+
+<%= brand_tabs('Brand') %>
+<div id="brand-container">
+  <div id="score-container">
+    <%
+    # TODO : Add jQuery for this !
+    %>
+    <span id="vote_up"><%= link_to vote_up_image(@brand), vote_for_brand_votes_path(@brand), :method => :post, :id => 'vote_up' -%></span>
+    <span id="score"><%= link_to h(@brand.score), vote_nil_brand_votes_path(@brand), :method => :post -%></span>
+    <span id="vote_down"><%= link_to vote_down_image(@brand), vote_against_brand_votes_path(@brand), :method => :post -%></span>
+  </div>
+  <h1><%= title h(@brand.name.titleize), false %></h1>
+
+  <div id="brand_wiki">
+    <p>
+      <strong>Url:</strong>
+      <%=h @brand.brand_wiki.try(:url) %>
+    </p>
+    <p>
+      <strong>Description:</strong>
+      <% if @brand.brand_wiki.nil? %>
+        <%= link_to "Add a description", edit_brand_brand_wiki_path(@brand) %>
+      <% else %>
+        <%=h @brand.brand_wiki.bio %><br/>
+        <%= link_to "More", brand_brand_wiki_path(@brand) %> |
+        <%= link_to "Edit", edit_brand_brand_wiki_path(@brand) %>
+      <% end %>
+    </p>
+  </div>
+
+  <p>
+    <%= link_to "Destroy", @brand, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "View All", brands_path %>
+  </p>
+
   <%
-  # TODO : Add jQuery for this !
+    # TODO = use an helper to do this
+    @commentable = @brand 
   %>
-  <%= link_to "+", vote_for_brand_votes_path(@brand), :method => :post -%> /
-  <%= link_to "0", vote_nil_brand_votes_path(@brand), :method => :post -%> /
-  <%= link_to "-", vote_against_brand_votes_path(@brand), :method => :post -%>
+  <%= render :partial => "comments/index" %>
 </div>
-<p>
-  <strong>Name:</strong>
-  <%=h @brand.name %>
-</p>
-
-<div id="brand_wiki">
-  <p>
-    <strong>Url:</strong>
-    <%=h @brand.brand_wiki.try(:url) %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <% if @brand.brand_wiki.nil? %>
-      <%= link_to "Add a description", edit_brand_brand_wiki_path(@brand) %>
-    <% else %>
-      <%=h @brand.brand_wiki.bio %><br/>
-      <%= link_to "More", brand_brand_wiki_path(@brand) %> |
-      <%= link_to "Edit", edit_brand_brand_wiki_path(@brand) %>
-    <% end %>
-  </p>
-</div>
-
-<p>
-  <%= link_to "Destroy", @brand, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", brands_path %>
-</p>
-
-<%
-  # TODO = use an helper to do this
-  @commentable = @brand 
-%>
-<%= render :partial => "comments/index" %>

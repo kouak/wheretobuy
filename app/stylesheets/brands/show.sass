@@ -1,0 +1,70 @@
+@import blueprint
+@import theme
+
+
+#content
+  background-color= !grey_background_color
+  border= "none"
+  
+#brand-tabs
+  width= !blueprint_container_size + 1px
+  // No fucking idea why i need this +1px ?!
+  height= 35px
+  padding= 0
+  margin= 0
+  border-right= 1px "solid" !border_color
+  border-bottom= 1px "solid" !border_color
+  ul
+    display= "block"
+    float= "right"
+    margin= 0
+    padding= 0
+    height= 35px
+    li
+      display= "block"
+      float= "left"
+      font-family= "Lucida Grande"
+      font-size= 1.2em
+      margin= 0
+      margin-bottom= -1px
+      height= 34px
+      line-height= 34px
+      font-weight= "bold"
+      padding= 0 1em
+      background-color= !grey_background_color
+      border-left= 1px "solid" !border_color
+      border-top= 1px "solid" !border_color
+      &.selected
+        background-color= "white"
+        border-bottom= 1px "solid" "white"
+      a
+        color= !complement_support_color
+        display= "block"
+        font-weight= "normal"
+        text-decoration= "none"
+        &:hover
+          text-decoration= "underline"
+
+#brand-container
+  +column(24, true)
+  padding= 0
+  margin= 0
+  background-color= "white"
+  border= 1px "solid" !border_color
+  border-top= "none"
+  h1
+    margin= 15px 0
+  #score-container
+    float= "left"
+    // TODO : Mixinify this
+    padding= 0
+    margin= 0 15px
+    span
+      display= "block"
+      line-height= 10px
+      padding= 0
+      margin= 0
+      text-align= "center"
+      &#score
+        font-size= 1.8em
+        line-height= 1.8em
