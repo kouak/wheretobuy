@@ -15,7 +15,7 @@
   <![endif]-->
   <%= yield(:head) %>
 </head>
-<body class="bp three-col">
+<body class="bp">
   <div id="topbar">
     <div id="header-wrap" class="container">
         <div id="header">
@@ -40,6 +40,15 @@
       </div>
     </div>
   </div>
+  <% if show_horizontal_ad? -%>
+  <div id="advertising">
+    <%= 
+      #image_tag 'https://www.google.com/adsense/static/fr/images/skyscraper_img.jpg' 
+    %>
+    <%= image_tag'https://www.google.com/adsense/static/fr/images/leaderboard_img.jpg' %>
+  </div>
+  <% end -%>
+  
   <div id="container">
     <div id="content">
       <% if show_title? -%>
@@ -47,14 +56,15 @@
       <% end -%>
 
       <% flash.each do |name, msg| -%>
-        <%= content_tag :p, content_tag(:span, nil) +  msg, :id => "flash", :class => name %>
+        <%= content_tag :div, content_tag(:span, nil) +  msg, :id => "flash", :class => name %>
       <% end -%>
 
-      <%= yield %>
+      <%= yield(:content) or yield %>
     </div>
-    <div id="footer">
-      <p>This is a footer ... ©©©</p>
-    </div>
+  </div>
+
+  <div id="footer">
+    <p>This is a footer ... ©©©</p>
   </div>
 </body>
 </html>

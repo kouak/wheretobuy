@@ -9,7 +9,10 @@ module ActiveRecord #:nodoc:
         module ClassMethods
           def acts_as_votable
             has_many :votes, :as => :votable
-          
+            has_many :voters, :source => :voter, :through => :votes
+            has_many :fans, :source => :voter, :through => :votes, :conditions => ["votes.score > ?", 0]
+            has_many :haters, :source => :voter, :through => :votes, :conditions => ["votes.score < ?", 0]
+            
             include ActiveRecord::Acts::Voteable::Votable::InstanceMethods
             extend ActiveRecord::Acts::Voteable::Votable::SingletonMethods
           
@@ -71,8 +74,13 @@ module ActiveRecord #:nodoc:
           end
 
           # explicit
-          def increment_pageview
+          def increment_pageviews
             increment(:pageviews)
+          end
+          
+          def fans_for_profile(limit = 6)
+            limit = limit.to_i || 6
+            self.fans.find(:all, :offset => ( self.fans.count * rand ).to_i, :limit => limit)
           end
 
           private

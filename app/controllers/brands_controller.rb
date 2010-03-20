@@ -1,4 +1,9 @@
 class BrandsController < ApplicationController
+  
+  after_filter :increment_pageviews, :only => [:show]
+  
+  layout 'profile', :only => [:show, :fans]
+  
   def index
     @brands = Brand.all
   end
@@ -6,6 +11,12 @@ class BrandsController < ApplicationController
   def show
     @brand = Brand.find(params[:id], :include => [:votes, :brand_wiki])
     @comments = @brand.comments.paginate(:page => params[:page], :per_page => 2)
+  end
+  
+  def fans
+    @brand = Brand.find(params[:brand_id])
+    #@fans = @brand.fans.paginate(:page => params[:page], :per_page => 2)
+    @fans = (@brand.fans * 11).paginate(:page => params[:page], :per_page => 6)
   end
   
   def new
@@ -50,5 +61,11 @@ class BrandsController < ApplicationController
     @brand.destroy
     flash[:notice] = "Successfully destroyed brand."
     redirect_to brands_url
+  end
+  
+  private
+  def increment_pageviews
+    @brand.increment_pageviews
+    @brand.save!
   end
 end

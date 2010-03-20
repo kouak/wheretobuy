@@ -1,0 +1,39 @@
+@import blueprint
+@import theme
+
+#main-pagination
+  float= "right"
+
+#fan-list
+  +clearfix
+  margin-top= 2em
+  div.vcard
+    +column(9)
+    margin-bottom= 2em
+    div.picture-wrapper
+      +column(3)
+      a
+        display= "block"
+        padding= 3px
+        margin-left= 15px
+        border= 1px "solid" "#666"
+        &:hover
+          border= 1px "solid" !border_color
+        img
+          display= "block"
+          margin= 0 "auto"
+    div.infos
+      +column(6, true)
+      h3
+        border-bottom= 1px "dotted" "#666"
+        margin= 0
+        a
+          margin= 0
+          padding= 0
+      span.user-infos
+        margin-bottom= 1em
+        float= "left"
+        clear= "both"
+      span.custom-infos
+        float= "left"
+        clear= "both"

@@ -1,95 +1,112 @@
 /* line 5, ../../../app/stylesheets/brands/show.sass */
-#content {
-  background-color: #eeeeee;
-  border: none;
-}
-
-/* line 9, ../../../app/stylesheets/brands/show.sass */
-#brand-tabs {
-  width: 951px;
-  height: 35px;
-  padding: 0;
-  margin: 0;
-  border-right: 1px solid #b1ad69;
-  border-bottom: 1px solid #b1ad69;
-}
-/* line 17, ../../../app/stylesheets/brands/show.sass */
-#brand-tabs ul {
-  display: block;
-  float: right;
-  margin: 0;
-  padding: 0;
-  height: 35px;
-}
-/* line 23, ../../../app/stylesheets/brands/show.sass */
-#brand-tabs ul li {
-  display: block;
-  float: left;
-  font-family: Lucida Grande;
-  font-size: 1.2em;
-  margin: 0;
-  margin-bottom: -1px;
-  height: 34px;
-  line-height: 34px;
-  font-weight: bold;
-  padding: 0 1em;
-  background-color: #eeeeee;
-  border-left: 1px solid #b1ad69;
-  border-top: 1px solid #b1ad69;
-}
-/* line 37, ../../../app/stylesheets/brands/show.sass */
-#brand-tabs ul li.selected {
-  background-color: white;
-  border-bottom: 1px solid white;
-}
-/* line 40, ../../../app/stylesheets/brands/show.sass */
-#brand-tabs ul li a {
-  color: #ff8800;
-  display: block;
-  font-weight: normal;
-  text-decoration: none;
-}
-/* line 45, ../../../app/stylesheets/brands/show.sass */
-#brand-tabs ul li a:hover {
-  text-decoration: underline;
-}
-
-/* line 48, ../../../app/stylesheets/brands/show.sass */
-#brand-container {
-  display: inline;
-  float: left;
-  margin-right: 0;
-  width: 950px;
-  padding: 0;
-  margin: 0;
-  background-color: white;
-  border: 1px solid #b1ad69;
-  border-top: none;
-}
-/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
-* html #brand-container {
-  overflow-x: hidden;
-}
-/* line 55, ../../../app/stylesheets/brands/show.sass */
-#brand-container h1 {
-  margin: 15px 0;
-}
-/* line 57, ../../../app/stylesheets/brands/show.sass */
-#brand-container #score-container {
+#profile-main #score-container {
   float: left;
   padding: 0;
   margin: 0 15px;
 }
-/* line 62, ../../../app/stylesheets/brands/show.sass */
-#brand-container #score-container span {
+/* line 10, ../../../app/stylesheets/brands/show.sass */
+#profile-main #score-container span {
   display: block;
   line-height: 10px;
   padding: 0;
   margin: 0;
   text-align: center;
 }
-/* line 68, ../../../app/stylesheets/brands/show.sass */
-#brand-container #score-container span#score {
-  font-size: 1.8em;
+/* line 16, ../../../app/stylesheets/brands/show.sass */
+#profile-main #score-container span#score {
+  font-size: 2em;
+  font-weight: bold;
   line-height: 1.8em;
+}
+/* line 20, ../../../app/stylesheets/brands/show.sass */
+#profile-main #pageviews {
+  font-family: Lucida Grande;
+  clear: both;
+}
+/* line 23, ../../../app/stylesheets/brands/show.sass */
+#profile-main #comments-count {
+  font-family: Lucida Grande;
+}
+/* line 25, ../../../app/stylesheets/brands/show.sass */
+#profile-main #profile-pictures {
+  border: 1px solid #999;
+  float: right;
+  margin: 10px;
+  margin-bottom: 5px;
+  padding: 3px;
+}
+/* line 31, ../../../app/stylesheets/brands/show.sass */
+#profile-main #profile-pictures a {
+  float: right;
+  font-size: 0.9em;
+  font-family: Lucida Grande;
+  font-weight: bold;
+}
+/* line 36, ../../../app/stylesheets/brands/show.sass */
+#profile-main #profile-pictures img {
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+}
+/* line 40, ../../../app/stylesheets/brands/show.sass */
+#profile-main #profile-description {
+  margin-top: 30px;
+  clear: left;
+  text-align: justify;
+}
+/* line 44, ../../../app/stylesheets/brands/show.sass */
+#profile-main #profile-description #profile-description-links {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* line 52, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-fans span.fan-wrapper {
+  float: left;
+  width: 33%;
+  margin: 0;
+  margin-top: 10px;
+}
+/* line 57, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-fans span.fan-wrapper a {
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: center;
+}
+/* line 62, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-fans span.fan-wrapper img {
+  margin: 0 auto;
+  padding: 2px;
+  display: block;
+  border: 1px solid #b1ad69;
+}
+/* line 67, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-fans a.bottom-links {
+  margin-top: 10px;
+  float: right;
+  clear: both;
+}
+/* line 72, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-activity ul {
+  margin-bottom: 15px;
+}
+/* line 74, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-activity ul li {
+  display: block;
+  border-bottom: 1px dotted #b1ad69;
+  min-height: 20px;
+  padding-left: 20px;
+  background-image: url(/images/profile-news-feed/comment.png);
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+/* line 75, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-activity ul li .time-ago {
+  color: #666;
+}
+/* line 84, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-activity ul li.last {
+  border-background: 0;
 }

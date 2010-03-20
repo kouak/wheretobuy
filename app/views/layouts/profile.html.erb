@@ -1,0 +1,16 @@
+<% stylesheet('profile/base') %>
+<% content_for :content do -%>
+  <div id="profile-tabs">
+    <%= yield(:profile_tabs) or brand_tabs('Brand') -%>
+  </div>
+  <div id="profile-main">
+    <%= yield(:profile_main) or yield -%>
+  </div>
+  <% if yield(:profile_sidebar) %>
+    <% stylesheet('profile/sidebar') %>
+    <div id="profile-sidebar">
+      <%= yield(:profile_sidebar) -%>
+    </div>
+  <% end -%>
+<% end -%>
+<%= render :file => 'layouts/application' %>

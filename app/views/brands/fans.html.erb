@@ -1,0 +1,29 @@
+<% content_for :profile_tabs do -%>
+<%= brand_tabs('Fans') %>
+<% end -%>
+<% content_for :profile_main do -%>
+<% stylesheet('pagination', 'profile/fans') %>
+<h2 style="float:left;">Fans</h2>
+<div id="main-pagination" class="digg_pagination">
+  <%= will_paginate @fans, :container => false %>
+</div>
+<hr />
+<div id="fan-list">
+  <% for fan in @fans %>
+    <div class="vcard">
+      <div class="picture-wrapper">
+        <%= link_to(image_tag('blank-profile-150x150.png', :width => "80", :height => "80"), fan) %>
+      </div>
+      <div class="infos">
+        <h3><%= link_to h(fan.to_s), fan %></h3>
+        <span class="user-infos">
+          22, Reims, France
+        </span>
+        <span class="custom-infos">
+          4 hours ago.
+        </span>
+      </div>
+    </div>
+  <% end -%>
+</div>
+<% end -%>

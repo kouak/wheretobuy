@@ -2,7 +2,7 @@ class Vote < ActiveRecord::Base
   attr_accessible :voter_sex, :score, :voter, :votable
 
   
-  belongs_to :votable, :polymorphic => true
+  belongs_to :votable, :polymorphic => true, :counter_cache => true
   belongs_to :voter, :class_name => "User"
   
   validates_presence_of :voter_id, :votable_id, :votable_type

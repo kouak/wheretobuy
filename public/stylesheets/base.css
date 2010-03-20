@@ -1286,8 +1286,29 @@ body.bp #footer, body.bp #content {
 #content {
   border: 1px solid #b1ad69;
   background-color: white;
-  margin-top: 20px;
   padding: 10px;
+  height: 100%;
+}
+
+/* line 94, ../../app/stylesheets/screen.sass */
+#advertising {
+  width: 950px;
+  margin: 0 auto;
+  *display: inline-block;
+  margin: 30px auto;
+}
+/* line 93, ../../app/stylesheets/partials/_formtastic.sass */
+#advertising:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* line 97, ../../app/stylesheets/screen.sass */
+#advertising img {
+  display: block;
+  margin: 0 auto;
 }
 
 /* line 8, ../../app/stylesheets/base.sass */

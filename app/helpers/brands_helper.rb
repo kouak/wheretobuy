@@ -1,14 +1,15 @@
 module BrandsHelper
   def brand_tabs(selected, brand = @brand)
-    
-    stylesheet('brands/show')
 
     links = [
       {:title => 'Brand', :url => brand_path(@brand)},
       {:title => 'Activity', :url => '#'},
       {:title => 'Wiki', :url => brand_brand_wiki_path(@brand)},
       {:title => 'Tags', :url => '#'},
-      {:title => 'Similar brands', :url => '#'}
+      {:title => 'Similar brands', :url => '#'},
+      {:title => 'Images', :url => '#'},
+      {:title => 'Fans', :url => brand_fans_path(@brand)},
+      {:title => 'Comments', :url => brand_comments_path(@brand)}
     ]
     
     links.map! do |l|
@@ -26,6 +27,6 @@ module BrandsHelper
     
     rtn = content_tag('ul', rtn)
     
-    content_tag('div', rtn, :id => 'brand-tabs')
+    rtn
   end
 end

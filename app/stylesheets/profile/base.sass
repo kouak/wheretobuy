@@ -1,0 +1,41 @@
+@import blueprint
+@import theme
+
+#profile-tabs
+  +column(4)
+  ul
+    display= "block"
+    li
+      display= "block"
+      font-family= "Lucida Grande"
+      border-bottom= 1px "solid" !border_color
+      font-size= 1.1em
+      line-height= 2em
+      font-weight= "bold"
+      padding-left= 1em
+      &.selected
+        background-color= "#eee"
+        a
+          color= "#666"
+      a
+        color= !complement_support_color
+        font-weight= "normal"
+        text-decoration= "none"
+        &:hover
+          text-decoration= "underline"
+
+#profile-main h2, #profile-sidebar h2
+  font-size= 1.7em
+  font-family= "Lucida Grande"
+  margin-bottom= 0
+  padding= 0
+  color= !complement_support_color
+
+#profile-main
+  +column(20, true)
+  hr
+    +colruler(!border_color)
+  h1
+    font-size= 2.1em
+    margin-top= 10px
+      

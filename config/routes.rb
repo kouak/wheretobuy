@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :brands, :collection => {:search => :get} do |brand|
     brand.resources :comments
     brand.resource :brand_wiki, :except => [:index, :new, :create], :member => {:history => :get, :diff => :get}
+    brand.fans '/fans', :controller => :brands, :action => :fans
     brand.resources :votes, :only => [:index], :collection => {:vote_for => :post, :vote_against => :post, :vote_nil => :post}
   end
 

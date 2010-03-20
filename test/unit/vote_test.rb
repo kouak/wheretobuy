@@ -106,4 +106,19 @@ class VoteTest < ActiveSupport::TestCase
     assert_equal -1, b.score
     
   end
+  
+  def test_fans
+    b = Factory.create(:brand)
+    u = Factory.create(:user)
+    
+    assert_equal [], b.fans
+    
+    u.vote_for(b)
+    b.reload
+    assert_equal [u], b.fans
+    
+    u.vote_against(b)
+    b.reload
+    assert_equal [], b.fans
+  end
 end

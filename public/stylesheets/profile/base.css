@@ -1,0 +1,80 @@
+/* line 4, ../../../app/stylesheets/profile/base.sass */
+#profile-tabs {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 150px;
+}
+/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html #profile-tabs {
+  overflow-x: hidden;
+}
+/* line 6, ../../../app/stylesheets/profile/base.sass */
+#profile-tabs ul {
+  display: block;
+}
+/* line 8, ../../../app/stylesheets/profile/base.sass */
+#profile-tabs ul li {
+  display: block;
+  font-family: Lucida Grande;
+  border-bottom: 1px solid #b1ad69;
+  font-size: 1.1em;
+  line-height: 2em;
+  font-weight: bold;
+  padding-left: 1em;
+}
+/* line 16, ../../../app/stylesheets/profile/base.sass */
+#profile-tabs ul li.selected {
+  background-color: #eee;
+}
+/* line 18, ../../../app/stylesheets/profile/base.sass */
+#profile-tabs ul li.selected a {
+  color: #666;
+}
+/* line 20, ../../../app/stylesheets/profile/base.sass */
+#profile-tabs ul li a {
+  color: #ff8800;
+  font-weight: normal;
+  text-decoration: none;
+}
+/* line 24, ../../../app/stylesheets/profile/base.sass */
+#profile-tabs ul li a:hover {
+  text-decoration: underline;
+}
+
+/* line 27, ../../../app/stylesheets/profile/base.sass */
+#profile-main h2, #profile-sidebar h2 {
+  font-size: 1.7em;
+  font-family: Lucida Grande;
+  margin-bottom: 0;
+  padding: 0;
+  color: #ff8800;
+}
+
+/* line 34, ../../../app/stylesheets/profile/base.sass */
+#profile-main {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 790px;
+}
+/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html #profile-main {
+  overflow-x: hidden;
+}
+/* line 36, ../../../app/stylesheets/profile/base.sass */
+#profile-main hr {
+  background: #b1ad69;
+  color: #b1ad69;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: .1em;
+  margin: 0 0 1.45em;
+  border: none;
+}
+/* line 38, ../../../app/stylesheets/profile/base.sass */
+#profile-main h1 {
+  font-size: 2.1em;
+  margin-top: 10px;
+}
