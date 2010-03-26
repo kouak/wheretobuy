@@ -2,7 +2,8 @@ class BrandsController < ApplicationController
   
   after_filter :increment_pageviews, :only => [:show]
   
-  layout 'brand_profile', :only => [:show, :fans, :comments]
+  
+  layout :smart_layout
   
   def index
     @brands = Brand.all
@@ -70,6 +71,11 @@ class BrandsController < ApplicationController
   end
   
   private
+  def smart_layout
+    profile_actions = [:show, :fans, :comments]
+    profile_actions.include?(action_name.to_sym) ? 'brand_profile' : 'application'
+  end
+  
   def increment_pageviews
     @brand.increment_pageviews
     @brand.save!

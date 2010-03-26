@@ -1,0 +1,39 @@
+/* line 4, ../../../app/stylesheets/brands/title.sass */
+#brand-title {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 390px;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  clear: both;
+  float: left;
+}
+/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html #brand-title {
+  overflow-x: hidden;
+}
+/* line 11, ../../../app/stylesheets/brands/title.sass */
+#brand-title .picture-wrapper {
+  float: left;
+  clear: both;
+  padding: 3px;
+  border: 1px solid #b1ad69;
+  margin-right: 20px;
+}
+/* line 17, ../../../app/stylesheets/brands/title.sass */
+#brand-title h1 {
+  margin: 0;
+  padding: 0;
+}
+/* line 20, ../../../app/stylesheets/brands/title.sass */
+#brand-title h1 a {
+  margin: 0;
+  padding: 0;
+}
+/* line 23, ../../../app/stylesheets/brands/title.sass */
+#brand-title .subtitle {
+  font-size: 1.3em;
+  margin-top: 40px;
+}

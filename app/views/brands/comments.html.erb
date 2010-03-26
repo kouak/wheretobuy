@@ -1,0 +1,16 @@
+<% content_for :profile_tabs do -%>
+<%= brand_tabs('Comments') %>
+<% end -%>
+<% content_for :profile_main do -%>
+<% stylesheet('pagination') %>
+<%= brand_title 'Comments' %>
+<%= will_paginate @comments, :id => 'main-pagination' %>
+<hr />
+<% if !@comments.nil? %>
+  <%= render :partial => 'comments/comment', :locals => {:commentable => @brand}, :collection => @comments %>
+<% else %>
+  <%= "Aucun commentaire" %>
+<% end %>
+
+<%= render :partial => 'comments/form', :locals => {:commentable => @brand} %>
+<% end -%>
