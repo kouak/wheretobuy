@@ -1,23 +1,14 @@
-<% title "Brand Wiki" %>
+<% title "Brand Wiki", false %>
 <% current_version = @last_version == @brand_wiki.version %>
-<p>
-  <% if current_version %>
-    You're viewing the current version of this wiki (version <%= @last_version %> by <%=h @brand_wiki.editor %>)
-  <% else %>
-    You're viewing version <%= @brand_wiki.version %> of this article. <%= link_to "View current version.", brand_brand_wiki_path %>
-  <% end %>
-</p>   
-<p>
-  <strong>Brand:</strong>
-  <%= link_to @brand, brand_path(@brand) %>
-</p>
+<% content_for :profile_main do %>
+
+<%= brand_title('Wiki') %>
+
+<hr />
+
 <p>
   <strong>Bio:</strong>
   <%=h @brand_wiki.bio %>
-</p>
-<p>
-  <strong>Url:</strong>
-  <%=h @brand_wiki.url %>
 </p>
 
 <p>
@@ -30,3 +21,28 @@
   <%= link_to "Edit", edit_brand_brand_wiki_path(@brand, :version => params[:version]) %> |
   <%= link_to "History", history_brand_brand_wiki_path %>
 </p>
+<% end -%>
+<% content_for :profile_sidebar do -%>
+<div id="version-notes">
+  <h2>Version information</h2>
+  <p>
+    <% if current_version %>
+      You're viewing the <strong>current version</strong> of this article which is version <strong><%= @last_version %></strong>.
+    <% else %>
+      You're viewing <strong>version <%= @brand_wiki.version %></strong> of this article. <%= link_to "View current version.", brand_brand_wiki_path %>
+    <% end %>
+  </p>
+  <p>
+    <strong>Edited:</strong>
+    <%=h time_ago_in_words(@brand_wiki.updated_at) %> ago
+  </p>
+  <p>
+    <strong>Author:</strong>
+    <%= h @brand_wiki.editor %>
+  </p>
+  <p>
+    <strong>Revision comments:</strong>
+    <%= h @brand_wiki.version_comment %>
+  </p>
+</div>
+<% end -%>

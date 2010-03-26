@@ -34,12 +34,15 @@
     <% end %>
   </p>
   <hr />
-  <h2>Comments</h2>
+  <h2>Comments (<%= @brand.comments_count %>)</h2>
   <%
     # TODO = use an helper to do this
     @commentable = @brand 
   %>
-  <%= render :partial => "comments/index" %>
+  <%= render :partial => "comments/comment", :locals => {:commentable => @brand}, :collection => @comments %>
+  <% if @brand.comments_count > @comments.count %>
+    <%= link_to 'See more', brand_comments_path(@brand) %>
+  <% end -%>
 <% end -%>
 <% content_for :profile_sidebar do -%>
   <div id="profile-tags">

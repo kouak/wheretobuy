@@ -1,9 +1,13 @@
-<% title "Brand Wiki - Differences"%>
-
-<%= stylesheet_link_tag 'brand_wiki/diff', :cache => true %>
-
-
+<% content_for :profile_tabs do -%>
+<%= brand_tabs('Wiki') %>
+<% end -%>
+<% content_for :profile_main do -%>
+<% stylesheet('brand_wiki/diff') -%>
+<% title "Brand Wiki - Differences", false %>
+<%= brand_title('Wiki - Differences') %>
+<hr />
 <h2><%= link_to @brand, brand_path(@brand) %> - Version <%= @changes['version'][0] %> >> Version <%= @changes['version'][1] %></h2>
 <div id="bio-diff">
   <%= @changes['bio'].nil? ? 'No changes done !' : format_diff(@changes['bio'][0], @changes['bio'][1]) %>
 </div>
+<% end -%>

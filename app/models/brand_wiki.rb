@@ -9,7 +9,6 @@ class BrandWiki < ActiveRecord::Base
   
   validates_length_of :bio, :minimum => 5
   validates_presence_of :editor_id
-  validates_format_of :url, :with => URI::regexp(%w(http)), :allow_blank => true
   
   def differences_between(v1, v2)
     v1 = versions.number_at(v1) || 1

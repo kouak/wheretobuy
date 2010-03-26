@@ -2,7 +2,7 @@ class BrandsController < ApplicationController
   
   after_filter :increment_pageviews, :only => [:show]
   
-  layout 'profile', :only => [:show, :fans]
+  layout 'brand_profile', :only => [:show, :fans, :comments]
   
   def index
     @brands = Brand.all
@@ -10,7 +10,13 @@ class BrandsController < ApplicationController
   
   def show
     @brand = Brand.find(params[:id], :include => [:votes, :brand_wiki])
+    @comments = @brand.comments.find(:all, :limit => 2)
+  end
+  
+  def comments
+    @brand = Brand.find(params[:brand_id])
     @comments = @brand.comments.paginate(:page => params[:page], :per_page => 2)
+    @selected_tab = 'Comments'
   end
   
   def fans

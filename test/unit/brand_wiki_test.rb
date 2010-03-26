@@ -67,7 +67,7 @@ class BrandWikiTest < ActiveSupport::TestCase
   
   def test_differences_between
     set_editors
-    f = Factory.create(:brand_wiki, :editor => @editor1, :version_comment => 'v1', :bio => 'This is it !', :url => 'http://www.apc.fr/')
+    f = Factory.create(:brand_wiki, :editor => @editor1, :version_comment => 'v1', :bio => 'This is it !')
     e = {'version' => [1, 1]}
     assert_equal e, f.differences_between(1, 1)
     

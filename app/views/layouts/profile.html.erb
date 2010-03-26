@@ -1,7 +1,7 @@
 <% stylesheet('profile/base') %>
 <% content_for :content do -%>
   <div id="profile-tabs">
-    <%= yield(:profile_tabs) or brand_tabs('Brand') -%>
+    <%= yield(:profile_tabs) -%>
   </div>
   <div id="profile-main">
     <%= yield(:profile_main) or yield -%>

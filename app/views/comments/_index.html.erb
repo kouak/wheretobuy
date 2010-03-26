@@ -1,9 +1,10 @@
-<%= will_paginate @comments %>
+<% comments ||= @comments %>
+<%= will_paginate comments, :id => 'comments-pagination' %>
 
-<% if !@comments.nil? %>
-  <%= render :partial => 'comments/comment', :collection => @comments %>
+<% if !comments.nil? %>
+  <%= render :partial => 'comments/comment', :locals => {:commentable => commentable}, :collection => comments %>
 <% else %>
   <%= "Aucun commentaire" %>
 <% end %>
 
-<%= render :partial => 'comments/form' %>
+<%= render :partial => 'comments/form', :locals => {:commentable => commentable} %>

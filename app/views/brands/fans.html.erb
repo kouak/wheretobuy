@@ -1,12 +1,10 @@
 <% content_for :profile_tabs do -%>
 <%= brand_tabs('Fans') %>
 <% end -%>
-<% content_for :profile_main do -%>
-<% stylesheet('pagination', 'profile/fans') %>
-<h2 style="float:left;">Fans</h2>
-<div id="main-pagination" class="digg_pagination">
-  <%= will_paginate @fans, :container => false %>
-</div>
+<% stylesheet('profile/fans', 'pagination') 
+%>
+<%= brand_title 'Fans' %>
+<%= will_paginate @fans, :id => 'main-pagination' %>
 <hr />
 <div id="fan-list">
   <% for fan in @fans %>
@@ -26,4 +24,3 @@
     </div>
   <% end -%>
 </div>
-<% end -%>

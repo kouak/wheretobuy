@@ -3,6 +3,8 @@ class BrandWikisController < ApplicationController
   before_filter :require_user, :only => [:edit, :update, :destroy]
   before_filter :set_brand
   
+  layout :set_layout, :only => [:show, :edit, :history, :diff]
+  
   def show # See extended informations
     @brand_wiki = @brand.brand_wiki
     @last_version = @brand_wiki.version
@@ -19,8 +21,9 @@ class BrandWikisController < ApplicationController
   end
   
   def history # show history of updates
+    # TODO : cache this
     @brand_wiki = @brand.brand_wiki
-    @versions = @brand.brand_wiki.history
+    @versions = @brand.brand_wiki.history.paginate(:page => params[:page], :per_page => 10)
   end
   
   def diff # show differences between versions
@@ -60,5 +63,10 @@ class BrandWikisController < ApplicationController
   private
   def set_brand
     @brand = Brand.find(params[:brand_id]) or redirect_to home
+  end
+  
+  def set_layout
+    @selected_tab = 'Wiki'
+    'brand_profile'
   end
 end

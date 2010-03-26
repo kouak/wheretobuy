@@ -1,13 +1,16 @@
-<% title "Brand history" %>
-<pre>
-<%= @versions.to_yaml %>
-<%= @brand_wiki.version %>
-</pre>
+<% title "Brand history", false %>
+<% content_for :profile_tabs do %>
+  <%= brand_tabs('Wiki') %>
+<% end -%>
+<%= brand_title('Wiki history') %>
+<% pagination_stylesheet %>
+<%= will_paginate @versions, :id => 'main-pagination' %>  
+<hr />
 <% semantic_form_for :compare, :url => diff_brand_brand_wiki_path(@brand), :html => { :method => :get } do |f| %>
   <table>
     <tr>
       <th colspan="2"><%= f.submit "Compare" %></th>
-      <th>From</th>
+      <th>Author</th>
       <th>Summary</th>
       <th>Version</th>
     </tr>

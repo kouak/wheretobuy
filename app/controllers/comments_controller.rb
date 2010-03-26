@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
   
   before_filter :set_commentable_or_redirect
   
+  layout :set_layout
+  
   def index
     set_paginated_comments
   end
@@ -50,6 +52,11 @@ class CommentsController < ApplicationController
   def set_commentable_or_redirect
     @commentable = find_commentable
     redirect_to home if @commentable.nil?
+    
+    case @commentable
+    when Brand
+      @brand = @commentable
+    end
   end
   
   def find_commentable
@@ -59,6 +66,10 @@ class CommentsController < ApplicationController
       end
     end
     nil
+  end
+  
+  def set_layout
+    'application'
   end
   
   def set_paginated_comments

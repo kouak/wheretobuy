@@ -1,21 +1,25 @@
-<% 
-# Ugly hack to force new input
-@brand_wiki.version_comment = nil 
-%>
-<% semantic_form_for @brand_wiki, :url => brand_brand_wiki_path(@brand), :html => { :method => :put } do |f| %>
-  <%= f.error_messages %>
-  <% f.inputs do %>
-    <%= f.input :bio %>
-    <%= f.input :url %>
-    <%= f.input :version_comment %>
+<% title "Brand Wiki", false %>
+<% current_version = @last_version == @brand_wiki.version %>
+<% content_for :profile_tabs do %>
+  <%= brand_tabs('Wiki') %>
+<% end -%>
+<% content_for :profile_main do %>
+  <%= brand_title 'Wiki' %>
+  <% 
+  # Ugly hack to force new input
+  @brand_wiki.version_comment = nil 
+  %>
+  <hr />
+  <% semantic_form_for @brand_wiki, :url => brand_brand_wiki_path(@brand), :html => { :method => :put } do |f| %>
+    <%= f.error_messages %>
+    <% f.inputs do %>
+      <%= f.input :bio %>
+      <%= f.input :version_comment %>
+    <% end %>
+    <%= f.submit %>
   <% end %>
-  <%= f.submit %>
-<% end %>
-<p>
-  <strong>Version:</strong>
-  <%= @brand_wiki.try(:version) %>
-</p>
-<p>
-  <strong>Last editor:</strong>
-  <%= @brand_wiki.versions.try(:last).try(:user) %>
-</p>
+  <p>
+    <strong>Last editor:</strong>
+    <%= @brand_wiki.versions.try(:last).try(:user) %>
+  </p>
+<% end -%>

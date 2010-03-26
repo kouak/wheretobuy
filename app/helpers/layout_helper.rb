@@ -19,4 +19,8 @@ module LayoutHelper
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
   end
+  
+  def pagination_stylesheet
+    stylesheet('pagination')
+  end
 end

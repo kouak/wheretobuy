@@ -1,5 +1,5 @@
 <div>
-  <span>Par <%=h comment.author %> -- <%= link_to "[X]", polymorphic_path([@commentable, comment]), :confirm => 'Are you sure?', :method => :delete %></span><br />
+  <span>Par <%=h comment.author %> -- <%= link_to "[X]", polymorphic_path([commentable, comment]), :confirm => 'Are you sure?', :method => :delete %></span><br />
   <span>Le <%= comment.created_at %></span><br />
   <span><%=h comment.body%></span><br />
 </div>
