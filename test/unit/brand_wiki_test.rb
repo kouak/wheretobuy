@@ -65,6 +65,7 @@ class BrandWikiTest < ActiveSupport::TestCase
     assert_equal 2, f.history.count
   end
   
+<<<<<<< HEAD
   def test_history_format
     set_editors
     f = Factory.create(:brand_wiki, :editor => @editor1)
@@ -75,6 +76,12 @@ class BrandWikiTest < ActiveSupport::TestCase
     
     assert_equal ver[:editor], @editor1
     assert ver[:created_at], t
+=======
+  def test_time_in_history
+    set_editors
+    f = Factory.create(:brand_wiki, :editor => @editor1)
+    increment_brand_wiki_versions!(f, 10)
+>>>>>>> fb8123d7b86b4514e48fa87127983daac1bdf288
     
   end
   

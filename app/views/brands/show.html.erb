@@ -65,7 +65,7 @@
   <div id="profile-fans">
     <h2>Fans</h2>
     <% @brand.fans_for_profile.each do |fan| -%>
-      <span class="fan-wrapper"><%= link_to "#{image_tag 'blank-profile-150x150.png', :height => 50} #{fan.to_s}", fan %></span>
+      <span class="fan-wrapper"><%= link_to "#{user_avatar(fan)} #{h(fan.to_s)}", fan %></span>
     <% end -%>
     <%= link_to "See all (#{@brand.fans.count})", brand_fans_path(@brand), :class => 'bottom-links' %>
   </div>

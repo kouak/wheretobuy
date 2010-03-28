@@ -11,7 +11,7 @@ class BrandsController < ApplicationController
   
   def show
     @brand = Brand.find(params[:id], :include => [:votes, :brand_wiki])
-    @comments = @brand.comments.find(:all, :limit => 2)
+    @comments = @brand.comments.find(:all, :limit => 10)
   end
   
   def comments

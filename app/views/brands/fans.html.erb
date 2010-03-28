@@ -10,10 +10,10 @@
   <% for fan in @fans %>
     <div class="vcard">
       <div class="picture-wrapper">
-        <%= link_to(image_tag('blank-profile-150x150.png', :width => "80", :height => "80"), fan) %>
+        <%= user_avatar(fan, :width => 80, :height => 80) %>
       </div>
       <div class="infos">
-        <h3><%= link_to h(fan.to_s), fan %></h3>
+        <h3><%= user_profile_link(fan) %></h3>
         <span class="user-infos">
           22, Reims, France
         </span>
