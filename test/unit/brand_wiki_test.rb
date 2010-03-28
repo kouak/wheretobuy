@@ -42,14 +42,14 @@ class BrandWikiTest < ActiveSupport::TestCase
     sleep(2)
     t = Time.now
     
-    assert_equal 4, f.history.count # current version + ancestors
+    assert_equal 4, f.history.size # current version + ancestors
     
     ver = f.history.first
     
     assert_equal @editor1, ver[:editor]
     assert_equal 2, (t - ver[:updated_at]).round # there should be 2 seconds between now and the revision
     
-    expected = 0..4.map {|i| "Version #{i}"}
+    expected = (0..3).map {|i| "Version #{i}"}
     
     assert_equal expected.reverse, f.history.map {|v| v[:version_comment]}
     
