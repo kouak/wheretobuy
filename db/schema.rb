@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100321181942) do
+ActiveRecord::Schema.define(:version => 20100328123656) do
 
   create_table "brand_types", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20100321181942) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "editor_id"
+    t.text     "factbox_cache"
   end
 
   create_table "brands", :force => true do |t|

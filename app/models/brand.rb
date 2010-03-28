@@ -9,8 +9,6 @@ class Brand < ActiveRecord::Base
   has_many :comments, :as => :resource
   has_one :brand_wiki, :dependent => :destroy # User editable content
   
-  has_and_belongs_to_many :brand_types
-  
   acts_as_votable
   
   named_scope :featured,

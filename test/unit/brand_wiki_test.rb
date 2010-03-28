@@ -65,6 +65,19 @@ class BrandWikiTest < ActiveSupport::TestCase
     assert_equal 2, f.history.count
   end
   
+  def test_history_format
+    set_editors
+    f = Factory.create(:brand_wiki, :editor => @editor1)
+    increment_brand_wiki_versions!(f, 5)
+    t = Time.now
+    
+    ver = f.history.first
+    
+    assert_equal ver[:editor], @editor1
+    assert ver[:created_at], t
+    
+  end
+  
   def test_differences_between
     set_editors
     f = Factory.create(:brand_wiki, :editor => @editor1, :version_comment => 'v1', :bio => 'This is it !')
