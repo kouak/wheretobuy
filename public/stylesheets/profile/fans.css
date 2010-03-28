@@ -9,7 +9,7 @@
   display: inline-block;
   margin-top: 2em;
 }
-/* line 5, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+/* line 5, ../../../../../../.rvm/gems/ruby-1.9.1-p378/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
 #fan-list {
   display: block;
 }
@@ -21,7 +21,7 @@
   width: 350px;
   margin-bottom: 2em;
 }
-/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+/* line 101, ../../../../../../.rvm/gems/ruby-1.9.1-p378/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
 * html #fan-list div.vcard {
   overflow-x: hidden;
 }
@@ -32,7 +32,7 @@
   margin-right: 10px;
   width: 110px;
 }
-/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+/* line 101, ../../../../../../.rvm/gems/ruby-1.9.1-p378/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
 * html #fan-list div.vcard div.picture-wrapper {
   overflow-x: hidden;
 }
@@ -59,7 +59,7 @@
   margin-right: 0;
   width: 230px;
 }
-/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+/* line 101, ../../../../../../.rvm/gems/ruby-1.9.1-p378/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
 * html #fan-list div.vcard div.infos {
   overflow-x: hidden;
 }

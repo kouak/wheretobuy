@@ -1,5 +1,4 @@
 <% title "Brand Wiki", false %>
-<% current_version = @last_version == @brand_wiki.version %>
 <% content_for :profile_tabs do %>
   <%= brand_tabs('Wiki') %>
 <% end -%>
@@ -18,8 +17,4 @@
     <% end %>
     <%= f.submit %>
   <% end %>
-  <p>
-    <strong>Last editor:</strong>
-    <%= @brand_wiki.versions.try(:last).try(:user) %>
-  </p>
 <% end -%>

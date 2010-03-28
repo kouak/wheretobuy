@@ -6,31 +6,35 @@ class BrandWikisController < ApplicationController
   layout :set_layout, :only => [:show, :edit, :history, :diff]
   
   def show # See extended informations
-    @brand_wiki = @brand.brand_wiki
-    @last_version = @brand_wiki.version
-    @brand_wiki.revert_to(params[:version].to_i) if params[:version]
+    if params[:version]
+      @brand_wiki = @brand.brand_wiki.find_revision(params[:version].to_i)
+    else
+      @brand_wiki = @brand.brand_wiki
+    end
+    
+    @last_version = @brand.brand_wiki.revision_number
+    
     if @brand_wiki.nil?
       flash[:warning] = "This brand does not have information yet. Feel free to contribute !"
       redirect_to @brand.nil? ? home : @brand
     end
   end
   
-  def edit # Edit 
+  def edit # Edit
     @brand_wiki = @brand.brand_wiki || BrandWiki.new
-    @brand_wiki.revert_to(params[:version].to_i) if params[:version]
+    @brand_wiki.find_revision(params[:version].to_i) if params[:version]
   end
   
   def history # show history of updates
-    # TODO : cache this
     @brand_wiki = @brand.brand_wiki
     @versions = @brand.brand_wiki.history.paginate(:page => params[:page], :per_page => 10)
   end
   
   def diff # show differences between versions
-    v1 = params[:v1].to_i == 0 ? 1 : params[:v1].to_i
+    v1 = params[:v1].to_i
     v2 = params[:v2].to_i == 0 ? :last : params[:v2].to_i
-    @changes = @brand.brand_wiki.differences_between(v1, v2)
     @brand_wiki = @brand.brand_wiki
+    @changes = @brand_wiki.differences_between(v1, v2)
   end
   
   def update
@@ -42,8 +46,6 @@ class BrandWikisController < ApplicationController
       @brand_wiki = @brand.brand_wiki
       @brand_wiki.attributes = params[:brand_wiki]
     end
-    
-    @brand_wiki.updated_by = current_user # vestal_versions editor (actually we don't care about it since we have our own editor_id)
     
     if @brand_wiki.save # And save
       flash[:notice] = "Successfully edited brand wiki."

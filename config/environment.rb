@@ -14,7 +14,7 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate'
   config.gem 'rails-geocoder', :lib => 'geocoder'
   config.gem 'factory_girl'
-  config.gem 'vestal_versions'
+  config.gem 'acts_as_revisable'
   config.gem 'htmldiff'
   config.gem 'compass'
   config.gem 'compass-colors'

@@ -1,5 +1,5 @@
 <% title "Brand Wiki", false %>
-<% current_version = @last_version == @brand_wiki.version %>
+<% current_version = @last_version == @brand_wiki.revision_number %>
 <% content_for :profile_main do %>
 
 <%= brand_title('Wiki') %>
@@ -29,7 +29,7 @@
     <% if current_version %>
       You're viewing the <strong>current version</strong> of this article which is version <strong><%= @last_version %></strong>.
     <% else %>
-      You're viewing <strong>version <%= @brand_wiki.version %></strong> of this article. <%= link_to "View current version.", brand_brand_wiki_path %>
+      You're viewing <strong>version <%= @brand_wiki.revision_number %></strong> of this article.
     <% end %>
   </p>
   <p>
@@ -38,11 +38,18 @@
   </p>
   <p>
     <strong>Author:</strong>
-    <%= h @brand_wiki.editor %>
+    <%= user_profile_link(@brand_wiki.editor) %>
   </p>
   <p>
     <strong>Revision comments:</strong>
     <%= h @brand_wiki.version_comment %>
+  </p>
+  <p>
+    <% if current_version %>
+      <%= link_to "View history", history_brand_brand_wiki_path %>
+    <% else %>
+      <%= link_to "View current version", brand_brand_wiki_path %>
+    <% end %>
   </p>
 </div>
 <% end -%>

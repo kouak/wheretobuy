@@ -10,7 +10,7 @@ require 'open-uri'
 
 User.delete_all
 User.find_by_sql('delete from sqlite_sequence where name = "users"')
-User.create!(:email => 'benjamin.beret@gmail.com', :password => 'secret', :password_confirmation => 'secret', :sex => User::MALE).activate!
+User.create!(:username => 'kouak', :email => 'benjamin.beret@gmail.com', :password => 'secret', :password_confirmation => 'secret', :sex => User::MALE).activate!
 
 Country.delete_all
 Country.find_by_sql('delete from sqlite_sequence where name = "countries"')
@@ -32,7 +32,6 @@ City.find_by_sql('delete from sqlite_sequence where name = "cities"')
   City.create!(:name => c[:name], :country_id => country.try(:id))
 end
 
-
 # Brands
 Brand.delete_all
 Brand.find_by_sql('delete from sqlite_sequence where name = "brands"')
@@ -43,23 +42,19 @@ Brand.find_by_sql('delete from sqlite_sequence where name = "brands"')
   Brand.create!(b)
 end
 
+# Add some stuff to the wiki
+if Brand.first.brand_wiki.nil?
+  editor = User.first
+  brand = Brand.first
+  brand.create_brand_wiki(:editor_id => User.first.id, :version_comment => 'initial import', :bio => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+  .save!
+  1.upto(3){|i| brand.brand_wiki.update_attributes!(:bio => brand.brand_wiki.bio + "\n\n Version #{i}", :version_comment => "v#{i}")}
+end
+
 # Votes
 Vote.delete_all
 [
   {:vote => 1},
 ].each do |v|
   Vote.create!(:voter => User.first, :votable => Brand.first, :score => v[:vote])
-end
-
-# Brand Types
-BrandType.delete_all
-BrandType.find_by_sql('delete from sqlite_sequence where name = "brand_types"')
-[
-  'Men',
-  'Women',
-  'Kids',
-  'Shoes',
-  'Accessories'
-].each do |bt|
-  BrandType.create!(:name => bt)
 end
