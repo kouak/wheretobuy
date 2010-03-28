@@ -3,52 +3,23 @@ Given /"([^\"]*)" is an anonymous user/ do |email|
 end
 
 Given /^"([^\"]*)" an unconfirmed user with password "([^\"]*)"$/ do |email, password|
-  Given "\"#{email}\" is an anonymous user"
-  When "I go to the registration page"
-  Then "I should see the registration form"
-  And "I fill in \"email\" with \"#{email}\""
-  And "I fill in \"password\" with \"#{password}\""
-  And "I fill in \"password confirmation\" with \"#{password}\""
-  And "I press \"Sign up\""
-  Then "I should have a successful registration"
+  @user = User.new(:username => 'abc', :email => email, :password => password, :password_confirmation => password)
+  @user.save_without_session_maintenance
 end
 
 Given /^"([^\"]*)" a notified but unconfirmed user with password "([^\"]*)"$/ do |email, password|
   Given "\"#{email}\" an unconfirmed user with password \"#{password}\""
-  Then "\"#{email}\" should receive an account confirmation email"
+  @user.deliver_activation_instructions!
 end
 
 Given /^"([^\"]*)" a confirmed user with password "([^\"]*)"$/ do |email, password|
-  Given "\"#{email}\" a notified but unconfirmed user with password \"#{password}\""
-  When "I follow \"Confirm my account\" in the email"
-  Then "I should have a successful activation"
-  And "a clear email queue"
-  When "I follow \"Sign out\""
-  Then "I should be logged out"
-end
-
-Given /^"([^\"]*)" a confirmed user with email "([^\"]*)"$/ do |name, email|
-  Given "\"#{name}\" is an anonymous user"
-  When "I go to the registration form"
-  And "I fill in \"login\" with \"#{name}\""
-  And "I fill in \"email\" with \"#{email}\""
-  And "I press \"Register\""
-  Then "I should receive an email"
-  When "I open the email"
-  And "I follow \"activate your account\" in the email"
-  And "I fill in \"set your password\" with \"secret\""
-  And "I fill in \"password confirmation\" with \"secret\""
-  And "I press \"Activate\""
-  Then "I should have a successful activation"
-  And "a clear email queue"
-  When "I follow \"Logout\""
-  Then "I should be logged out"
+  Given "\"#{email}\" an unconfirmed user with password \"#{password}\""
+  @user.activate!
 end
 
 Then /^I should see the registration form$/ do
   response.should contain('Email')
   response.should contain('Password')
-  response.should contain('Password confirmation')
 end
 
 Then /^I should see the activation form$/ do
@@ -73,7 +44,7 @@ Then /^I should have an unsuccessful activation$/ do
 end
 
 Then /^I should see the home page$/ do
-  Then 'I should see "Home"'
+  Then 'I should be on the home page'
 end
 
 Then /^I should see my account page$/ do

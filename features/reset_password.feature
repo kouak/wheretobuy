@@ -13,7 +13,7 @@ Feature: Password Reset
     When I go to the reset password page
     And I fill in "email" with "abc@abc.com"
     And I press "Reset my password"
-    Then I should receive an email
+    Then "abc@abc.com" should receive an email
     When I open the email
     And I should see "Change my password" in the email body
 
@@ -43,7 +43,7 @@ Feature: Password Reset
     When I fill in "password" with "new secret"
     And I fill in "Password confirmation" with "new secret"
     And I press "Change my password"
-    Then I should see the home page
+    Then I should be on the account page
     And I should see "Password successfully updated"
     When I follow "Sign out"
     Then I should be logged out

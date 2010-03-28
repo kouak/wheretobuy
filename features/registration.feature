@@ -14,6 +14,7 @@ Feature: Registration
   Scenario: Allow an anonymous user to create account
     Given "abc@abc.com" is an anonymous user
     When I go to the registration form
+    And I fill in "username" with "abc"
     And I fill in "email" with "abc@abc.com"
     And I fill in "password" with "secret"
     And I fill in "password confirmation" with "secret"
@@ -23,7 +24,8 @@ Feature: Registration
   Scenario Outline: Not allow an anonymous user to create account with incomplete input
     Given "abc@abc.com" is an anonymous user
     When I go to the registration form
-    And I fill in "email" with "<email"
+    And I fill in "username" with "<username>"
+    And I fill in "email" with "<email>"
     And I fill in "password" with "<password>"
     And I fill in "password confirmation" with "<password confirmation>"
     And I press "Sign up"
@@ -31,24 +33,26 @@ Feature: Registration
     And I should see "<error_message>"
 
     Examples: incomplete registration inputs
-      | email   | password | password confirmation  | error_message                        |
-      |         |          |                        | Email should look like an email      |
-      | blabla  |          |                        | Email should look like an email      |
-      | a@a.com |          |                        | Password is too short                |
-      | a@a.com |          | secret                 | Password is too short                |
-      | a@a.com | secret   | new secret             | Password doesn't match confirmation  |
-      | a@a.com | secret   | new secret             | Password doesn't match confirmation  |
+      | username | email   | password | password confirmation  | error_message                        |
+      | abc      |         |          |                        | Email should look like an email      |
+      |          |         |          |                        | Username is too short                |
+      | abc      | blabla  |          |                        | Email should look like an email      |
+      | abc      | a@a.com |          |                        | Password is too short                |
+      | abc      | a@a.com |          | secret                 | Password is too short                |
+      | abc      | a@a.com | secret   | new secret             | Password doesn't match confirmation  |
+      | abc      | a@a.com | secret   | new secret             | Password doesn't match confirmation  |
 
     
   Scenario: Send an activation instruction mail at a successful account creation
-    Given "abc@abc.com" an unconfirmed user with password "secret"
+    Given "abc@abc.com" a notified but unconfirmed user with password "secret"
     And "abc@abc.com" should receive an email
     When I open the email
     Then I should see "Confirm my account" in the email body
 
   Scenario: Want to confirm account using mail activation token
     Given "abc@abc.com" a notified but unconfirmed user with password "secret"
-    When I follow "Confirm my account" in the email
+    When "abc@abc.com" open the email
+    And I follow "Confirm my account" in the email
     Then I should see "Your account was successfully confirmed"
     And I should be logged in
 
@@ -59,7 +63,8 @@ Feature: Registration
     
   Scenario: Activate account using mail activation token
     Given "abc@abc.com" a notified but unconfirmed user with password "secret"
-    When I follow "Confirm my account" in the email
+    When "abc@abc.com" open the email
+    And I follow "Confirm my account" in the email
     Then I should have a successful activation
     And I should be logged in
     When I follow "Sign out"
