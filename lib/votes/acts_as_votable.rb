@@ -90,7 +90,7 @@ module ActiveRecord #:nodoc:
 
             @vote = votable.votes.find(:first, :conditions => {:voter_id => self.id})
             if @vote.nil?
-              @vote = Vote.create(:score => score, :voter => self, :votable => votable)
+              @vote = Vote.add_vote(:score => score, :voter => self, :votable => votable)
             else
               @vote.score = score
               @vote.save

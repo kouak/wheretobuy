@@ -23,7 +23,7 @@
         </span>
         <h3><%= link_to h(brand.name), brand %></h3>
         <span class="score">
-          128,345 pageviews, 1,231 fans
+          <%= number_with_delimiter(brand.pageviews.to_i) %> pageviews, 1,231 fans
         </span>
       </div>
     <% end %>

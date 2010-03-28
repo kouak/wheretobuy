@@ -21,20 +21,20 @@ class VoteTest < ActiveSupport::TestCase
   def test_add_vote
     b = Factory.create(:brand)
     u = Factory.create(:user)
-    v = Vote.add_vote(u, b, 1)
+    v = Vote.add_vote(:voter => u, :votable => b, :score => 1)
     assert_equal 1, v.score
     
-    v = Vote.add_vote(u, b, -1)
+    v = Vote.add_vote(:voter => u, :votable => b, :score => -1)
     assert v.object_id.to_i
   end
   
   def test_del_vote
     b = Factory.create(:brand)
     u = Factory.create(:user)
-    v = Vote.add_vote(u, b, 1)
+    v = Vote.add_vote(:voter => u, :votable => b, :score => 1)
     assert_equal 1, Vote.for_voter(u).for_votable(b).count
     
-    v = Vote.add_vote(u, b, 0)
+    v = Vote.add_vote(:voter => u, :votable => b, :score => 0)
     assert_equal 0, Vote.for_voter(u).for_votable(b).count
   end
   
@@ -120,5 +120,22 @@ class VoteTest < ActiveSupport::TestCase
     u.vote_against(b)
     b.reload
     assert_equal [], b.fans
+  end
+  
+  def test_fan_count
+    b = Factory.create(:brand)
+    u = Factory.create(:user)
+    
+    assert_equal 0, b.fan_count
+    
+    u.vote_for(b)
+    b.reload
+    
+    assert_equal 1, b.fan_count
+    
+    u.vote_against(b)
+    b.reload
+    
+    assert_equal 0, b.fan_count
   end
 end

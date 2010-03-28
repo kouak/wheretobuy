@@ -71,7 +71,7 @@ module ActiveRecord #:nodoc:
 
           private
           def vote_on_with_score(votable, score)
-            Vote.add_vote(self, votable, score)
+            Vote.add_vote(:voter => self, :votable => votable, :score => score)
           end
         end
       end

@@ -39,15 +39,12 @@ class BrandWikiTest < ActiveSupport::TestCase
     set_editors
     f = Factory.create(:brand_wiki, :editor => @editor1, :version_comment => 'Version 0')
     increment_brand_wiki_versions!(f, +3)
-    sleep(2)
-    t = Time.now
     
     assert_equal 4, f.history.size # current version + ancestors
     
     ver = f.history.first
     
     assert_equal @editor1, ver[:editor]
-    assert_equal 2, (t - ver[:updated_at]).round # there should be 2 seconds between now and the revision
     
     expected = (0..3).map {|i| "Version #{i}"}
     
