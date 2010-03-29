@@ -125,17 +125,59 @@ class VoteTest < ActiveSupport::TestCase
   def test_fan_count
     b = Factory.create(:brand)
     u = Factory.create(:user)
+    u2 = Factory.create(:other_user)
     
     assert_equal 0, b.fan_count
     
     u.vote_for(b)
     b.reload
-    
     assert_equal 1, b.fan_count
     
     u.vote_against(b)
     b.reload
-    
     assert_equal 0, b.fan_count
+    
+    u.vote_for(b)
+    b.reload
+    u2.vote_for(b)
+    b.reload
+    assert_equal 2, b.fan_count
+    
+    u.vote_for(b)
+    b.reload
+    assert_equal 2, b.fan_count
+    
+    # tricky case now
+    u.vote_against(b)
+    b.reload
+    assert_equal 1, b.fan_count
+    
+    u2.vote_nil(b)
+    b.reload
+    assert_equal 0, b.fan_count
+    
+  end
+  
+  def test_acts_as_votable_recalculate_fan_count!
+    
+    brand = Factory.create(:brand)
+    
+    brand.update_attributes!(:fan_count => -34)
+    
+    assert Brand.recalculate_fan_counts!
+    
+    brand.reload
+    
+    assert_equal 0, brand.fan_count
+    
+    user = Factory.create(:user)
+    other_user = Factory.create(:other_user)
+    
+    user.vote_for(brand)
+    other_user.vote_for(brand)
+    
+    brand.recalculate_fan_count!
+    assert_equal 2, brand.fan_count
+    
   end
 end

@@ -1,7 +1,7 @@
 require 'lib/votes/acts_as_votable'
 class Brand < ActiveRecord::Base
   attr_accessible :comments_count, :brand_type_ids
-  attr_accessible :name
+  attr_accessible :name, :fan_count, :vote_count
   
   validates_length_of :name, :in => 2..70
   validates_uniqueness_of :name

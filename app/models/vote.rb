@@ -1,7 +1,9 @@
 class Vote < ActiveRecord::Base
   attr_accessible :voter_sex, :score, :voter, :votable
   
-  after_save :increment_or_decrement_fan_count
+  after_create :after_create_fan_count
+  after_update :after_update_fan_count
+  after_destroy :after_destroy_fan_count
   
   belongs_to :votable, :polymorphic => true, :counter_cache => true
   belongs_to :voter, :class_name => "User"
@@ -39,16 +41,50 @@ class Vote < ActiveRecord::Base
     self.find_by_voter_and_votable(voter, votable).try(:destroy)
   end
   
-  private
+  # fan_count callback
+  def after_destroy_fan_count
+    increment_or_decrement_fan_count!(self.score, 0)
+  end
   
-  def increment_or_decrement_fan_count
-    return unless votable.has_attribute?(:fan_count)
-    if self.score > 0
-      votable.increment!(:fan_count)
-    else
-      votable.decrement!(:fan_count) if votable.fan_count > 0 # this prevents getting negative fan count
+  def after_create_fan_count
+    increment_or_decrement_fan_count!(0, self.score)
+  end
+  
+  def after_update_fan_count
+    changed_attributes = self.send(:changed_attributes)
+    increment_or_decrement_fan_count!(changed_attributes['score'], self.score) if changed_attributes['score']
+  end
+  
+  # dirty looking method but quite simple in fact :
+  #
+  #                | score > 0 | score == 0 | score < 0 |
+  # old_score > 0  |    0      |     -1     |     -1    |
+  # old_score == 0 |   +1      |     0      |     0     |
+  # old_score < 0  |   +1      |     0      |     0     |
+  
+  def increment_or_decrement_fan_count!(old_score, score)
+    old_score, score = old_score.to_i, score.to_i
+    return if (old_score * score) > 0 # both not null and same sign, we don't care
+    
+    # here, we can count on the fact that either score or old_score is not null
+    if old_score > 0
+      decrement_fan_count!
+    elsif score > 0
+      increment_fan_count!
     end
   end
+  
+  def increment_fan_count!
+    return unless votable.has_attribute?(:fan_count)
+    votable.increment!(:fan_count)
+  end
+  
+  def decrement_fan_count!
+    return unless votable.has_attribute?(:fan_count)
+    votable.decrement!(:fan_count) if votable.fan_count > 0 # this prevents getting negative fan count
+  end
+  
+  private
   
   def self.find_by_voter_and_votable(voter, votable)
     self.check_voter_and_votable(voter, votable)

@@ -25,6 +25,13 @@ module ActiveRecord #:nodoc:
           def is_votable?
             true
           end
+          
+          def recalculate_fan_counts!
+            self.all.each do |b|
+              return false unless b.recalculate_fan_count!
+            end
+            true
+          end
         end
       
         module InstanceMethods
@@ -81,6 +88,13 @@ module ActiveRecord #:nodoc:
           def fans_for_profile(limit = 6)
             limit = limit.to_i || 6
             self.fans.find(:all, :offset => ( self.fans.count * rand ).to_i, :limit => limit)
+          end
+          
+          def recalculate_fan_count!
+            raise StatementInvalid unless has_attribute?(:fan_count)
+            
+            update_attributes!(:fan_count => fans.count)
+            reload
           end
 
           private
