@@ -21,9 +21,13 @@ class UsersController < ApplicationController
       render :action => :new
     end
   end
+  
+  def account
+    @user = @current_user
+  end
 
   def show
-    @user = @current_user
+    @user = User.find(params[:id])
   end
 
   def edit

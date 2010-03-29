@@ -27,7 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/logout', :controller => 'user_sessions', :action => :destroy
   map.resource :user_session
   
-  map.resource :account, :controller => :users
+  map.resource :account, :controller => :users, :except => [:show], :member => [:account]
   
   map.resources :users, :has_many => :comments
   

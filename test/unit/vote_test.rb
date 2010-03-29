@@ -73,7 +73,7 @@ class VoteTest < ActiveSupport::TestCase
     v = u.vote_for(b)
     assert_equal 1, v.score
     u.vote_nil(b)
-    assert_equal u.sent_votes.for_votable(b).count, 0
+    assert_equal Vote.find(:all, :conditions => {:votable_id => b.id, :votable_type => 'brand', :voter_id => u.id}).count, 0
   end
   
   # test acts_as_votable

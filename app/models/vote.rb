@@ -46,7 +46,7 @@ class Vote < ActiveRecord::Base
     if self.score > 0
       votable.increment!(:fan_count)
     else
-      votable.decrement!(:fan_count)
+      votable.decrement!(:fan_count) if votable.fan_count > 0 # this prevents getting negative fan count
     end
   end
   
