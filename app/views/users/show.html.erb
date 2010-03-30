@@ -32,9 +32,9 @@
 <% end -%>
 
 <hr />
-<h2>Comments (<%= @user.comments_count %>)</h2>
+<h2>Comments (<%= @user.comments_count.to_i %>)</h2>
 <%= render :partial => "comments/comment", :locals => {:commentable => @user}, :collection => @comments %>
-<% if @user.comments_count > @comments.count %>
+<% if @user.comments_count.to_i > @comments.count %>
   <%= link_to 'See more', user_comments_path(@user) %>
 <% end -%>
 <% end -%>

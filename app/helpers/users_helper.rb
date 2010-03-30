@@ -64,4 +64,8 @@ module UsersHelper
     return h("#{user.city_name} (#{user.country_name})") unless user.city.nil?
     'unknown'
   end
+  
+  def user_short_infos(user = @user)
+    h(['22', user.city_name, nil, user.country_name].compact.join(', '))
+  end
 end

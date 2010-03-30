@@ -8,17 +8,18 @@
 <hr />
 <div id="favorites-list">
   <% for favorite in @favorite_brands %>
+  <% brand = favorite.votable %>
     <div class="brand-vcard">
       <div class="picture-wrapper">
-        <%= brand_avatar(favorite, :width => 80, :height => 80) %>
+        <%= brand_avatar(brand, :width => 80, :height => 80) %>
       </div>
       <div class="infos">
-        <h3><%= brand_profile_link(favorite) %></h3>
+        <h3><%= brand_profile_link(brand) %></h3>
         <span class="brand-infos">
           22, Reims, France
         </span>
         <span class="custom-infos">
-          4 hours ago.
+          <%= time_ago_in_words(favorite.updated_at) %> ago
         </span>
       </div>
     </div>

@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   
   def favorite_brands
     @user = User.find(params[:user_id])
-    @favorite_brands = @user.favorites(Brand).paginate(:page => params[:page], :per_page => 2)
+    @favorite_brands = @user.sent_votes.descending.positive_score.for_votable_class(Brand).paginate(:page => params[:page], :per_page => 2)
     @selected_tab = 'Favorite brands'
   end
   

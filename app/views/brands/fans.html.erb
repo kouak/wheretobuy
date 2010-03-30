@@ -4,10 +4,11 @@
 <% stylesheet('profile/fans', 'vcards/users', 'pagination') 
 %>
 <%= brand_title 'Fans' %>
-<%= will_paginate @fans, :id => 'main-pagination' %>
+<%= will_paginate @votes, :id => 'main-pagination' %>
 <hr />
 <div id="fan-list">
-  <% for fan in @fans %>
+  <% for vote in @votes %>
+  <% fan = vote.voter %>
     <div class="vcard">
       <div class="picture-wrapper">
         <%= user_avatar(fan, :width => 80, :height => 80) %>
@@ -15,10 +16,10 @@
       <div class="infos">
         <h3><%= user_profile_link(fan) %></h3>
         <span class="user-infos">
-          22, Reims, France
+          <%= user_short_infos(fan) %>
         </span>
         <span class="custom-infos">
-          4 hours ago.
+          <%= time_ago_in_words(vote.updated_at) %> ago
         </span>
       </div>
     </div>

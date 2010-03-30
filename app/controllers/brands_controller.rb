@@ -22,8 +22,7 @@ class BrandsController < ApplicationController
   
   def fans
     @brand = Brand.find(params[:brand_id])
-    #@fans = @brand.fans.paginate(:page => params[:page], :per_page => 2)
-    @fans = (@brand.fans * 11).paginate(:page => params[:page], :per_page => 6)
+    @votes = (@brand.votes.positive_score.descending.scoped(:joins => :voter) * 11).paginate(:page => params[:page], :per_page => 4)
   end
   
   def new
