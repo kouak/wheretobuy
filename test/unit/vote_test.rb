@@ -76,6 +76,19 @@ class VoteTest < ActiveSupport::TestCase
     assert_equal Vote.find(:all, :conditions => {:votable_id => b.id, :votable_type => 'brand', :voter_id => u.id}).count, 0
   end
   
+  def test_favorites
+    b1, b2, b3 = Factory.create(:brand), Factory.create(:brand), Factory.create(:brand)
+    u = Factory.create(:user)
+    
+    u.vote_for(b1)
+    u.vote_for(b3)
+    
+    b1.reload
+    b3.reload
+    
+    assert_equal [b1, b3], u.favorites(b1.class)
+  end
+  
   # test acts_as_votable
   
   def test_brand_as_votable
@@ -158,7 +171,7 @@ class VoteTest < ActiveSupport::TestCase
     
   end
   
-  def test_acts_as_votable_recalculate_fan_count!
+  def test_recalculate_fan_count!
     
     brand = Factory.create(:brand)
     

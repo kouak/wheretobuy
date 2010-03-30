@@ -12,7 +12,7 @@ module NavigationHelpers
       '/'
     
     when /the login page/
-      '/users/sign_in'
+      login_path
     
     when /the registration page/
       new_user_path
@@ -25,7 +25,7 @@ module NavigationHelpers
     
     
     when /the logout page/
-      '/users/sign_out'
+      logout_path
       
     when /the reset password page/
       new_password_resets_path

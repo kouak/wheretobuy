@@ -56,6 +56,8 @@ class CommentsController < ApplicationController
     case @commentable
     when Brand
       @brand = @commentable
+    when User
+      @user = @commentable
     end
   end
   

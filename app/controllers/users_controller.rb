@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create, :reset_password]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :require_user, :only => [:account, :edit, :update]
 
+  layout :smart_layout
+  
   def new
     @user = User.new
   end
@@ -23,15 +25,32 @@ class UsersController < ApplicationController
   end
   
   def account
-    @user = @current_user
+    @user = current_user
   end
 
   def show
     @user = User.find(params[:id])
+    @comments = @user.comments.all(:limit => 5)
+  end
+  
+  def friends
+    @user = User.find(params[:id], :include => :friends)
+  end
+  
+  def favorite_brands
+    @user = User.find(params[:user_id])
+    @favorite_brands = @user.favorites(Brand).paginate(:page => params[:page], :per_page => 2)
+    @selected_tab = 'Favorite brands'
+  end
+  
+  def comments
+    @user = User.find(params[:user_id])
+    @comments = @user.comments.paginate(:page => params[:page], :per_page => 2)
+    @selected_tab = 'Comments'
   end
 
   def edit
-    @user = @current_user
+    @user = current_user
   end
   
   def reset_password
@@ -46,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = @current_user
+    @user = current_user
     @user.validates_password_change = true # only allow password change provided a current valid password
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
@@ -55,4 +74,10 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+  
+  def smart_layout
+    profile_actions = [:show, :friends, :favorite_brands, :comments]
+    profile_actions.include?(action_name.to_sym) ? 'user_profile' : 'application'
+  end
+  
 end

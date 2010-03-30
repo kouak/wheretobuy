@@ -1,0 +1,27 @@
+<% content_for :profile_tabs do -%>
+<%= user_tabs('Favorite brands') %>
+<% end -%>
+<% content_for :profile_main do -%>
+<% stylesheet('pagination', 'vcards/brands') %>
+<%= user_title 'Favorite brands' %>
+<%= will_paginate @favorite_brands, :id => 'main-pagination' %>
+<hr />
+<div id="favorites-list">
+  <% for favorite in @favorite_brands %>
+    <div class="brand-vcard">
+      <div class="picture-wrapper">
+        <%= brand_avatar(favorite, :width => 80, :height => 80) %>
+      </div>
+      <div class="infos">
+        <h3><%= brand_profile_link(favorite) %></h3>
+        <span class="brand-infos">
+          22, Reims, France
+        </span>
+        <span class="custom-infos">
+          4 hours ago.
+        </span>
+      </div>
+    </div>
+  <% end -%>
+</div>
+<% end -%>

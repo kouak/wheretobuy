@@ -1,17 +1,15 @@
-#main-pagination { float: right; }
+/* line 4, ../../../app/stylesheets/profile/fans.sass */
+#main-pagination {
+  float: right;
+}
 
-#fan-list { overflow: hidden; display: inline-block; margin-top: 2em; }
-#fan-list { display: block; }
-#fan-list div.vcard { display: inline; float: left; margin-right: 10px; width: 350px; margin-bottom: 2em; }
-* html #fan-list div.vcard { overflow-x: hidden; }
-#fan-list div.vcard div.picture-wrapper { display: inline; float: left; margin-right: 10px; width: 110px; }
-* html #fan-list div.vcard div.picture-wrapper { overflow-x: hidden; }
-#fan-list div.vcard div.picture-wrapper a { display: block; padding: 3px; margin-left: 15px; border: 1px solid #666; }
-#fan-list div.vcard div.picture-wrapper a:hover { border: 1px solid #b1ad69; }
-#fan-list div.vcard div.picture-wrapper a img { display: block; margin: 0 auto; }
-#fan-list div.vcard div.infos { display: inline; float: left; margin-right: 0; width: 230px; }
-* html #fan-list div.vcard div.infos { overflow-x: hidden; }
-#fan-list div.vcard div.infos h3 { border-bottom: 1px dotted #666; margin: 0; }
-#fan-list div.vcard div.infos h3 a { margin: 0; padding: 0; }
-#fan-list div.vcard div.infos span.user-infos { margin-bottom: 1em; float: left; clear: both; }
-#fan-list div.vcard div.infos span.custom-infos { float: left; clear: both; }
+/* line 7, ../../../app/stylesheets/profile/fans.sass */
+#fan-list {
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 2em;
+}
+/* line 5, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+#fan-list {
+  display: block;
+}

@@ -1,3 +1,3 @@
 Factory.define :brand do |u|
-  u.name 'brand-name'
+  u.sequence(:name) { |n| "brand#{n}-name" }
 end

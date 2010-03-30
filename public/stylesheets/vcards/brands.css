@@ -1,0 +1,71 @@
+/* line 4, ../../../app/stylesheets/vcards/brands.sass */
+div.brand-vcard {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 350px;
+  margin-bottom: 2em;
+}
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html div.brand-vcard {
+  overflow-x: hidden;
+}
+/* line 7, ../../../app/stylesheets/vcards/brands.sass */
+div.brand-vcard div.picture-wrapper {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 110px;
+}
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html div.brand-vcard div.picture-wrapper {
+  overflow-x: hidden;
+}
+/* line 9, ../../../app/stylesheets/vcards/brands.sass */
+div.brand-vcard div.picture-wrapper a {
+  display: block;
+  padding: 3px;
+  margin-left: 15px;
+  border: 1px solid #666;
+}
+/* line 14, ../../../app/stylesheets/vcards/brands.sass */
+div.brand-vcard div.picture-wrapper a:hover {
+  border: 1px solid #b1ad69;
+}
+/* line 16, ../../../app/stylesheets/vcards/brands.sass */
+div.brand-vcard div.picture-wrapper a img {
+  display: block;
+  margin: 0 auto;
+}
+/* line 19, ../../../app/stylesheets/vcards/brands.sass */
+div.brand-vcard div.infos {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 230px;
+}
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html div.brand-vcard div.infos {
+  overflow-x: hidden;
+}
+/* line 21, ../../../app/stylesheets/vcards/brands.sass */
+div.brand-vcard div.infos h3 {
+  border-bottom: 1px dotted #666;
+  margin: 0;
+}
+/* line 24, ../../../app/stylesheets/vcards/brands.sass */
+div.brand-vcard div.infos h3 a {
+  margin: 0;
+  padding: 0;
+}
+/* line 27, ../../../app/stylesheets/vcards/brands.sass */
+div.brand-vcard div.infos span.brand-infos {
+  margin-bottom: 1em;
+  float: left;
+  clear: both;
+}
+/* line 31, ../../../app/stylesheets/vcards/brands.sass */
+div.brand-vcard div.infos span.custom-infos {
+  float: left;
+  clear: both;
+}

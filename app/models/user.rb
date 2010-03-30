@@ -68,12 +68,20 @@ class User < ActiveRecord::Base
     username
   end
   
+  def to_param
+    id.to_s+'-'+ActiveSupport::Inflector.parameterize(to_s)
+  end
+  
   def validate_password= (a)
     self.class.ignore_blank_passwords = a
   end
   
   def city_name
     self.city.try(:to_s)
+  end
+  
+  def country_name
+    self.city.try(:country).try(:to_s)
   end
   
   def set_city_id

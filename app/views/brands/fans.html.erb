@@ -1,7 +1,7 @@
 <% content_for :profile_tabs do -%>
 <%= brand_tabs('Fans') %>
 <% end -%>
-<% stylesheet('profile/fans', 'pagination') 
+<% stylesheet('profile/fans', 'vcards/users', 'pagination') 
 %>
 <%= brand_title 'Fans' %>
 <%= will_paginate @fans, :id => 'main-pagination' %>

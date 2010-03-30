@@ -1,0 +1,70 @@
+@import blueprint
+@import theme
+
+#profile-main
+  #activity
+    font-family= "Lucida Grande"
+    clear= "both"
+  #comments-count
+    font-family= "Lucida Grande"
+  #profile-picture
+    border= 1px "solid" "#999"
+    float= "right"
+    margin= 10px
+    margin-bottom= 5px
+    padding= 3px
+    a
+      float= "right"
+      font-size= 0.9em
+      font-family= "Lucida Grande"
+      font-weight= "bold"
+    img
+      border= 1px "solid" "#ccc"
+      margin= 0
+      padding= 0
+  #profile-description
+    margin-top= 30px
+    clear= "left"
+    text-align= "justify"
+    #profile-description-links
+      display= "block"
+      margin-top= 1em
+      margin-bottom= 1em
+        
+
+#profile-sidebar
+  #profile-fans
+    span.fan-wrapper
+      float= "left"
+      width= 33%
+      margin= 0
+      margin-top= 10px
+      a
+        margin= 0
+        padding= 0
+        display= "block"
+        text-align= "center"
+      img
+        margin= 0 "auto"
+        padding= 2px
+        display= "block"
+        border= 1px "solid" !border_color
+    a.bottom-links
+      margin-top= 10px
+      float= "right"
+      clear= "both"
+  #profile-activity
+    ul
+      margin-bottom= 15px
+      li
+        .time-ago
+          color= "#666"
+        display= "block"
+        border-bottom= 1px "dotted" !border_color
+        min-height= 20px
+        padding-left= 20px
+        background-image= "url(/images/profile-news-feed/comment.png)"
+        background-repeat= "no-repeat"
+        background-position= "center left"
+        &.last
+          border-background= 0

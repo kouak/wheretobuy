@@ -12,7 +12,8 @@ module NavigationHelper
   def navigation_items
     [
       {:text => 'Brands', :link => brands_path},
-      {:text => 'Shops', :link => '#'}
+      {:text => 'Shops', :link => '#'},
+      {:text => 'Users', :link => users_path}
     ]
   end
 end

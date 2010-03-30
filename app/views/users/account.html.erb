@@ -1,0 +1,20 @@
+<% title "User" %>
+
+<p>
+  <strong>Email:</strong>
+  <%=h @user.email %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%=h @user.username %>
+</p>
+
+<p>
+  <strong>Location</strong>
+  <%=h @user.try(:city) %> (<%=h @user.try(:country) %>)
+</p>
+
+<p>
+  <%= link_to "Edit", edit_account_path %> | <%= link_to pluralize(@user.comments_count, 'Comment'), polymorphic_url([@user, :comments])%>
+</p>

@@ -1,20 +1,44 @@
-<% title "User" %>
+<%= stylesheet('users/show') %>
+<% content_for :profile_tabs do -%>
+<%= user_tabs('User') %>
+<% end -%>
+<% content_for :profile_main do -%>
+<% title "User - " + h(@user), false %>
+<div id="profile-picture"><%= image_tag 'blank-profile-150x150.png', :height => 80 %></div>
+
+<h1><%=h @user %></h1>
+<span id="activity">Activity : 123,346</span><br />
+<span id="comments-count"><%= link_to "#{number_with_delimiter(@user.comments_count.to_i)} comments", '#' %></span><br />
 
 <p>
-  <strong>Email:</strong>
-  <%=h @user.email %>
+  <strong>Sex:</strong>
+  <%= user_sex_to_s(@user)%>
 </p>
 
 <p>
-  <strong>Username:</strong>
-  <%=h @user.username %>
+  <strong>Last seen:</strong>
+  <%= time_ago_in_words(@user.last_request_at) %>
 </p>
 
 <p>
-  <strong>Location</strong>
-  <%=h @user.try(:city) %> (<%=h @user.try(:country) %>)
+  <strong>Location:</strong>
+  <%= user_location_to_s(@user) %>
 </p>
 
+<% if can_edit?(@user) %>
 <p>
-  <%= link_to "Edit", edit_account_path %> | <%= link_to pluralize(@user.comments_count, 'Comment'), polymorphic_url([@user, :comments])%>
+  <%= link_to "Edit", edit_account_path %>
 </p>
+<% end -%>
+
+<hr />
+<h2>Comments (<%= @user.comments_count %>)</h2>
+<%= render :partial => "comments/comment", :locals => {:commentable => @user}, :collection => @comments %>
+<% if @user.comments_count > @comments.count %>
+  <%= link_to 'See more', user_comments_path(@user) %>
+<% end -%>
+<% end -%>
+<% content_for :profile_sidebar do -%>
+CACABOUDIN !
+
+<% end -%>

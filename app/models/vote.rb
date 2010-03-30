@@ -13,6 +13,9 @@ class Vote < ActiveRecord::Base
   
   named_scope :for_voter,    lambda { |*args| {:conditions => ["voter_id = ?", args.first.id]} }
   named_scope :for_votable, lambda { |*args| {:conditions => ["votable_id = ? AND votable_type = ?", args.first.id, args.first.class.name]} }
+  named_scope :for_votable_class, lambda { |*args| {:conditions => ['votable_type = ?', args.first.name]}}
+  named_scope :positive_score, :conditions => ['score > ?', 0]
+  named_scope :negative_score, :conditions => ['score < ?', 0]
   named_scope :recent,       lambda { |*args| {:conditions => ["updated_at > ?", (args.first || 2.weeks.ago).to_s(:db)]} }
   named_scope :descending, :order => "updated_at DESC"
   

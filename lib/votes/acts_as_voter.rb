@@ -9,6 +9,7 @@ module ActiveRecord #:nodoc:
         module ClassMethods
           def acts_as_voter
             has_many :sent_votes, :class_name => "Vote", :foreign_key => "voter_id"
+            
           
             include ActiveRecord::Acts::Voteable::Voter::InstanceMethods
             extend ActiveRecord::Acts::Voteable::Voter::SingletonMethods
@@ -67,6 +68,11 @@ module ActiveRecord #:nodoc:
                 self.id, votable.id, votable.class.name
               ]
             )
+          end
+          
+          def favorites(klass = nil)
+            raise ArgumentError, "klass should be votable" unless klass.is_votable?
+            sent_votes.for_votable_class(klass).positive_score.map(&:votable)
           end
 
           private

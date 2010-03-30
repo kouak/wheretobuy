@@ -25,11 +25,19 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'user_sessions', :action => :new
   map.create_login '/login', :controller => 'user_sessions', :action => :create, :method => :post
   map.logout '/logout', :controller => 'user_sessions', :action => :destroy
+  
   map.resource :user_session
   
-  map.resource :account, :controller => :users, :except => [:show], :member => [:account]
+  map.resource :account, :only => [:edit, :update, :delete, :destroy], :controller => :users do |account|
+    map.account '/account', :controller => 'users', :action => 'account', :conditions => { :method => :get }
+  end
   
-  map.resources :users, :has_many => :comments
+  map.resources :users, :only => [:index, :show, :new, :create] do |user|
+    user.friends '/friends', :controller => :users, :action => :friends
+    user.favorite_brands '/favorite_brands', :controller => :users, :action => :favorite_brands
+    user.resources :comments, :except => [:index]
+    user.comments '/comments', :controller => :users, :action => :comments
+  end
   
   map.activate '/activate/:activation_code', :controller => 'activations', :action => 'activate'
   
