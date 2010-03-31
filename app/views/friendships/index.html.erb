@@ -1,0 +1,21 @@
+<% title "Friendships" %>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th>User</th>
+    <th>Friend</th>
+  </tr>
+  <% for friendship in @friendships %>
+    <tr>
+      <td><%=h friendship.status %></td>
+      <td><%=h friendship.user_id %></td>
+      <td><%=h friendship.friend_id %></td>
+      <td><%= link_to "Show", friendship %></td>
+      <td><%= link_to "Edit", edit_friendship_path(friendship) %></td>
+      <td><%= link_to "Destroy", friendship, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Friendship", new_friendship_path %></p>

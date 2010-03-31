@@ -13,6 +13,13 @@ class User < ActiveRecord::Base
   has_many :comments, :as => :resource
   belongs_to :city
   belongs_to :country
+  
+  has_many :friendships, :dependent => :destroy
+  has_many :friends, :through => :friendships
+  
+  has_many :reverse_friendships, :dependent => :destroy, :foreign_key => "friend_id", :class_name => "Friendship"
+  has_many :reverse_friends, :through => :reverse_friendships, :source => :user
+  
 
   attr_accessible :comments_count
   attr_accessible :email, :username, :password, :password_confirmation, :old_password, :country_id, :city_name, :sex
@@ -87,5 +94,10 @@ class User < ActiveRecord::Base
   def set_city_id
     country = Country.find(country_id) unless (country_id.nil? || country_id == 0)
     self.city_id = country.cities.find_or_create_by_name(@city_name).id unless country.nil?
+  end
+  
+  def request_friendship_with(friend)
+    raise ArgumentError unless friend.is_a?(User)
+    Friendship.create(:user => self, :friend => friend)
   end
 end

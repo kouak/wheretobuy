@@ -1,0 +1,20 @@
+<% title "Friendship" %>
+
+<p>
+  <strong>Status:</strong>
+  <%=h @friendship.status %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%=h @friendship.user_id %>
+</p>
+<p>
+  <strong>Friend:</strong>
+  <%=h @friendship.friend_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_friendship_path(@friendship) %> |
+  <%= link_to "Destroy", @friendship, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", friendships_path %>
+</p>

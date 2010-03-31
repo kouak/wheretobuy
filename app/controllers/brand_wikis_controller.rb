@@ -12,11 +12,13 @@ class BrandWikisController < ApplicationController
       @brand_wiki = @brand.brand_wiki
     end
     
-    @last_version = @brand.brand_wiki.revision_number
     
     if @brand_wiki.nil?
       flash[:warning] = "This brand does not have information yet. Feel free to contribute !"
-      redirect_to @brand.nil? ? home : @brand
+      edit
+      render :action => :edit
+    else
+      @last_version = @brand.brand_wiki.revision_number
     end
   end
   

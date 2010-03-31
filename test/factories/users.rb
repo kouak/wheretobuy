@@ -1,6 +1,6 @@
 Factory.define :user do |u|
-  u.email 'email@bla.com'
-  u.username  'email'
+  u.sequence(:email) { |n| "user#{n}@blabla.com" }
+  u.sequence(:username) { |n| "user#{n}" }
   u.password 'secret'
   u.password_confirmation 'secret'
 end

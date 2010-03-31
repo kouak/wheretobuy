@@ -1,0 +1,15 @@
+<% stylesheet('vcards/users') %>
+<div class="vcard">
+  <div class="picture-wrapper">
+    <%= user_avatar(user, :width => 80, :height => 80) %>
+  </div>
+  <div class="infos">
+    <h3><%= user_profile_link(user) %></h3>
+    <span class="user-infos">
+      <%= user_short_infos(user) %>
+    </span>
+    <span class="custom-infos">
+      <%= custom_infos %>
+    </span>
+  </div>
+</div>

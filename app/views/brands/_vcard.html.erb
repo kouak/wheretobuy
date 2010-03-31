@@ -1,0 +1,15 @@
+<% stylesheet('vcards/brands') %>
+<div class="brand-vcard">
+  <div class="picture-wrapper">
+    <%= brand_avatar(brand, :width => 80, :height => 80) %>
+  </div>
+  <div class="infos">
+    <h3><%= brand_profile_link(brand) %></h3>
+    <span class="brand-infos">
+      Tagged as classic, dark, modern ...
+    </span>
+    <span class="custom-infos">
+      <%= custom_infos %>
+    </span>
+  </div>
+</div>

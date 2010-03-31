@@ -8,20 +8,6 @@
 <hr />
 <div id="fan-list">
   <% for vote in @votes %>
-  <% fan = vote.voter %>
-    <div class="vcard">
-      <div class="picture-wrapper">
-        <%= user_avatar(fan, :width => 80, :height => 80) %>
-      </div>
-      <div class="infos">
-        <h3><%= user_profile_link(fan) %></h3>
-        <span class="user-infos">
-          <%= user_short_infos(fan) %>
-        </span>
-        <span class="custom-infos">
-          <%= time_ago_in_words(vote.updated_at) %> ago
-        </span>
-      </div>
-    </div>
+    <%= render :partial => 'users/vcard', :locals => {:user => vote.voter, :custom_infos => time_ago_in_words(vote.updated_at) + ' ago' } %>
   <% end -%>
 </div>

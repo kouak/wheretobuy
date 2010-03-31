@@ -11,6 +11,7 @@ require 'open-uri'
 User.delete_all
 User.find_by_sql('delete from sqlite_sequence where name = "users"')
 User.create!(:username => 'kouak', :email => 'benjamin.beret@gmail.com', :password => 'secret', :password_confirmation => 'secret', :sex => User::MALE).activate!
+User.create!(:username => 'kouak2', :email => 'benjamin.beret2@gmail.com', :password => 'secret', :password_confirmation => 'secret', :sex => User::MALE).activate!
 
 Country.delete_all
 Country.find_by_sql('delete from sqlite_sequence where name = "countries"')

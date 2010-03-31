@@ -19,7 +19,8 @@
 
   <h1><%=h @brand.name %></h1>
   <span id="pageviews"><%= number_with_delimiter(@brand.pageviews.to_i) %> pageviews, <%= number_with_delimiter(@brand.votes_count.to_i) %> votes</span><br />
-  <span id="comments-count"><%= link_to "#{number_with_delimiter(@brand.comments_count.to_i)} comments", '#' %></span><br />
+  <span id="comments-count"><%= link_to "#{number_with_delimiter(@brand.comments_count.to_i)} comments", '#' %></span>
+  <br />
   
   <p id="profile-description">
     <strong>Description :</strong><br />
@@ -35,10 +36,6 @@
   </p>
   <hr />
   <h2>Comments (<%= @brand.comments_count %>)</h2>
-  <%
-    # TODO = use an helper to do this
-    @commentable = @brand 
-  %>
   <%= render :partial => "comments/comment", :locals => {:commentable => @brand}, :collection => @comments %>
   <% if @brand.comments_count > @comments.count %>
     <%= link_to 'See more', brand_comments_path(@brand) %>

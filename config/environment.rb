@@ -19,6 +19,8 @@ Rails::Initializer.run do |config|
   config.gem 'compass'
   config.gem 'compass-colors'
   config.gem 'fancy-buttons'
+  config.gem 'state_machine'
+  
   # config.gem 'ym4r'
   
   # Settings in config/environments/* take precedence over those specified here.

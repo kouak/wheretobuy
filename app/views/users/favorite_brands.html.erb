@@ -9,20 +9,7 @@
 <div id="favorites-list">
   <% for favorite in @favorite_brands %>
   <% brand = favorite.votable %>
-    <div class="brand-vcard">
-      <div class="picture-wrapper">
-        <%= brand_avatar(brand, :width => 80, :height => 80) %>
-      </div>
-      <div class="infos">
-        <h3><%= brand_profile_link(brand) %></h3>
-        <span class="brand-infos">
-          22, Reims, France
-        </span>
-        <span class="custom-infos">
-          <%= time_ago_in_words(favorite.updated_at) %> ago
-        </span>
-      </div>
-    </div>
+    <%= render :partial => 'brands/vcard', :locals => {:brand => favorite.votable, :custom_infos => time_ago_in_words(favorite.updated_at) + ' ago'} %>
   <% end -%>
 </div>
 <% end -%>

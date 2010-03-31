@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
   
   def friends
-    @user = User.find(params[:id], :include => :friends)
+    @user = User.find(params[:user_id], :include => :friends)
   end
   
   def favorite_brands
