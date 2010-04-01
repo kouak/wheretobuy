@@ -11,17 +11,6 @@
 
 ActiveRecord::Schema.define(:version => 20100331224957) do
 
-  create_table "brand_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "brand_types_brands", :id => false, :force => true do |t|
-    t.integer "brand_id"
-    t.integer "brand_type_id"
-  end
-
   create_table "brand_wikis", :force => true do |t|
     t.integer  "brand_id",                                     :null => false
     t.text     "version_comment"
@@ -119,26 +108,6 @@ ActiveRecord::Schema.define(:version => 20100331224957) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token", :unique => true
-
-  create_table "versions", :force => true do |t|
-    t.integer  "versioned_id"
-    t.string   "versioned_type"
-    t.integer  "user_id"
-    t.string   "user_type"
-    t.string   "user_name"
-    t.text     "changes"
-    t.integer  "number"
-    t.string   "tag"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "versions", ["created_at"], :name => "index_versions_on_created_at"
-  add_index "versions", ["number"], :name => "index_versions_on_number"
-  add_index "versions", ["tag"], :name => "index_versions_on_tag"
-  add_index "versions", ["user_id", "user_type"], :name => "index_versions_on_user_id_and_user_type"
-  add_index "versions", ["user_name"], :name => "index_versions_on_user_name"
-  add_index "versions", ["versioned_id", "versioned_type"], :name => "index_versions_on_versioned_id_and_versioned_type"
 
   create_table "votes", :force => true do |t|
     t.integer  "voter_id"

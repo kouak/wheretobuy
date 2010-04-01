@@ -7,9 +7,15 @@ class Friendship < ActiveRecord::Base
   validates_presence_of :user_id, :friend_id
   validates_uniqueness_of :friend_id, :scope => :user_id
   
+  named_scope :pending, :conditions => {:state => 'pending'}
+  named_scope :approved, :conditions => {:state => 'approved'}
+  
+  
   validates_each :user_id do |record, attr, value|
     record.errors.add attr, 'can not be same as friend' if record.user_id.eql?(record.friend_id)
+    record.errors.add attr, 'friendship has already been requested' if self.pending.find_by_user_id_and_friend_id(record.friend_id, record.user_id) # find any existing pending reciprocal friendship
   end
+  
   
   state_machine :initial => :pending do
     after_transition :on => :approve, :do => :create_reciprocal_friendship

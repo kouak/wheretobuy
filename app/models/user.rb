@@ -98,6 +98,6 @@ class User < ActiveRecord::Base
   
   def request_friendship_with(friend)
     raise ArgumentError unless friend.is_a?(User)
-    Friendship.create(:user => self, :friend => friend)
+    self.friendships.create(:friend_id => friend.id)
   end
 end
