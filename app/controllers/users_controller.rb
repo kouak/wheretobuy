@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create, :reset_password]
-  before_filter :require_user, :only => [:account, :edit, :update]
+  before_filter :require_user, :only => [:account, :edit, :update, :request_friend]
 
   layout :smart_layout
   
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    redirect_to @user unless @user.to_param == params[:id]
     @comments = @user.comments.all(:limit => 5)
   end
   

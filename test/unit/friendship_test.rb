@@ -54,6 +54,8 @@ class FriendshipTest < ActiveSupport::TestCase
     
     fr.approve!
     
+    assert bilateral_friendship_between(u1, u2)
+    
     assert_equal [fr], u1.friendships
     assert_equal [u1], u2.friends
     
@@ -72,6 +74,18 @@ class FriendshipTest < ActiveSupport::TestCase
     assert fr.valid?
     assert fr.pending?
     
+  end
+  
+  def test_named_scope
+    u1, u2 = [Factory.create(:user), Factory.create(:user)]
+    
+    fr = u1.request_friendship_with(u2)
+    
+    assert_equal 1, u1.friendships.pending.count
+    assert_equal 0, u1.friendships.approved.count
+    fr.approve!
+    assert_equal 0, u1.friendships.pending.count
+    assert_equal 1, u1.friendships.approved.count
   end
   
   def test_requested_again_friendship_approval_should_not_recreate_relationship
@@ -106,7 +120,7 @@ class FriendshipTest < ActiveSupport::TestCase
     raise ArgumentError unless (u1.is_a?(User) and u2.is_a?(User))
     
     u2.friends.include?(u1) && u1.friends.include?(u2) && u1.reverse_friends.include?(u2) && u2.reverse_friends.include?(u1) \
-    && Friendship.find(:all, :conditions => {:user_id => [u1.id, u2.id], :friend_id => [u1.id, u2.id]}) # check consistency
+    && Friendship.approved.find(:all, :conditions => {:user_id => [u1.id, u2.id], :friend_id => [u1.id, u2.id]}) # check consistency
     
   end
   

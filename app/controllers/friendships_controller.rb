@@ -1,38 +1,20 @@
 class FriendshipsController < ApplicationController
-  def index
-    @friendships = Friendship.all
-  end
   
-  def show
-    @friendship = Friendship.find(params[:id])
-  end
+  before_filter :set_user_or_redirect
   
-  def new
-    @friendship = Friendship.new
-  end
   
   def create
-    @friendship = Friendship.new(params[:friendship])
-    if @friendship.save
+    @friendship = @user.request_friendship_with(User.find(params[:friend_id]))
+    if @friendship.valid?
       flash[:notice] = "Successfully created friendship."
-      redirect_to @friendship
     else
-      render :action => 'new'
+      flash[:error] = "Something wrong happened"
     end
+    redirect_to @user
   end
   
-  def edit
-    @friendship = Friendship.find(params[:id])
-  end
-  
-  def update
-    @friendship = Friendship.find(params[:id])
-    if @friendship.update_attributes(params[:friendship])
-      flash[:notice] = "Successfully updated friendship."
-      redirect_to @friendship
-    else
-      render :action => 'edit'
-    end
+  def approve
+    
   end
   
   def destroy
@@ -41,4 +23,12 @@ class FriendshipsController < ApplicationController
     flash[:notice] = "Successfully destroyed friendship."
     redirect_to friendships_url
   end
+  
+  private
+  def set_commentable_or_redirect
+    @user = User.find(params[:user_id])
+    redirect_to home if @user.nil?
+  end
+  
+  
 end

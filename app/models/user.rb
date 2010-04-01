@@ -98,6 +98,10 @@ class User < ActiveRecord::Base
   
   def request_friendship_with(friend)
     raise ArgumentError unless friend.is_a?(User)
-    self.friendships.create(:friend_id => friend.id)
+    fr = self.friendships.create(:friend_id => friend.id)
+  end
+  
+  def can_request_friendship_with?(friend)
+    return self.friendships.new(:friend_id => friend.try(:id)).valid?
   end
 end

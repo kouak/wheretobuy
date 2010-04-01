@@ -10,6 +10,10 @@
 <span id="activity">Activity : 123,346</span><br />
 <span id="comments-count"><%= link_to "#{number_with_delimiter(@user.comments_count.to_i)} comments", '#' %></span><br />
 
+<% if current_user && current_user.can_request_friendship?(@user) %>
+<span id="request-friendship"><%= button_to 'caca' %></span>
+<% end %>
+
 <p>
   <strong>Sex:</strong>
   <%= user_sex_to_s(@user)%>
@@ -17,7 +21,7 @@
 
 <p>
   <strong>Last seen:</strong>
-  <%= time_ago_in_words(@user.last_request_at) %>
+  <%= @user.last_request_at ? time_ago_in_words(@user.last_request_at) : 'never' %>
 </p>
 
 <p>

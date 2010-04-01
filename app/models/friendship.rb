@@ -9,6 +9,8 @@ class Friendship < ActiveRecord::Base
   
   named_scope :pending, :conditions => {:state => 'pending'}
   named_scope :approved, :conditions => {:state => 'approved'}
+  named_scope :with_friend, lambda { |friend| { :conditions => {:friend_id => friend.try(:id)}}}
+  named_scope :with_user, lambda { |user| { :conditions => {:user_id => user.try(:id)}}}
   
   
   validates_each :user_id do |record, attr, value|

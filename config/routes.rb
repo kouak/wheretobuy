@@ -35,10 +35,11 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :users, :only => [:index, :show, :new, :create] do |user|
-    user.friends '/friends', :controller => :users, :action => :friends
     user.favorite_brands '/favorite_brands', :controller => :users, :action => :favorite_brands
     user.resources :comments, :except => [:index]
     user.comments '/comments', :controller => :users, :action => :comments
+    user.resources :friendships, :except => [:index, :new, :edit, :update]
+    user.friends '/friends', :controller => :users, :action => :friends
   end
   
   map.activate '/activate/:activation_code', :controller => 'activations', :action => 'activate'
