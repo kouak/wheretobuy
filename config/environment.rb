@@ -10,15 +10,15 @@ Rails::Initializer.run do |config|
   config.gem 'rails-footnotes'
   config.gem 'cucumber'
   config.gem 'formtastic'
-  config.gem 'authlogic'
-  config.gem 'will_paginate'
+  config.gem 'authlogic' # rails 3
+  config.gem 'will_paginate' # rails 3
   config.gem 'rails-geocoder', :lib => 'geocoder'
-  config.gem 'factory_girl'
-  config.gem 'acts_as_revisable'
+  config.gem 'factory_girl' # rails 2
+  config.gem 'acts_as_revisable' # rails 2
   config.gem 'htmldiff'
-  config.gem 'compass'
-  config.gem 'compass-colors'
-  config.gem 'fancy-buttons'
+  config.gem 'compass' # rails 3
+  config.gem 'compass-colors' # rails 3
+  config.gem 'fancy-buttons' # rails 3
   config.gem 'state_machine'
   
   # config.gem 'ym4r'

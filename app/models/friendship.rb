@@ -9,13 +9,13 @@ class Friendship < ActiveRecord::Base
   
   named_scope :pending, :conditions => {:state => 'pending'}
   named_scope :approved, :conditions => {:state => 'approved'}
-  named_scope :with_friend, lambda { |friend| { :conditions => {:friend_id => friend.try(:id)}}}
-  named_scope :with_user, lambda { |user| { :conditions => {:user_id => user.try(:id)}}}
+  named_scope :with_friend, lambda { |friend| { :conditions => {:friend_id => friend.is_a?(User) ? friend.id : friend.to_i}}}
+  named_scope :with_user, lambda { |user| { :conditions => {:user_id => user.is_a?(User) ? user.id : user.to_i}}}
   
   
   validates_each :user_id do |record, attr, value|
     record.errors.add attr, 'can not be same as friend' if record.user_id.eql?(record.friend_id)
-    record.errors.add attr, 'friendship has already been requested' if self.pending.find_by_user_id_and_friend_id(record.friend_id, record.user_id) # find any existing pending reciprocal friendship
+    record.errors.add attr, 'friendship has already been requested' if self.pending_between?(record.user_id, record.friend_id) && record.state == 'pending'
   end
   
   
@@ -32,6 +32,26 @@ class Friendship < ActiveRecord::Base
     return true if reciprocal_friendship.approved? # Ok this reciprocal friendship already exists
     reciprocal_friendship.state = 'approved'
     reciprocal_friendship.save!
+  end
+  
+  def self.requestable_between?(requester, friend)
+    return !self.pending_between?(requester, friend) && self.approved.with_user(requester).with_friend(requester).count == 0
+  end
+  
+  def self.pending_between?(requester, friend)
+    if requester.is_a?(User)
+      requester = requester.id
+    else
+      requester = requester.to_i
+    end
+    
+    if friend.is_a?(User)
+      friend = friend.id
+    else
+      friend = friend.to_i
+    end
+    
+    return !self.pending.find(:all, :conditions => ['(user_id = ? AND friend_id = ?) OR (user_id = ? AND friend_id = ?)', requester, friend, friend, requester]).empty?
   end
   
 end
