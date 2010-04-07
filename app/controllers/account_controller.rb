@@ -40,11 +40,8 @@ class AccountController < ApplicationController
   end
   
   def destroy
-    if current_user.destroy
-      flash[:notice] = "Your account has been deleted. We hope to see you again soon !"
-    else
-      flash[:error] = "Something terribly wrong happened ..."
-    end
+    current_user.destroy
+    flash[:notice] = "Your account has been deleted. We hope to see you again soon !"
     redirect_to root_url
   end
   

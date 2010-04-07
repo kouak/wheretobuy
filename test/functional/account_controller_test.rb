@@ -97,5 +97,15 @@ class AccountControllerTest < ActionController::TestCase
         should set_the_flash.to(/updated/i)
       end
     end
+    
+    context "putting to update" do
+      setup {
+        User.any_instance.stubs(:destroy).returns(true)
+        put :destroy, :user => {}
+      }
+      
+      should_redirect_to_home
+      should set_the_flash.to(/deleted/i)
+    end
   end
 end
