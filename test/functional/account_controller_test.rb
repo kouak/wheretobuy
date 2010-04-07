@@ -98,7 +98,7 @@ class AccountControllerTest < ActionController::TestCase
       end
     end
     
-    context "putting to update" do
+    context "putting to destroy" do
       setup {
         User.any_instance.stubs(:destroy).returns(true)
         put :destroy, :user => {}

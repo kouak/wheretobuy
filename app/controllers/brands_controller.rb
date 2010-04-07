@@ -5,8 +5,11 @@ class BrandsController < ApplicationController
   
   layout :smart_layout
   
+  
+  PER_PAGE = 5
+  
   def index
-    @brands = Brand.all
+    @brands = Brand.paginate(:page => params[:page].to_i, :per_page => PER_PAGE)
   end
   
   def show
