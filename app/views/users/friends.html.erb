@@ -1,0 +1,15 @@
+<% content_for :profile_tabs do -%>
+<%= user_tabs('Friends') %>
+<% end -%>
+<% content_for :profile_main do -%>
+<% stylesheet('pagination') %>
+<%= user_title 'Friends' %>
+<%= will_paginate @friendships, :id => 'main-pagination' %>
+<hr />
+<div id="favorites-list">
+  <% for fr in @friendships %>
+  <% friend = fr.friend %>
+    <%= render :partial => 'users/vcard', :locals => {:user => friend, :custom_infos => time_ago_in_words(fr.updated_at) + ' ago'} %>
+  <% end -%>
+</div>
+<% end -%>

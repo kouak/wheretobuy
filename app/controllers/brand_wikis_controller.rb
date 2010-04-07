@@ -7,7 +7,7 @@ class BrandWikisController < ApplicationController
   
   def show # See extended informations
     if params[:version]
-      @brand_wiki = @brand.brand_wiki.find_revision(params[:version].to_i)
+      @brand_wiki = @brand.brand_wiki.find_version(params[:version].to_i)
     else
       @brand_wiki = @brand.brand_wiki
     end
@@ -18,13 +18,13 @@ class BrandWikisController < ApplicationController
       edit
       render :action => :edit
     else
-      @last_version = @brand.brand_wiki.revision_number
+      @last_version = @brand.brand_wiki.version
     end
   end
   
   def edit # Edit
     @brand_wiki = @brand.brand_wiki || BrandWiki.new
-    @brand_wiki.find_revision(params[:version].to_i) if params[:version]
+    @brand_wiki = @brand_wiki.find_version(params[:version].to_i) if params[:version]
   end
   
   def history # show history of updates

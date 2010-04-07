@@ -35,21 +35,20 @@ class Friendship < ActiveRecord::Base
   end
   
   def self.requestable_between?(requester, friend)
-    return !self.pending_between?(requester, friend) && self.approved.with_user(requester).with_friend(requester).count == 0
+    return false if requester == friend
+    return false if self.pending_between?(requester, friend)
+    return false unless self.approved.with_user(requester).with_friend(friend).empty?
+    true
   end
   
   def self.pending_between?(requester, friend)
-    if requester.is_a?(User)
-      requester = requester.id
-    else
-      requester = requester.to_i
-    end
-    
-    if friend.is_a?(User)
-      friend = friend.id
-    else
-      friend = friend.to_i
-    end
+    [requester, friend].map! { |arg|
+      if arg.is_a? User
+        arg.id
+      else
+        arg.to_i
+      end
+    }
     
     return !self.pending.find(:all, :conditions => ['(user_id = ? AND friend_id = ?) OR (user_id = ? AND friend_id = ?)', requester, friend, friend, requester]).empty?
   end

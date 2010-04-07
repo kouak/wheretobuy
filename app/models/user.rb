@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
   
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships
-  has_many :approved_friends, :source => :friend, :through => :friendships, :conditions => ["friendships.state = ?", 'approved']
+  has_many :approved_friends, :source => :friend, :through => :approved_friendships
+  
+  has_many :approved_friendships, :class_name => 'Friendship', :conditions => ["state = ?", 'approved']
   
   has_many :reverse_friendships, :dependent => :destroy, :foreign_key => "friend_id", :class_name => "Friendship"
   has_many :reverse_friends, :through => :reverse_friendships, :source => :user
@@ -70,9 +72,6 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    if username.blank?
-      return email
-    end
     username
   end
   
@@ -99,7 +98,7 @@ class User < ActiveRecord::Base
   
   def request_friendship_with(friend)
     raise ArgumentError unless friend.is_a?(User)
-    fr = self.friendships.create(:friend_id => friend.id)
+    self.friendships.new(:friend_id => friend.id)
   end
   
   def is_friend_with?(friend)
@@ -107,6 +106,9 @@ class User < ActiveRecord::Base
   end
   
   def can_request_friendship?(friend)
+    
+    return Friendship.requestable_between?(self, friend)
+    
     # an user can request friendship only if there are no pending friendship requests between those 2 users and if he's not connected with the friend already
     preventive_friendships = (self.friendships + self.reverse_friendships).reject { |fr| # look through all friendships linked to this user
       if fr.pending?

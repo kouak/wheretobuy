@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   helper :all
 
   before_filter :mailer_set_url_options
+  
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_missing # 404 Error
+  
 
   layout 'application'
 
@@ -33,7 +36,7 @@ class ApplicationController < ActionController::Base
     unless current_user
       store_location
       flash[:error] = "You must be logged in to access this page"
-      redirect_to new_user_session_url
+      redirect_to login_url
       return false
     end
   end
@@ -42,7 +45,7 @@ class ApplicationController < ActionController::Base
     if current_user
       store_location
       flash[:error] = "You must be logged out to access this page"
-      redirect_to account_url
+      redirect_to root_url
       return false
     end
   end
@@ -55,4 +58,9 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
+  
+  def render_missing
+      render :file => "#{RAILS_ROOT}/public/404.html", :status => 404
+  end
+  
 end

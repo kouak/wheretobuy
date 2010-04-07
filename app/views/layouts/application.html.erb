@@ -27,7 +27,7 @@
               <%= link_to 'My account', account_path, :id => 'my_account' %> |
               <%= link_to 'Sign out', user_session_path, :method => :delete %>
             <% else %>
-              <%= link_to 'Sign up', new_user_path %> |
+              <%= link_to 'Sign up', new_account_path %> |
               <%= link_to 'Sign in', new_user_session_path %>
             <% end %>
           </div>

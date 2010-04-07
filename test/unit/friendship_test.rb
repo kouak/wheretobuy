@@ -54,17 +54,6 @@ class FriendshipTest < ActiveSupport::TestCase
     assert !u2.friendships.new(:friend_id => u1.id).valid?
   end
   
-  def test_pending_between?
-    u1, u2 = Factory.create(:user), Factory.create(:user)
-    
-    assert_equal false, Friendship.pending_between?(u1, u2)
-    
-    u1.request_friendship_with(u2)
-    
-    assert Friendship.pending_between?(u1, u2)
-    assert Friendship.pending_between?(u2, u1)
-    
-  end
   
   def test_approve_creates_symmetric_friendships
     u1, u2 = Factory.create(:user), Factory.create(:user)
@@ -99,6 +88,7 @@ class FriendshipTest < ActiveSupport::TestCase
     u1, u2 = Factory.create(:user), Factory.create(:user)
     
     fr = u1.request_friendship_with(u2)
+    fr.save!
     
     assert_equal 1, u1.friendships.pending.count
     assert_equal 0, u1.friendships.approved.count
@@ -138,6 +128,100 @@ class FriendshipTest < ActiveSupport::TestCase
     assert friendship.pending?
     assert_equal u1, friendship.user
     assert_equal u2, friendship.friend
+  end
+  
+  def self.include_requestable_context(&block)
+    context "requestable" do
+      
+      FriendshipTest.class_eval do
+        def should_be_requestable(u1 = @u1, u2 = @u2)
+          assert be_requestable?(u1, u2)
+        end
+        
+        def should_not_be_requestable(u1 = @u1, u2 = @u2)
+          assert !be_requestable?(u1, u2)
+        end
+  
+        def pending_friendship(u1 = @u1, u2 = @u2)
+          Friendship.create(:user_id => @u1.id, :friend_id => @u2.id)
+        end
+
+        def approved_friendship(u1 = @u1, u2 = @u2)
+          pending_friendship(u1, u2).approve!
+        end
+      end
+    
+      setup {
+        @u1, @u2 = Factory.create(:user), Factory.create(:user)
+        Friendship.delete_all
+        FriendshipTest.class_eval &block
+      }
+  
+      should "not be requestable with self" do
+        should_not_be_requestable(@u1, @u1)
+      end
+            
+      should "be requestable between two unconnected users" do
+        should_be_requestable
+      end
+  
+      should "not be requestable between 2 users with a pending request" do
+        pending_friendship
+        should_not_be_requestable
+        should_not_be_requestable(@u2, @u1)
+      end
+  
+      should "not be requestable between 2 connected users" do
+        approved_friendship
+        should_not_be_requestable
+        should_not_be_requestable(@u2, @u1)
+      end
+  
+      should "be requestable if there is only a one way reverse_friendship" do
+        approved_friendship
+        @u1.friendships.first.destroy # @u1 is not friend with @u2 anymore but @u2 is still connected with @u1
+        should_be_requestable
+      end
+  
+      should "not be requestable if there is only a one way friendship" do
+        approved_friendship
+        @u2.friendships.first.destroy
+        should_not_be_requestable
+      end
+    end
+  end
+  
+  context "requestable_between?" do
+    include_requestable_context do
+      def be_requestable?(u1 = @u1, u2 = @u2)
+        Friendship.requestable_between?(u1, u2)
+      end
+    end
+  end
+  
+  context "new() save" do
+    include_requestable_context do
+      def be_requestable?(u1 = @u1, u2 = @u2)
+        fr = Friendship.new(:user_id => u1.id, :friend_id => u2.id)
+        fr.save
+      end
+    end
+  end
+  
+  context "create" do
+    include_requestable_context do
+      def be_requestable?(u1 = @u1, u2 = @u2)
+        !Friendship.create(:user_id => u1.id, :friend_id => u2.id).new_record?
+      end
+    end
+  end
+  
+  context "user can_request_friendship" do
+    include_requestable_context do
+      def be_requestable?(u1 = @u1, u2 = @u2)
+        u1.can_request_friendship?(u2)
+      end
+    end
   end
   
   private

@@ -45,10 +45,10 @@ module TabsHelper
   
   def account_tabs(selected = 'Settings', user = current_user)
     links = [
-      {:title => 'Settings', :url => account_edit_path},
+      {:title => 'Settings', :url => edit_account_path},
       {:title => 'My pictures', :url => '#'},
       {:title => 'My friends', :url => '#'},
-      {:title => 'See my profile', :url => user_profile_path(user)},
+      {:title => 'See my profile', :url => user_path(user)},
     ]
     tabs(selected, links)
   end
@@ -57,7 +57,7 @@ module TabsHelper
     links = [
       {:title => 'User', :url => user_path(user)},
       {:title => 'Activity', :url => '#'},
-      {:title => 'Friends', :url => '#'},
+      {:title => 'Friends', :url => user_friends_path(user)},
       {:title => 'Favorite brands', :url => user_favorite_brands_path(user)},
       {:title => 'Comments', :url => user_comments_path(user)}
     ]

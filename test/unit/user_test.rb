@@ -1,9 +1,13 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  def test_should_be_valid
-    assert Factory.build(:user).valid?
-  end
+  subject { Factory(:user) }
+  
+  should_validate_uniqueness_of :username, :email
+  
+  should_allow_values_for :email, "test@example.com"
+  should_not_allow_values_for :email, "test"
+  should_have_many :comments
   
   def test_voted_on?
     voter = Factory.create(:user)

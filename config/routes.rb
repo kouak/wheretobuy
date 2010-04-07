@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  
   map.resources :friendships
-
 
   map.resources :brand_types
 
@@ -30,15 +30,13 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :user_session
   
-  map.resource :account, :only => [:edit, :update, :delete, :destroy], :controller => :users do |account|
-    map.account '/account', :controller => 'users', :action => 'account', :conditions => { :method => :get }
-  end
+  map.resource :account, :except => :index, :controller => :account, :member => [:friends]
   
-  map.resources :users, :only => [:index, :show, :new, :create] do |user|
+  map.resources :users, :only => [:index, :show] do |user|
     user.favorite_brands '/favorite_brands', :controller => :users, :action => :favorite_brands
     user.resources :comments, :except => [:index]
     user.comments '/comments', :controller => :users, :action => :comments
-    user.resources :friendships, :except => [:index, :new, :edit, :update]
+    user.resource :friendship, :controller => :friendships, :except => [:index, :new, :edit, :update]
     user.friends '/friends', :controller => :users, :action => :friends
   end
   

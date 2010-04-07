@@ -17,14 +17,14 @@
     <% if !@versions.blank? %>
       <% @versions.each do |v| %>
         <tr>
-          <td style="border-top: 1px solid #000;"><%= radio_button(nil, 'v2', v[:version]) %></td>
-          <td style="border-top: 1px solid #000;"><%= radio_button(nil, 'v1', v[:version]) %></td>
+          <td style="border-top: 1px solid #000;"><%= radio_button(nil, 'v2', v.version) %></td>
+          <td style="border-top: 1px solid #000;"><%= radio_button(nil, 'v1', v.version) %></td>
           <td style="border-top: 1px solid #000;">
-            <%= user_profile_link(v[:editor]) %><br />
-            <%= v[:updated_at] %>
+            <%= user_profile_link(v.editor) %><br />
+            <%= v.updated_at %>
           </td>
-          <td style="border-top: 1px solid #000;"><%= v[:version_comment] %></td>
-          <td style="border-top: 1px solid #000;"><%= link_to "Version #{v[:version]}", (v[:version] == @brand_wiki.version) ? brand_brand_wiki_path : brand_brand_wiki_path(:version => v[:version]) %></td>
+          <td style="border-top: 1px solid #000;"><%= v.version_comment %></td>
+          <td style="border-top: 1px solid #000;"><%= link_to "Version #{v.version}", (v.version == @brand_wiki.version) ? brand_brand_wiki_path : brand_brand_wiki_path(:version => v.version) %></td>
         </tr>
       <% end %>
     <% end %>

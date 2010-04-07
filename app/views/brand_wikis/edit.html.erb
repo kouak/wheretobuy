@@ -9,7 +9,7 @@
   @brand_wiki.version_comment = nil 
   %>
   <hr />
-  <% semantic_form_for @brand_wiki, :url => brand_brand_wiki_path(@brand), :html => { :method => :put } do |f| %>
+  <% semantic_form_for :brand_wiki, @brand_wiki, :url => brand_brand_wiki_path(@brand), :html => { :method => :put } do |f| %>
     <%= f.error_messages %>
     <% f.inputs do %>
       <%= f.input :bio %>

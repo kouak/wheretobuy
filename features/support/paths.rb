@@ -14,8 +14,8 @@ module NavigationHelpers
     when /the login page/
       login_path
     
-    when /the registration page/
-      new_user_path
+    when /the registration (?:form|page)/
+      new_account_path
       
     when /(?:the|my) account page/
       account_path
@@ -35,9 +35,6 @@ module NavigationHelpers
       
     when /the confirm page with bad token/
       activate_path('blablablabla')
-      
-    when /the registration form/
-      new_user_path
     
     when /the resend confirmation page/
       new_activation_path

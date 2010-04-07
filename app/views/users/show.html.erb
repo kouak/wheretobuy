@@ -10,8 +10,8 @@
 <span id="activity">Activity : 123,346</span><br />
 <span id="comments-count"><%= link_to "#{number_with_delimiter(@user.comments_count.to_i)} comments", '#' %></span><br />
 
-<% if current_user && current_user.can_request_friendship?(@user) %>
-<span id="request-friendship"><%= button_to 'caca' %></span>
+<% if current_user && Friendship.requestable_between?(current_user, @user) %>
+<span id="request-friendship"><%= button_to 'request friendship', user_friendship_path(@user) %></span>
 <% end %>
 
 <p>

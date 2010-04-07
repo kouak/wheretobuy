@@ -22,6 +22,10 @@ class Brand < ActiveRecord::Base
     id.to_s+'-'+ActiveSupport::Inflector.parameterize(to_s)
   end
   
+  def comments_count
+    self.attributes[:comments_count] || 0
+  end
+  
   def to_s
     name
   end

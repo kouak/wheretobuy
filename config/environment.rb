@@ -14,14 +14,13 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate' # rails 3
   config.gem 'rails-geocoder', :lib => 'geocoder'
   config.gem 'factory_girl' # rails 2
-  config.gem 'acts_as_revisable' # rails 2
   config.gem 'htmldiff'
   config.gem 'compass' # rails 3
   config.gem 'compass-colors' # rails 3
   config.gem 'fancy-buttons' # rails 3
   config.gem 'state_machine'
+  config.gem 'shoulda'
   
-  # config.gem 'ym4r'
   
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers

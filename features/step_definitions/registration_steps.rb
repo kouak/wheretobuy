@@ -3,7 +3,7 @@ Given /"([^\"]*)" is an anonymous user/ do |email|
 end
 
 Given /^"([^\"]*)" an unconfirmed user with password "([^\"]*)"$/ do |email, password|
-  @user = User.new(:username => 'abc', :email => email, :password => password, :password_confirmation => password)
+  @user = Factory.create(:user, :username => 'abc', :email => email, :password => password, :password_confirmation => password)
   @user.save_without_session_maintenance
 end
 

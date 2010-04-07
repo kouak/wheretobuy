@@ -1,44 +1,46 @@
 class BrandWiki < ActiveRecord::Base
-  attr_accessible :brand_id, :version_comment, :bio, :url, :updated_by, :editor_id
-  
-  acts_as_revisable do
-    revision_class_name "BrandWikiRevision"
-  end
+  attr_accessible :brand_id, :version_comment, :bio, :url, :editor_id, :time_of_revision
+  attr_accessor :time_of_revision
   
   belongs_to :brand
   belongs_to :editor, :class_name => 'User'
   
+  acts_as_versioned
   
   validates_length_of :bio, :minimum => 5
   validates_presence_of :editor_id
   
   def differences_between(v1, v2)
-    v1model = self.find_revision(v1) || self
-    v2model = self.find_revision(v2) || self
-    rtn = {'version' => [v1model.revision_number, v2model.revision_number]}
-    if v1model.revision_number != v2model.revision_number
-      rtn.merge!(v1model.diffs(v2))
+    v1model = self.find_version(v1) || self
+    v2model = self.find_version(v2) || self
+    rtn = {'version' => [v1model.version, v2model.version]}
+    if v1model.version != v2model.version
+      %w(bio version_comment).each do |c|
+        rtn.merge!({c => [v1model[c], v2model[c]]}) unless v1model[c] == v2model[c]
+      end
     end
     rtn
   end
   
-  # convenience getter
-  
-  def version
-    revision_number
-  end
   
   # returns history
   def history
-    if revisions.count == 0 # This is the first version
-      return nil
-    end
-    
-    current_version = [{:version => self.version, :editor => self.editor, :updated_at => self.updated_at, :version_comment => self.version_comment}]
-    rtn =
-      revisions.map do |ver|
-        {:version => ver.revision_number, :editor => ver.editor, :updated_at => ver.updated_at, :version_comment => ver.version_comment}
-      end
-    return current_version + rtn
+    self.versions.all.reverse
   end
+  
+  def find_version(v)
+    case v
+    when Symbol
+      if v == :first
+        v = 1
+      else
+        v = self.version
+      end
+    end
+    self.versions.find(:first, :conditions => {:version => v})
+  end
+end
+
+BrandWiki.versioned_class.class_eval do 
+  belongs_to :editor, :class_name => "User"
 end

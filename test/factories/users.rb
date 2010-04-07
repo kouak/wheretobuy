@@ -11,3 +11,7 @@ Factory.define :other_user, :class => 'User' do |u|
   u.password 'secret'
   u.password_confirmation 'secret'
 end
+
+Factory.define :active_user, :parent => :user do |u|
+  u.active 1
+end

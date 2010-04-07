@@ -1,10 +1,20 @@
+
 Given /^"(.*)" a logged in user with password "([^\"]*?)"$/ do |email, password|
-  Given "\"#{email}\" a confirmed user with password \"secret\""
-  When "I go to the login page"
-  And "I fill in \"email\" with \"#{email}\""
-  And "I fill in \"password\" with \"#{password}\""
-  And "I press \"Sign in\""
+  user = Factory.create(:user, :username => email.split('@').first, :email => email, :password => password, :password_confirmation => password)
+  user.activate!
+  
+  visit user_session_path,
+          :post,
+          :user_session => {:email => email, :password => password}
+  
   Then "I should be logged in"
+
+#  Given "\"#{email}\" a confirmed user with password \"secret\""
+#  When "I go to the login page"
+#  And "I fill in \"email\" with \"#{email}\""
+#  And "I fill in \"password\" with \"#{password}\""
+#  And "I press \"Sign in\""
+#  Then "I should be logged in"
 end
 
 Given /^I should see a login form$/ do
