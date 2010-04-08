@@ -2,6 +2,7 @@ class BrandsController < ApplicationController
   
   after_filter :increment_pageviews, :only => [:show]
   
+  before_filter :require_user, :only => [:new, :create, :update, :destroy, :edit]
   
   layout :smart_layout
   
@@ -25,7 +26,7 @@ class BrandsController < ApplicationController
   
   def fans
     @brand = Brand.find(params[:brand_id])
-    @votes = (@brand.votes.positive_score.descending.scoped(:joins => :voter) * 11).paginate(:page => params[:page], :per_page => 4)
+    @votes = @brand.votes.positive_score.descending.paginate(:page => params[:page], :per_page => 4)
   end
   
   def new

@@ -52,8 +52,7 @@ class User < ActiveRecord::Base
   end
   
   def activate!
-    self.active = true
-    save
+    update_attributes!(:active => true)
   end
   
   def deliver_activation_instructions!

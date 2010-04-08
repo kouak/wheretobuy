@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100405120031) do
+ActiveRecord::Schema.define(:version => 20100408140139) do
 
   create_table "brand_wiki_versions", :force => true do |t|
     t.integer  "brand_wiki_id"
@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(:version => 20100405120031) do
     t.integer  "city_id"
     t.integer  "country_id",          :default => 0
     t.boolean  "sex",                 :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

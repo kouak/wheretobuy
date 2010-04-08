@@ -55,7 +55,7 @@ class AccountControllerTest < ActionController::TestCase
       should_be_denied(:flash => /be logged out/i, :redirect => 'root_path')
     end
     
-    context "putting create" do
+    context "posting create" do
       setup { post :create }
       should_be_denied(:flash => /be logged out/i, :redirect => 'root_path')
     end
