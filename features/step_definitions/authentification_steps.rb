@@ -1,7 +1,6 @@
 
 Given /^"(.*)" a logged in user with password "([^\"]*?)"$/ do |email, password|
-  user = Factory.create(:user, :username => email.split('@').first, :email => email, :password => password, :password_confirmation => password)
-  user.activate!
+  user = Factory.create(:active_user, :username => email.split('@').first, :email => email, :password => password, :password_confirmation => password)
   
   visit user_session_path,
           :post,

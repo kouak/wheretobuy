@@ -3,23 +3,12 @@ class BrandWikisController < ApplicationController
   before_filter :require_user, :only => [:edit, :update, :destroy]
   before_filter :set_brand
   
+  before_filter :find_brand_wiki_or_redirect, :only => [:show, :diff, :history]
+  
   layout :set_layout, :only => [:show, :edit, :history, :diff]
   
   def show # See extended informations
-    if params[:version]
-      @brand_wiki = @brand.brand_wiki.find_version(params[:version].to_i)
-    else
-      @brand_wiki = @brand.brand_wiki
-    end
-    
-    
-    if @brand_wiki.nil?
-      flash[:warning] = "This brand does not have information yet. Feel free to contribute !"
-      edit
-      render :action => :edit
-    else
-      @last_version = @brand.brand_wiki.version
-    end
+    @last_version = @brand.brand_wiki.version
   end
   
   def edit # Edit
@@ -28,14 +17,12 @@ class BrandWikisController < ApplicationController
   end
   
   def history # show history of updates
-    @brand_wiki = @brand.brand_wiki
     @versions = @brand.brand_wiki.history.paginate(:page => params[:page], :per_page => 10)
   end
   
   def diff # show differences between versions
     v1 = params[:v1].to_i
     v2 = params[:v2].to_i == 0 ? :last : params[:v2].to_i
-    @brand_wiki = @brand.brand_wiki
     @changes = @brand_wiki.differences_between(v1, v2)
   end
   
@@ -67,6 +54,18 @@ class BrandWikisController < ApplicationController
   private
   def set_brand
     @brand = Brand.find(params[:brand_id]) or redirect_to home
+  end
+  
+  def find_brand_wiki_or_redirect
+    if @brand.brand_wiki.nil?
+      flash[:notice] = "This brand does not have information yet. Feel free to contribute !"
+      redirect_to edit_brand_brand_wiki_path(@brand)
+      return false # prevents action from being triggered
+    else
+      @brand_wiki = @brand.brand_wiki
+      @brand_wiki = @brand.brand_wiki.find_version(params[:version]) if params[:version]
+      return true
+    end
   end
   
   def set_layout

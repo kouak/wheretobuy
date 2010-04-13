@@ -19,7 +19,7 @@
 
 <p>
   <%= link_to "Edit", edit_brand_brand_wiki_path(@brand, :version => params[:version]) %> |
-  <%= link_to "History", history_brand_brand_wiki_path %>
+  <%= link_to "History", history_brand_brand_wiki_path(@brand, @brand_wiki) %>
 </p>
 <% end -%>
 <% content_for :profile_sidebar do -%>
@@ -46,7 +46,7 @@
   </p>
   <p>
     <% if current_version %>
-      <%= link_to "View history", history_brand_brand_wiki_path %>
+      <%= link_to "View history", history_brand_brand_wiki_path(@brand, @brand_wiki) %>
     <% else %>
       <%= link_to "View current version", brand_brand_wiki_path %>
     <% end %>
