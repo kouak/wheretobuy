@@ -11,9 +11,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :countries, :only => [:index, :show] do |country|
     country.resources :cities
   end
+  
+  map.resources :comments, :except => [:index, :create, :new]
 
   map.resources :brands, :collection => {:search => :get} do |brand|
-    brand.resources :comments, :except => [:index]
+    brand.resources :comments, :only => [:new, :create]
     brand.resource :brand_wiki, :except => [:index, :new, :create], :member => {:history => :get, :diff => :get}
     brand.fans '/fans', :controller => :brands, :action => :fans
     brand.comments '/comments', :controller => :brands, :action => :comments
@@ -34,7 +36,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :users, :only => [:index, :show] do |user|
     user.favorite_brands '/favorite_brands', :controller => :users, :action => :favorite_brands
-    user.resources :comments, :except => [:index]
+    user.resources :comments, :only => [:new, :create]
     user.comments '/comments', :controller => :users, :action => :comments
     user.resource :friendship, :controller => :friendships, :except => [:index, :new, :edit, :update]
     user.friends '/friends', :controller => :users, :action => :friends

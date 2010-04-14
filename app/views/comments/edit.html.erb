@@ -1,8 +1,8 @@
 <% title "Edit Comment" %>
 
-<%= render :partial => 'form' %>
+<%= render :partial => 'form', :locals => {:comment => @comment} %>
 
 <p>
-  <%= link_to "Show", polymorphic_path([@commentable, @comment]) %> |
-  <%= link_to "View All", polymorphic_path([@commentable, :comments]) %>
+  <%= link_to "Show", comment_path(@comment) %> |
+  <%= link_to "View All", polymorphic_path([@comment.resource, :comments]) %>
 </p>

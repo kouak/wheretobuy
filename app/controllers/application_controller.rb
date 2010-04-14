@@ -1,6 +1,8 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
+class Error404 < StandardError; end
+
 class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user, :user_signed_in?
@@ -8,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :mailer_set_url_options
   
-  rescue_from ActiveRecord::RecordNotFound, :with => :render_missing # 404 Error
+  rescue_from ActiveRecord::RecordNotFound, Error404, :with => :render_missing # 404 Error
   
 
   layout 'application'
@@ -54,7 +56,7 @@ class ApplicationController < ActionController::Base
     session[:return_to] = request.request_uri
   end
   
-  def redirect_back_or_default(default)
+  def redirect_back_or_default(default = root_url)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end

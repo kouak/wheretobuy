@@ -53,7 +53,7 @@ class BrandsControllerTest < ActionController::TestCase
     
     context "with page set" do
       setup {
-        Brand.expects(:paginate).with(has_entries(:page => 2)).returns(@brands)
+        Brand.expects(:paginate).with(){has_entry(:page, 2)}.returns(@brands)
         get :index, :page => 2
       }
       tests.call
@@ -65,7 +65,7 @@ class BrandsControllerTest < ActionController::TestCase
     setup {
       @brand ||= Factory.build(:brand)
       Brand.stubs(:find).returns(@brand)
-      Brand.any_instance.stubs(:comments).returns(3.times.map { Factory.build(:comment) })
+      Brand.any_instance.stubs(:comments).returns(3.times.map { Factory.stub(:comment) })
       get :comments, :id => @brand.to_param
     }
     

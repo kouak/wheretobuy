@@ -10,7 +10,7 @@ class BrandsController < ApplicationController
   PER_PAGE = 5
   
   def index
-    @brands = Brand.paginate(:page => params[:page].to_i, :per_page => PER_PAGE)
+    @brands = Brand.paginate(:page => params[:page], :per_page => PER_PAGE)
   end
   
   def show

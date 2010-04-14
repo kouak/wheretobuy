@@ -1,28 +1,31 @@
 class CommentsController < ApplicationController
   
-  before_filter :set_commentable_or_redirect
-  
-  layout :set_layout
   
   def index
-    set_paginated_comments
+    # This action should be defined in commentable controllers
+    raise Error404
   end
   
   def show
     @comment = Comment.find(params[:id])
   end
   
+  def new
+    @comment = parent.comments.new
+    @commentable = parent
+  end
+  
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = parent.comments.new(params[:comment])
+    # there should be some kind of validation for resource
     @comment.author = current_user
-    @commentable.comments << @comment
     if @comment.save
       flash[:notice] = "Successfully created comment."
-      redirect_to @commentable
+      redirect_to @comment.resource
     else
       # TODO : Ajax
       flash[:error] = @comment.errors.full_messages.to_s
-      redirect_to @commentable
+      redirect_back_or_default
     end
   end
   
@@ -34,7 +37,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.update_attributes(params[:comment])
       flash[:notice] = "Successfully updated comment."
-      redirect_to polymorphic_url([@commentable, @comment])
+      redirect_to @comment
     else
       render :action => 'edit'
     end
@@ -42,39 +45,21 @@ class CommentsController < ApplicationController
   
   def destroy
     @comment = Comment.find(params[:id])
+    commentable = @comment.resource
     @comment.destroy
     flash[:notice] = "Successfully destroyed comment."
-    redirect_to polymorphic_path([@commentable, :comments])
+    redirect_to polymorphic_path([commentable, :comments])
   end
-  
   
   private
-  def set_commentable_or_redirect
-    @commentable = find_commentable
-    redirect_to home if @commentable.nil?
-    
-    case @commentable
-    when Brand
-      @brand = @commentable
-    when User
-      @user = @commentable
+  
+  def parent
+    if params[:brand_id]
+      @parent ||= Brand.find(params[:brand_id])
+    elsif params[:user_id]
+      @parent ||= User.find(params[:user_id])
+    else
+      raise Error404
     end
-  end
-  
-  def find_commentable
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
-    end
-    nil
-  end
-  
-  def set_layout
-    'application'
-  end
-  
-  def set_paginated_comments
-    @comments = @commentable.try(:comments).paginate(:page => params[:page], :per_page => 2)
   end
 end

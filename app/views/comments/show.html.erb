@@ -22,7 +22,6 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_polymorphic_path([@commentable, @comment]) %> |
-  <%= link_to "Destroy", polymorphic_path([@commentable, @comment]), :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", polymorphic_path([@commentable, :comments]) %>
+  <%= link_to "Edit", edit_comment_path(@comment) %> |
+  <%= link_to "Destroy", comment_path(@comment), :confirm => 'Are you sure?', :method => :delete %>
 </p>
