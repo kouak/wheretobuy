@@ -29,7 +29,7 @@ class AccountControllerTest < ActionController::TestCase
         }
         should_assign_to :user, :class => User
         should_redirect_to_home
-        should set_the_flash.to(/created/i)
+        should_set_the_flash_to(/created/i)
       end
     end
     
@@ -45,9 +45,7 @@ class AccountControllerTest < ActionController::TestCase
   
   context "a registered user" do
     setup {
-      activate_authlogic
-      @u = Factory.create(:active_user)
-      UserSession.create(@u)
+      login_as :active_user
     }
     
     context "getting new" do
@@ -94,7 +92,7 @@ class AccountControllerTest < ActionController::TestCase
         }
         should_assign_to :user, :class => User
         should_redirect_to('the account page'){ account_url }
-        should set_the_flash.to(/updated/i)
+        should_set_the_flash_to(/updated/i)
       end
     end
     
@@ -105,7 +103,7 @@ class AccountControllerTest < ActionController::TestCase
       }
       
       should_redirect_to_home
-      should set_the_flash.to(/deleted/i)
+      should_set_the_flash_to(/deleted/i)
     end
   end
 end

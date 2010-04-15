@@ -2,8 +2,26 @@ class ActionController::TestCase
   
   def login_as(user = :active_user)
     activate_authlogic
-    @u = Factory.create(:active_user)
-    UserSession.create(@u)
+    UserSession.stubs(:find).returns(user_session)
+    user_session.stubs(:user).returns(current_user)
+  end
+  
+  def current_user(stubs = {})
+    @current_user ||= Factory.stub(:active_user)
+  end
+
+  def user_session
+    @current_user_session ||= Factory.stub(:user_session)
+  end
+
+  def login(session_stubs = {}, user_stubs = {})
+    activate_authlogic
+    
+    user_session.stubs(:user).returns(current_user)
+  end
+
+  def logout
+    @user_session = nil
   end
   
   def self.should_be_denied(opts = {})

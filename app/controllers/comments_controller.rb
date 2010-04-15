@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   
+  before_filter :require_user, :only => [:new, :create, :update, :destroy, :edit]
   
   def index
     # This action should be defined in commentable controllers
@@ -17,15 +18,13 @@ class CommentsController < ApplicationController
   
   def create
     @comment = parent.comments.new(params[:comment])
-    # there should be some kind of validation for resource
     @comment.author = current_user
     if @comment.save
       flash[:notice] = "Successfully created comment."
       redirect_to @comment.resource
     else
-      # TODO : Ajax
-      flash[:error] = @comment.errors.full_messages.to_s
-      redirect_back_or_default
+      @commentable = parent
+      render :action => 'new'
     end
   end
   

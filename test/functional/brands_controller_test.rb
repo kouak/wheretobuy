@@ -137,7 +137,7 @@ class BrandsControllerTest < ActionController::TestCase
         }
         should_assign_to :brand, :class => Brand
         should_redirect_to("the brand page"){ brand_path('1002-brand') }
-        should set_the_flash.to(/created/i)
+        should_set_the_flash_to(/created/i)
       end
     end
   end

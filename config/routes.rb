@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  
-  map.resources :friendships
 
   map.resources :brand_types
 
@@ -38,7 +36,7 @@ ActionController::Routing::Routes.draw do |map|
     user.favorite_brands '/favorite_brands', :controller => :users, :action => :favorite_brands
     user.resources :comments, :only => [:new, :create]
     user.comments '/comments', :controller => :users, :action => :comments
-    user.resource :friendship, :controller => :friendships, :except => [:index, :new, :edit, :update]
+    user.resources :friendship, :controller => :friendships, :only => [:create, :destroy], :member => {:approve => :put}
     user.friends '/friends', :controller => :users, :action => :friends
   end
   

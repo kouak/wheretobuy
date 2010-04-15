@@ -21,7 +21,7 @@ class BrandWikisControllerTest < ActionController::TestCase
       [:show, :history, :diff].each do |action|
         context "get #{action}" do
           setup { get action }
-          should set_the_flash.to(/contribute/i)
+          should_set_the_flash_to(/contribute/i)
           should_redirect_to("the edit page"){ edit_brand_brand_wiki_url(@brand) }
         end
       end
@@ -112,7 +112,7 @@ class BrandWikisControllerTest < ActionController::TestCase
           should_assign_to :brand, :class => Brand
           should_assign_to :brand_wiki, :class => BrandWiki
           should_redirect_to("the brand wiki page"){ brand_path('1002-brand') }
-          should set_the_flash.to(/edited/i)
+          should_set_the_flash_to(/edited/i)
         end
       end
     end
