@@ -1,6 +1,7 @@
 class PasswordResetsController < ApplicationController
-  before_filter :load_user_using_perishable_token, :only => [:edit, :update]
+  
   before_filter :require_no_user
+  before_filter :load_user_using_perishable_token, :only => [:edit, :update]
   
   def new
   end
@@ -20,7 +21,6 @@ class PasswordResetsController < ApplicationController
   end
   
   def edit
-    render
   end
 
   def update
@@ -39,6 +39,11 @@ class PasswordResetsController < ApplicationController
   private
     def load_user_using_perishable_token
       @user = User.find_using_perishable_token(params[:token])
+      # This is a special method that Authlogic gives you. Here is what it does for extra security:
+      #  * Ignores blank tokens
+      #  * Only finds records that match the token and have an updated_at (if present) value that is not older than 10 minutes.
+      #    This way, if someone gets the data in your database any valid perishable tokens will expire in 10 minutes.
+      #    Chances are they will expire quicker because the token is changing during user activity as well.
       unless @user
         flash[:notice] = "We're sorry, but we could not locate your account." +
           "If you are having issues try copying and pasting the URL " +

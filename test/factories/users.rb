@@ -23,3 +23,7 @@ end
 Factory.define :unactive_user, :parent => :user do |u|
   u.active false
 end
+
+Factory.define :inactive_user, :parent => :user do |u|
+  u.active false
+end
