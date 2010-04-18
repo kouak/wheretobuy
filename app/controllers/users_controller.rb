@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   
   private
   def find_user
-    @user = User.find(params[:user_id] || params[:id]) or redirect_to home # 404 error ?!
+    @user = User.find(params[:user_id] || params[:id]) # no user will raise ActiveRecord::RecordNotFound which is caught and rendered as 404
   end
   
   def redirect_to_correct_slug
