@@ -67,6 +67,22 @@ class UsersControllerTest < ActionController::TestCase
     should_not_set_the_flash
   end
   
+  context "get favorite brands" do
+    setup {
+      user = Factory.stub(:active_user)
+      User.expects(:find).with(user.to_param).returns(user)
+      user.stub_chain(:sent_votes, :for_votable_class, :descending, :positive_score).returns([])
+      get :favorite_brands, :id => user.to_param
+    }
+    
+    should_respond_with :success
+    should_render_template :favorite_brands
+    should_assign_to :user, :class => User
+    should_assign_to :favorite_brands
+    should_not_set_the_flash
+    
+  end
+  
   
   
 end
