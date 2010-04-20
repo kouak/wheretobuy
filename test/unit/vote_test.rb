@@ -76,6 +76,26 @@ class VoteTest < ActiveSupport::TestCase
     assert_equal Vote.find(:all, :conditions => {:votable_id => b.id, :votable_type => 'brand', :voter_id => u.id}).count, 0
   end
   
+  def test_voted?
+    u = Factory.create(:user)
+    b = Factory.create(:brand)
+    
+    assert_equal [false, false, false], [u.voted_on?(b), u.voted_for?(b), u.voted_against?(b)]
+    
+    u.vote_for(b)
+    u.reload
+    assert_equal [true, true, false], [u.voted_on?(b), u.voted_for?(b), u.voted_against?(b)]
+    
+    u.vote_nil(b)
+    u.reload
+    assert_equal [false, false, false], [u.voted_on?(b), u.voted_for?(b), u.voted_against?(b)]
+    
+    u.vote_against(b)
+    u.reload
+    assert_equal [true, false, true], [u.voted_on?(b), u.voted_for?(b), u.voted_against?(b)]
+    
+  end
+  
   def test_favorites
     b1, b2, b3 = Factory.create(:brand), Factory.create(:brand), Factory.create(:brand)
     u = Factory.create(:user)
