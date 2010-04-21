@@ -20,6 +20,7 @@ Rails::Initializer.run do |config|
   config.gem 'fancy-buttons' # rails 3
   config.gem 'state_machine'
   config.gem 'shoulda'
+  config.gem 'acts-as-taggable-on'
   
   
   # Settings in config/environments/* take precedence over those specified here.

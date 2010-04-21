@@ -1,4 +1,5 @@
 module BrandsHelper
+  include TagsHelper
   
   def brand_avatar(brand = @brand, *args)
     image_tag('blank-profile-150x150.png', :height => 50)

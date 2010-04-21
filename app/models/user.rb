@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   before_validation :set_city_id
   
   acts_as_voter
+  acts_as_tagger
   
   
   # validates password change from account page
