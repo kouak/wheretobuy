@@ -21,21 +21,20 @@
     <span id="request-friendship"><%= button_to 'request friendship', user_friendships_path(@user), :disabled => true %></span>
   <% end %>
 <% end %>
-
-<p>
-  <strong>Sex:</strong>
-  <%= user_sex_to_s(@user)%>
-</p>
-
-<p>
-  <strong>Last seen:</strong>
-  <%= @user.last_request_at ? time_ago_in_words(@user.last_request_at) : 'never' %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= user_location_to_s(@user) %>
-</p>
+<table id="user-infos">
+  <tr>
+    <td class="legend">Sex:</td>
+    <td class="info"><%= user_sex_to_s(@user)%></td>
+  </tr>
+  <tr>
+    <td class="legend">Last seen:</td>
+    <td class="info"><%= @user.last_request_at ? time_ago_in_words(@user.last_request_at) : 'never' %></td>
+  </tr>
+  <tr>
+    <td class="legend">Location:</td>
+    <td class="info"><%= user_location_to_s(@user) %></td>
+  </tr>
+</table>
 
 <% if can_edit?(@user) %>
 <p>

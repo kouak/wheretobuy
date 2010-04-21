@@ -8,6 +8,23 @@
   font-family: Lucida Grande;
 }
 /* line 10, ../../../app/stylesheets/users/show.sass */
+#profile-main #user-infos {
+  float: left;
+  text-align: left;
+}
+/* line 13, ../../../app/stylesheets/users/show.sass */
+#profile-main #user-infos td.info {
+  text-align: left;
+}
+/* line 15, ../../../app/stylesheets/users/show.sass */
+#profile-main #user-infos td.legend {
+  width: 40%;
+  float: left;
+  padding-left: 40px;
+  text-align: right;
+  font-weight: bold;
+}
+/* line 21, ../../../app/stylesheets/users/show.sass */
 #profile-main #profile-picture {
   border: 1px solid #999;
   float: right;
@@ -15,64 +32,64 @@
   margin-bottom: 5px;
   padding: 3px;
 }
-/* line 16, ../../../app/stylesheets/users/show.sass */
+/* line 27, ../../../app/stylesheets/users/show.sass */
 #profile-main #profile-picture a {
   float: right;
   font-size: 0.9em;
   font-family: Lucida Grande;
   font-weight: bold;
 }
-/* line 21, ../../../app/stylesheets/users/show.sass */
+/* line 32, ../../../app/stylesheets/users/show.sass */
 #profile-main #profile-picture img {
   border: 1px solid #ccc;
   margin: 0;
   padding: 0;
 }
-/* line 25, ../../../app/stylesheets/users/show.sass */
+/* line 36, ../../../app/stylesheets/users/show.sass */
 #profile-main #profile-description {
   margin-top: 30px;
   clear: left;
   text-align: justify;
 }
-/* line 29, ../../../app/stylesheets/users/show.sass */
+/* line 40, ../../../app/stylesheets/users/show.sass */
 #profile-main #profile-description #profile-description-links {
   display: block;
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
-/* line 37, ../../../app/stylesheets/users/show.sass */
+/* line 48, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-fans span.fan-wrapper {
   float: left;
   width: 33%;
   margin: 0;
   margin-top: 10px;
 }
-/* line 42, ../../../app/stylesheets/users/show.sass */
+/* line 53, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-fans span.fan-wrapper a {
   margin: 0;
   padding: 0;
   display: block;
   text-align: center;
 }
-/* line 47, ../../../app/stylesheets/users/show.sass */
+/* line 58, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-fans span.fan-wrapper img {
   margin: 0 auto;
   padding: 2px;
   display: block;
   border: 1px solid #b1ad69;
 }
-/* line 52, ../../../app/stylesheets/users/show.sass */
+/* line 63, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-fans a.bottom-links {
   margin-top: 10px;
   float: right;
   clear: both;
 }
-/* line 57, ../../../app/stylesheets/users/show.sass */
+/* line 68, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-activity ul {
   margin-bottom: 15px;
 }
-/* line 59, ../../../app/stylesheets/users/show.sass */
+/* line 70, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-activity ul li {
   display: block;
   border-bottom: 1px dotted #b1ad69;
@@ -82,11 +99,11 @@
   background-repeat: no-repeat;
   background-position: center left;
 }
-/* line 60, ../../../app/stylesheets/users/show.sass */
+/* line 71, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-activity ul li .time-ago {
   color: #666;
 }
-/* line 69, ../../../app/stylesheets/users/show.sass */
+/* line 80, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-activity ul li.last {
   border-background: 0;
 }
