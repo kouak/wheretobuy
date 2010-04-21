@@ -79,17 +79,11 @@
   display: block;
   border: 1px solid #b1ad69;
 }
-/* line 63, ../../../app/stylesheets/users/show.sass */
-#profile-sidebar #profile-fans a.bottom-links {
-  margin-top: 10px;
-  float: right;
-  clear: both;
-}
-/* line 68, ../../../app/stylesheets/users/show.sass */
+/* line 64, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-activity ul {
   margin-bottom: 15px;
 }
-/* line 70, ../../../app/stylesheets/users/show.sass */
+/* line 66, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-activity ul li {
   display: block;
   border-bottom: 1px dotted #b1ad69;
@@ -99,11 +93,11 @@
   background-repeat: no-repeat;
   background-position: center left;
 }
-/* line 71, ../../../app/stylesheets/users/show.sass */
+/* line 67, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-activity ul li .time-ago {
   color: #666;
 }
-/* line 80, ../../../app/stylesheets/users/show.sass */
+/* line 76, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-activity ul li.last {
   border-background: 0;
 }

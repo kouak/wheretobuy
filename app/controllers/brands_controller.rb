@@ -16,7 +16,8 @@ class BrandsController < ApplicationController
   def show
     @brand = Brand.find(params[:id], :include => [:votes, :brand_wiki])
     @comments = @brand.comments.find(:all, :limit => 10)
-    @tags = @brand.tag_counts_on(:tags)
+    @tags = @brand.top_tags(15)
+    
   end
   
   def comments
@@ -28,6 +29,11 @@ class BrandsController < ApplicationController
   def fans
     @brand = Brand.find(params[:brand_id])
     @votes = @brand.votes.positive_score.descending.paginate(:page => params[:page], :per_page => 4)
+  end
+  
+  def tags
+    @brand = Brand.find(params[:brand_id])
+    @tags = @brand.tag_counts_on(:tags)
   end
   
   def new
@@ -76,7 +82,7 @@ class BrandsController < ApplicationController
   
   private
   def smart_layout
-    profile_actions = [:show, :fans, :comments]
+    profile_actions = [:show, :fans, :comments, :tags, :add_tags]
     profile_actions.include?(action_name.to_sym) ? 'brand_profile' : 'application'
   end
   

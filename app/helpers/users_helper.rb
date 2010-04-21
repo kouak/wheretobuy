@@ -66,6 +66,6 @@ module UsersHelper
   end
   
   def user_short_infos(user = @user)
-    h(['22', user.city_name, nil, user.country_name].compact.join(', '))
+    h(['22 years old', user_sex_to_s(user).downcase, user.city_name, nil, user.country_name].compact.join(', '))
   end
 end

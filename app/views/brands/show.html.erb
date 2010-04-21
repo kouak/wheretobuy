@@ -44,11 +44,14 @@
 <% content_for :profile_sidebar do -%>
   <div id="profile-tags">
     <h2>Tags</h2>
-    <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-        <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
+    <% tag_cloud(@tags, %w(tag-cloud1 tag-cloud2 tag-cloud3 tag-cloud4)) do |tag, css_class| %>
+        <%= link_to tag.name, { :action => :search, :tag => tag.name }, :class => css_class %>
     <% end %>
     <span class="bottom-links">
-      <%= link_to 'Edit', '#' %> |
+      <%
+      # TODO : JavaScriptify this (some kind of facebox + autocomplete)
+      %>
+      <%= link_to 'Tag', new_brand_tagging_path(@brand) %> |
       <%= link_to 'See all', brand_tags_path(@brand) %>
     </span>
   </div>

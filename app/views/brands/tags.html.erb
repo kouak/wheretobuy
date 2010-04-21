@@ -1,0 +1,14 @@
+<% content_for :profile_tabs do -%>
+<%= brand_tabs('Tags') %>
+<% end -%>
+<%= brand_title 'Tags' %>
+<hr />
+<div id="tag-list">
+  <% tag_cloud(@tags, %w(tag-cloud1 tag-cloud2 tag-cloud3 tag-cloud4)) do |tag, css_class| %>
+      <%= link_to tag.name, { :action => :search, :tag => tag.name }, :class => css_class %>
+  <% end %>
+</div>
+
+<div id="tag-actions">
+  <%= link_to 'Tag this brand', new_brand_tagging_path(@brand) %>
+</div>

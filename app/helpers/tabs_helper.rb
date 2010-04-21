@@ -34,7 +34,7 @@ module TabsHelper
       {:title => 'Brand', :url => brand_path(brand)},
       {:title => 'Activity', :url => '#'},
       {:title => 'Wiki', :url => brand_brand_wiki_path(brand)},
-      {:title => 'Tags', :url => '#'},
+      {:title => 'Tags', :url => brand_tags_path(brand)},
       {:title => 'Similar brands', :url => '#'},
       {:title => 'Images', :url => '#'},
       {:title => 'Fans', :url => brand_fans_path(brand)},

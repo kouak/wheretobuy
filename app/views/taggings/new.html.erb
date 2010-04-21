@@ -1,0 +1,9 @@
+<h2>Editing tags for <%= link_to @parent %></h2>
+<% semantic_form_for(:tagging, :url => {:action => :create}) do |f| %>
+  <% f.inputs do %>
+    <%= f.input :tag_list, :as => :string, :label => 'Your tags', :input_html => {:value => @tag_list} %>
+  <% end %>
+  <% f.buttons do %>
+    <%= f.submit %>
+  <% end %>
+<% end %>

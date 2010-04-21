@@ -1,0 +1,10 @@
+<% content_for :profile_tabs do -%>
+<%= brand_tabs('Tags') %>
+<% end -%>
+<%= brand_title 'Tags' %>
+<hr />
+<% semantic_form_for @brand do |f| %>
+  <% f.inputs do %>
+    <%= f.input :tag_list %>
+  <% end %>
+<% end %>
