@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   has_many :reverse_friendships, :dependent => :destroy, :foreign_key => "friend_id", :class_name => "Friendship"
   has_many :reverse_friends, :through => :reverse_friendships, :source => :user
   
+  has_many :sent_activities, :class_name => 'Activity', :dependent => :destroy
+  
 
   attr_accessible :comments_count
   attr_accessible :email, :username, :password, :password_confirmation, :old_password, :country_id, :city_name, :sex

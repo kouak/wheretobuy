@@ -7,6 +7,8 @@ class Brand < ActiveRecord::Base
   validates_uniqueness_of :name
   
   has_many :comments, :as => :resource
+  has_many :activites, :as => :target, :dependent => :destroy
+  
   has_one :brand_wiki, :dependent => :destroy # User editable content
   
   acts_as_votable
