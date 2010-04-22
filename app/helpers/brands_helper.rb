@@ -25,7 +25,7 @@ module BrandsHelper
     brand = configuration[:brand]
     case brand
     when Brand
-      title = link_to(brand)
+      title = link_to(brand, brand_path(brand))
     else
       title = brand.to_s or raise ArgumentError
     end
@@ -38,5 +38,20 @@ module BrandsHelper
     
     content_tag(:div, picture + title + subtitle, configuration[:html_options])
     
+  end
+  
+  def brand_tag_link(tag = nil, opts = {})
+    case tag
+    when Tag
+      t = tag.name
+    else
+      t = tag.to_s
+    end
+    
+    if t.size
+      link_to(t, '#', opts)
+    else
+      ''
+    end
   end
 end

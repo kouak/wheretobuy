@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100421222554) do
+ActiveRecord::Schema.define(:version => 20100422123750) do
 
   create_table "activities", :force => true do |t|
     t.integer  "author_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20100421222554) do
     t.integer  "pageviews",      :default => 0
     t.integer  "votes_count",    :default => 0
     t.integer  "fan_count",      :default => 0
+    t.integer  "creator_id"
   end
 
   create_table "cities", :force => true do |t|

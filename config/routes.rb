@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
     brand.resource :brand_wiki, :except => [:index, :new, :create], :member => {:history => :get, :diff => :get}
     brand.fans '/fans', :controller => :brands, :action => :fans
     brand.tags '/tags', :controller => :brands, :action => :tags
+    brand.activity '/activity', :controller => :brands, :action => :activity
     brand.resources :taggings, :only => [:new, :create]
     brand.comments '/comments', :controller => :brands, :action => :comments
     brand.resources :votes, :only => [:index], :collection => {:vote_for => :post, :vote_against => :post, :vote_nil => :post}

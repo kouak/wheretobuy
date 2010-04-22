@@ -73,6 +73,17 @@ class BrandWikiTest < ActiveSupport::TestCase
   end
   
   
+  context "activity logger" do
+    setup {
+      @brand = Factory.stub(:brand)
+      @author = Factory.stub(:user)
+      @brand_wiki = BrandWiki.create(:brand => @brand, :editor => @author, :bio => 'cacaboudin')
+    }
+    should_create :brand_wiki
+    should_create :activity
+  end
+  
+  
   private
   
   def increment_brand_wiki_versions!(brand_wiki, versions)

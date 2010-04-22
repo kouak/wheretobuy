@@ -29,10 +29,10 @@ module TabsHelper
     rtn
   end
   
-  def brand_tabs(selected = 'Brand', brand = @brand)
+  def brand_tabs(selected = @selected_tab, brand = @brand)
     links = [
       {:title => 'Brand', :url => brand_path(brand)},
-      {:title => 'Activity', :url => '#'},
+      {:title => 'Activity', :url => brand_activity_path(brand)},
       {:title => 'Wiki', :url => brand_brand_wiki_path(brand)},
       {:title => 'Tags', :url => brand_tags_path(brand)},
       {:title => 'Similar brands', :url => '#'},

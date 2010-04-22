@@ -8,6 +8,11 @@ class Comment < ActiveRecord::Base
   validates_presence_of :resource_type
   validates_presence_of :resource_id
   
+  after_create do |comment| # Activity logging
+    raise Exceptions::ActivityError unless Activity.added_comment(comment).save
+    true
+  end
+  
   default_scope :order => 'created_at DESC' # new comments first  
   named_scope :recent,       lambda { |*args| {:conditions => ["created_at > ?", (args.first || 2.weeks.ago).to_s(:db)]} }
   

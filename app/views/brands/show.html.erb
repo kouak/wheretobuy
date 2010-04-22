@@ -45,7 +45,7 @@
   <div id="profile-tags">
     <h2>Tags</h2>
     <% tag_cloud(@tags, %w(tag-cloud1 tag-cloud2 tag-cloud3 tag-cloud4)) do |tag, css_class| %>
-        <%= link_to tag.name, { :action => :search, :tag => tag.name }, :class => css_class %>
+        <%= brand_tag_link(tag, :class => css_class) %>
     <% end %>
     <span class="bottom-links">
       <%
@@ -59,13 +59,11 @@
   <div id="profile-activity">
     <h2>News feed</h2>
     <ul>
-      <li class="added-comment">
-        kouak added a comment. <span class="time-ago">2 hours ago.</span>
-      </li>
-      <li class="edited-wiki last">
-        Boras edited wiki. <span class="time-ago">6 days ago.</span>
-      </li>
+      <% @activities.each do |activity| -%>
+        <%= brand_activity(activity, :last => activity == @activities.last) %>
+      <% end %>
     </ul>
+    <%= link_to "See more", brand_activity_path(@brand), :class => 'bottom-links' %>
   </div>
   <hr />
   <div id="profile-fans">

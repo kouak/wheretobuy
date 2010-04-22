@@ -1,5 +1,5 @@
 class BrandWiki < ActiveRecord::Base
-  attr_accessible :brand_id, :version_comment, :bio, :url, :editor_id, :time_of_revision
+  attr_accessible :brand_id, :version_comment, :bio, :url, :editor_id, :time_of_revision, :editor, :brand
   attr_accessor :time_of_revision
   
   belongs_to :brand
@@ -9,6 +9,12 @@ class BrandWiki < ActiveRecord::Base
   
   validates_length_of :bio, :minimum => 5
   validates_presence_of :editor_id
+  
+  after_save do |brand_wiki| # Activity logging
+    a = Activity.edited_brand_wiki(brand_wiki)
+    raise Exceptions::ActivityError unless a.save
+    true
+  end
   
   def differences_between(v1, v2)
     v1model = self.find_version(v1) || self

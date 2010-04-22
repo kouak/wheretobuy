@@ -1,0 +1,14 @@
+<% content_for :profile_tabs do -%>
+<%= brand_tabs('Activity') %>
+<% end -%>
+<% content_for :profile_main do -%>
+<% stylesheet('pagination') %>
+<%= brand_title 'Activity' %>
+<%= will_paginate @activities, :id => 'main-pagination' %>
+<hr />
+<pre>
+<% @activities.each do |activity| %>
+  <%= activity.to_yaml %>
+<% end %>
+</pre>
+<% end -%>

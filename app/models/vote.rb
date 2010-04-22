@@ -1,10 +1,6 @@
 class Vote < ActiveRecord::Base
   attr_accessible :voter_sex, :score, :voter, :votable
   
-  after_create :after_create_fan_count
-  after_update :after_update_fan_count
-  after_destroy :after_destroy_fan_count
-  
   belongs_to :votable, :polymorphic => true, :counter_cache => true
   belongs_to :voter, :class_name => "User"
   
@@ -18,6 +14,16 @@ class Vote < ActiveRecord::Base
   named_scope :negative_score, :conditions => ['score < ?', 0]
   named_scope :recent,       lambda { |*args| {:conditions => ["updated_at > ?", (args.first || 2.weeks.ago).to_s(:db)]} }
   named_scope :descending, :order => "updated_at DESC"
+  
+  after_create :after_create_fan_count
+  after_update :after_update_fan_count
+  after_destroy :after_destroy_fan_count
+  
+  after_save do |vote| # Activity logging
+    a = Activity.voted(vote)
+    raise Exceptions::ActivityError unless a.save
+    true
+  end
   
   # Add a vote or update current
   def self.add_vote(*args)

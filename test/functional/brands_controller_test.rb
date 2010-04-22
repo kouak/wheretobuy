@@ -25,6 +25,7 @@ class BrandsControllerTest < ActionController::TestCase
       end
       should_assign_to(:brand){@brand}
       should_assign_to(:comments)
+      should_assign_to(:activities)
       should_respond_with :success
       should_render_with_layout :brand_profile
       should_render_template :show
@@ -71,6 +72,21 @@ class BrandsControllerTest < ActionController::TestCase
     
     should_respond_with :success
     should_assign_to(:comments)
+    should_render_with_layout :brand_profile
+    should_assign_to(:brand)
+  end
+  
+  context "get activity" do
+    setup {
+      @brand ||= Factory.build(:brand)
+      Brand.stubs(:find).returns(@brand)
+      Brand.any_instance.stub_chain(:activities, :recent).returns(3.times.map { Factory.stub(:activity, :author => Factory.stub(:user), :target => @brand) })
+      get :activity, :id => @brand.to_param
+    }
+    
+    should_respond_with :success
+    should_assign_to(:activities)
+    should_render_with_layout :brand_profile
     should_assign_to(:brand)
   end
   
@@ -85,6 +101,7 @@ class BrandsControllerTest < ActionController::TestCase
     
     should_respond_with :success
     should_assign_to(:brand)
+    should_render_with_layout :brand_profile
     should_assign_to(:votes)
   end
   

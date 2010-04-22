@@ -53,7 +53,7 @@ class BrandWikisController < ApplicationController
   
   private
   def set_brand
-    @brand = Brand.find(params[:brand_id]) or redirect_to home
+    @brand = Brand.find(params[:brand_id]) # raise 404 if not found
   end
   
   def find_brand_wiki_or_redirect

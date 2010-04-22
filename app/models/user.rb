@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   FEMALE = true
   
   has_many :written_comments, :class_name => "Comment", :foreign_key => "author_id" # written comments
+  has_many :created_brands, :class_name => 'Brand', :foreign_key => 'creator_id'
   has_many :brand_wiki_editions, :class_name => "BrandWiki", :foreign_key => "editor_id"
   has_many :comments, :as => :resource
   belongs_to :city
@@ -39,7 +40,6 @@ class User < ActiveRecord::Base
   acts_as_voter
   acts_as_tagger
   
-  
   # validates password change from account page
   
   validate_on_update do |record|
@@ -49,6 +49,20 @@ class User < ActiveRecord::Base
       end
     end
   end
+  
+  def tag_with_activity_log(target, opts = {})
+    
+    taglist = TagList.from(opts[:with])
+    
+    if taglist.count > 0
+      a = Activity.tagged(target, taglist, self)
+      raise Exceptions::ActivityError unless a.save
+    end
+    
+    tag_without_activity_log(target, opts)
+  end
+  
+  alias_method_chain :tag, :activity_log
   
   def active?
     active

@@ -213,4 +213,17 @@ class VoteTest < ActiveSupport::TestCase
     assert_equal 2, brand.fan_count
     
   end
+  
+  context "activity logger" do
+    setup {
+      @brand = Factory.create(:brand, :creator => nil)
+      @voter = Factory.stub(:user)
+      @vote = @voter.vote_for(@brand)
+    }
+    should_create :vote
+    should_create :activity
+    should "have correct data" do
+      assert_equal({:type => 'voted', :score => 1}, @brand.reload.activities.recent.first.data)
+    end
+  end
 end
