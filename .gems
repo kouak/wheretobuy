@@ -6,7 +6,7 @@ will_paginate
 rails-geocoder
 factory_girl
 htmldiff
-compass
+compass --version '>= 0.10'
 compass-colors
 fancy-buttons
 state_machine
