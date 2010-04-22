@@ -9,12 +9,12 @@
 require 'open-uri'
 
 User.delete_all
-User.find_by_sql('delete from sqlite_sequence where name = "users"')
+#User.find_by_sql('delete from sqlite_sequence where name = "users"')
 User.create!(:username => 'kouak', :email => 'benjamin.beret@gmail.com', :password => 'secret', :password_confirmation => 'secret', :sex => User::MALE).activate!
 User.create!(:username => 'kouak2', :email => 'benjamin.beret2@gmail.com', :password => 'secret', :password_confirmation => 'secret', :sex => User::MALE).activate!
 
 Country.delete_all
-Country.find_by_sql('delete from sqlite_sequence where name = "countries"')
+#Country.find_by_sql('delete from sqlite_sequence where name = "countries"')
 open("http://openconcept.ca/sites/openconcept.ca/files/country_code_drupal_0.txt") do |countries|
   countries.read.each_line do |country|
     code, name = country.chomp.split("|")
@@ -35,7 +35,7 @@ end
 
 # Brands
 Brand.delete_all
-Brand.find_by_sql('delete from sqlite_sequence where name = "brands"')
+#Brand.find_by_sql('delete from sqlite_sequence where name = "brands"')
 [
   {:id => 1, :name => 'A.P.C'},
   {:id => 2, :name => 'Rick Owens'}
