@@ -13,3 +13,4 @@ state_machine
 shoulda
 mocha
 acts-as-taggable-on
+rcov
