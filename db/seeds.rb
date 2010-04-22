@@ -23,7 +23,7 @@ open("http://openconcept.ca/sites/openconcept.ca/files/country_code_drupal_0.txt
 end
 
 City.delete_all
-City.find_by_sql('delete from sqlite_sequence where name = "cities"')
+#City.find_by_sql('delete from sqlite_sequence where name = "cities"')
 [
   {:name => 'Paris', :country => 'France'},
   {:name => 'London', :country => 'United Kingdom'},
