@@ -14,3 +14,4 @@ shoulda
 mocha
 acts-as-taggable-on
 rcov
+acts_as_versioned
