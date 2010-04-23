@@ -11,7 +11,6 @@ class StaticPagesControllerTest < ActionController::TestCase
     }
     should_assign_to :users
     should_assign_to :brands
-    should_assign_to :cities
     should_respond_with :success
     should_not_set_the_flash
     should_render_template :home

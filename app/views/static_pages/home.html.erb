@@ -17,12 +17,3 @@
   <% end %>
   </ul>
 </div>
-
-<div id="cities">
-  <h2>Featured cities</h2>
-  <ul>
-  <% @cities.each do |city| %>
-    <li><%= link_to city.to_s, [city.country, city] %></li>
-  <% end %>
-  </ul>
-</div>
