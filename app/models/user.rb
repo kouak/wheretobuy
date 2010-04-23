@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_length_of :username, :in => 2..30
   validates_inclusion_of :sex, :in => [true, false]
+  validates_date :birthday, :allow_blank => true, :allow_nil => true
+  
   
   before_validation :set_city_id
   
