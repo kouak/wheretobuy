@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   config.gem 'shoulda'
   config.gem 'mocha'
   config.gem 'acts-as-taggable-on'
+  config.gem 'validates_timeliness'
   
   
   # Settings in config/environments/* take precedence over those specified here.
