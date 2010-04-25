@@ -1,6 +1,94 @@
-#profile-main { display: inline; float: left; margin-right: 10px; width: 510px; padding-right: 24px; margin-right: 25px; border-right: 1px solid #b1ad69; }
-* html #profile-main { overflow-x: hidden; }
+/* line 6, ../../../app/stylesheets/profile/sidebar.sass */
+#profile-main {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 510px;
+  padding-right: 24px;
+  margin-right: 25px;
+  border-right: 1px solid #bbbbbb;
+}
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html #profile-main {
+  overflow-x: hidden;
+}
 
-#profile-sidebar { display: inline; float: left; margin-right: 0; width: 230px; }
-* html #profile-sidebar { overflow-x: hidden; }
-#profile-sidebar hr { background: #b1ad69; color: #b1ad69; clear: both; float: none; width: 100%; height: .1em; margin: 0 0 1.45em; border: none; }
+/* line 10, ../../../app/stylesheets/profile/sidebar.sass */
+#profile-sidebar {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 230px;
+}
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html #profile-sidebar {
+  overflow-x: hidden;
+}
+/* line 12, ../../../app/stylesheets/profile/sidebar.sass */
+#profile-sidebar hr {
+  background: #bbbbbb;
+  color: #bbbbbb;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: .1em;
+  margin: 0 0 1.45em;
+  border: none;
+}
+/* line 15, ../../../app/stylesheets/profile/sidebar.sass */
+#profile-sidebar #profile-tags .tag-cloud {
+  font-size: 1em;
+  line-height: 1.2em;
+}
+/* line 5, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_tag_cloud.sass */
+#profile-sidebar #profile-tags .tag-cloud .xxs, #profile-sidebar #profile-tags .tag-cloud .xs, #profile-sidebar #profile-tags .tag-cloud .s, #profile-sidebar #profile-tags .tag-cloud .l, #profile-sidebar #profile-tags .tag-cloud .xl, #profile-sidebar #profile-tags .tag-cloud .xxl {
+  line-height: 1.2em;
+}
+/* line 7, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_tag_cloud.sass */
+#profile-sidebar #profile-tags .tag-cloud .xxs {
+  font-size: 0.5em;
+}
+/* line 9, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_tag_cloud.sass */
+#profile-sidebar #profile-tags .tag-cloud .xs {
+  font-size: 0.667em;
+}
+/* line 11, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_tag_cloud.sass */
+#profile-sidebar #profile-tags .tag-cloud .s {
+  font-size: 0.75em;
+}
+/* line 13, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_tag_cloud.sass */
+#profile-sidebar #profile-tags .tag-cloud .l {
+  font-size: 1.333em;
+}
+/* line 15, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_tag_cloud.sass */
+#profile-sidebar #profile-tags .tag-cloud .xl {
+  font-size: 1.5em;
+}
+/* line 17, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_tag_cloud.sass */
+#profile-sidebar #profile-tags .tag-cloud .xxl {
+  font-size: 2em;
+}
+/* line 18, ../../../app/stylesheets/profile/sidebar.sass */
+#profile-sidebar #profile-activity ul {
+  margin-bottom: 15px;
+  padding: 0;
+  width: 100%;
+}
+/* line 22, ../../../app/stylesheets/profile/sidebar.sass */
+#profile-sidebar #profile-activity ul li {
+  display: block;
+  border-bottom: 1px dotted #bbbbbb;
+  min-height: 20px;
+  padding-left: 20px;
+  background-image: url(/images/profile-news-feed/comment.png);
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+/* line 23, ../../../app/stylesheets/profile/sidebar.sass */
+#profile-sidebar #profile-activity ul li .time-ago {
+  color: #666;
+}
+/* line 32, ../../../app/stylesheets/profile/sidebar.sass */
+#profile-sidebar #profile-activity ul li.last {
+  border-background: 0;
+}

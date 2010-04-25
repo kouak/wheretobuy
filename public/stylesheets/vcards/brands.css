@@ -6,7 +6,7 @@ div.brand-vcard {
   width: 350px;
   margin-bottom: 2em;
 }
-/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
 * html div.brand-vcard {
   overflow-x: hidden;
 }
@@ -17,7 +17,7 @@ div.brand-vcard div.picture-wrapper {
   margin-right: 10px;
   width: 110px;
 }
-/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
 * html div.brand-vcard div.picture-wrapper {
   overflow-x: hidden;
 }
@@ -30,7 +30,7 @@ div.brand-vcard div.picture-wrapper a {
 }
 /* line 14, ../../../app/stylesheets/vcards/brands.sass */
 div.brand-vcard div.picture-wrapper a:hover {
-  border: 1px solid #b1ad69;
+  border: 1px solid #bbbbbb;
 }
 /* line 16, ../../../app/stylesheets/vcards/brands.sass */
 div.brand-vcard div.picture-wrapper a img {
@@ -44,7 +44,7 @@ div.brand-vcard div.infos {
   margin-right: 0;
   width: 230px;
 }
-/* line 101, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
 * html div.brand-vcard div.infos {
   overflow-x: hidden;
 }

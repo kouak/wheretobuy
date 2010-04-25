@@ -7,22 +7,20 @@ RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  config.gem 'rails-footnotes'
-  config.gem 'cucumber'
+  
   config.gem 'formtastic'
   config.gem 'authlogic' # rails 3
   config.gem 'will_paginate' # rails 3
   config.gem 'rails-geocoder', :lib => 'geocoder'
-  config.gem 'factory_girl' # rails 2
   config.gem 'htmldiff'
   config.gem 'compass' # rails 3
   config.gem 'compass-colors' # rails 3
   config.gem 'fancy-buttons' # rails 3
   config.gem 'state_machine'
-  config.gem 'shoulda'
-  config.gem 'mocha'
+
   config.gem 'acts-as-taggable-on'
   config.gem 'validates_timeliness'
+  config.gem 'haml'
   
   
   # Settings in config/environments/* take precedence over those specified here.

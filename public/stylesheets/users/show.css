@@ -77,7 +77,7 @@
   margin: 0 auto;
   padding: 2px;
   display: block;
-  border: 1px solid #b1ad69;
+  border: 1px solid #bbbbbb;
 }
 /* line 64, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-activity ul {
@@ -86,7 +86,7 @@
 /* line 66, ../../../app/stylesheets/users/show.sass */
 #profile-sidebar #profile-activity ul li {
   display: block;
-  border-bottom: 1px dotted #b1ad69;
+  border-bottom: 1px dotted #bbbbbb;
   min-height: 20px;
   padding-left: 20px;
   background-image: url(/images/profile-news-feed/comment.png);

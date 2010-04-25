@@ -585,127 +585,12 @@ a.button.spade.disabled:active, a.button.spade[disabled], button.spade.disabled:
   border-width: 2px;
 }
 
-/* line 3, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic li {
-  padding: 10px 0px;
-}
-/* line 6, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic li li {
-  padding: 0;
-}
-/* line 11, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic fieldset {
-  background: #eee;
-  margin-top: 20px;
-}
-/* line 16, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic li fieldset {
-  padding: 0;
-}
-/* line 21, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic legend, form.formtastic label {
-  color: #333;
-}
-/* line 24, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic label, form.formtastic .label {
-  padding-bottom: 5px;
-}
-/* line 27, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic label abbr, form.formtastic .label abbr {
-  color: #f00;
-}
-/* line 29, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic label {
-  line-height: 1.4em;
-  font-size: 13px;
-}
-/* line 33, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic legend span {
-  font-size: 1.4em;
-  line-height: 1em;
-}
-/* line 37, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic legend span.label {
-  font-size: 1em;
-}
-/* line 42, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic select {
-  padding: 3px;
-}
-/* line 44, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic input, form.formtastic textarea, form.formtastic select {
-  font-family: inherit;
-  font-size: 14px;
-}
-/* line 47, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic textarea, form.formtastic input {
-  border: 1px solid #999;
-  padding: 6px 8px;
-  line-height: 100%;
-}
-/* line 55, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic .date li, form.formtastic .time li, form.formtastic .datetime li {
-  margin: 0 0.3em 0 0;
-}
-/* line 63, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic #errorExplanation li {
-  margin-left: 15px;
-}
-/* line 65, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic form p, form.formtastic .errors {
-  padding: 3px 0px;
-}
-/* line 68, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic .required input, form.formtastic .required textarea, form.formtastic .required select {
-  background-color: #fff;
-}
-/* line 71, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic .error input, form.formtastic .error textarea, form.formtastic .error select {
-  background-color: #fcc;
-  border: 1px solid #f66;
-}
-/* line 75, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic .optional input, form.formtastic .optional textarea, form.formtastic .optional select {
-  background-color: #fff;
-}
-/* line 77, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic .errors {
-  color: #a00;
-}
-/* line 79, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic .errors li {
-  margin-left: 1.2em;
-}
-/* line 81, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic p.inline-errors {
-  color: #f00;
-}
-/* line 83, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic p.inline-hints {
-  color: #777;
-}
-/* line 88, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic .buttons {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-top: 8px;
-}
-/* line 92, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic .buttons li {
-  padding-right: 0.5em;
-}
-/* line 94, ../../app/stylesheets/partials/_skintastic.sass */
-form.formtastic .buttons input {
-  border: 1px solid #999;
-}
-
-/* line 43, ../../app/stylesheets/screen.sass */
+/* line 16, ../../app/stylesheets/screen.sass */
 body.bp {
   line-height: 1.5;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   color: #333333;
   font-size: 75%;
-  background-color: #eeeeee;
 }
 /* line 58, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_typography.sass */
 body.bp h1 {
@@ -782,23 +667,23 @@ body.bp p img.right {
 /* line 100, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_typography.sass */
 body.bp a {
   text-decoration: underline;
-  color: #000099;
+  color: #471045;
 }
 /* line 12, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
 body.bp a:visited {
-  color: #000066;
+  color: #471045;
 }
 /* line 15, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
 body.bp a:focus {
-  color: black;
+  color: #ff8800;
 }
 /* line 18, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
 body.bp a:hover {
-  color: black;
+  color: #ff8800;
 }
 /* line 21, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
 body.bp a:active {
-  color: #cc0099;
+  color: #ff8800;
 }
 /* line 103, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_typography.sass */
 body.bp blockquote {
@@ -912,406 +797,214 @@ body.bp .quiet {
 body.bp .loud {
   color: #111111;
 }
-/* line 446, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li label, body.bp li legend span.label {
-  font-weight: bold;
-}
-/* line 449, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li li label {
-  font-weight: normal;
-}
-/* line 136, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp ul, body.bp ol, body.bp legend, body.bp p {
-  margin: 0;
-  padding: 0;
-}
-/* line 139, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li {
-  margin-left: 0px;
-  margin-right: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-/* line 145, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp fieldset {
-  display: block;
-  *display: inline-block;
-}
-/* line 93, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp fieldset:after {
-  content: " ";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-/* line 149, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp abbr, body.bp acronym {
-  border: 0;
-  font-variant: normal;
-  font-weight: normal;
-}
-/* line 154, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp ol, body.bp ul {
-  list-style: none;
-}
-/* line 157, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp label {
-  display: block;
-  *display: inline-block;
-}
-/* line 93, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp label:after {
-  content: " ";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-/* line 161, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp input, body.bp textarea {
-  vertical-align: middle;
-}
-/* line 165, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .check_boxes input, body.bp .radio input {
-  margin: 0;
-}
-/* line 167, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .check_boxes label, body.bp .radio label {
-  cursor: pointer;
-}
-/* line 170, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .hidden {
-  display: none;
-}
-/* line 174, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .date li, body.bp .time li, body.bp .datetime li {
-  float: left;
-  width: auto;
-  clear: none;
-}
-/* line 178, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .date label, body.bp .time label, body.bp .datetime label {
-  display: none;
-  width: auto;
-}
-/* line 181, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .date input, body.bp .time input, body.bp .datetime input {
-  display: inline;
-  margin: 0;
-  padding: 0;
-}
-/* line 186, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .errors {
-  list-style: square;
-}
-/* line 188, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .errors li {
-  padding: 0;
-  border: none;
-  display: list-item;
-  float: none;
-  clear: both;
-}
-/* line 194, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .inputs {
-  z-index: 99;
-}
-/* line 197, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .buttons li {
-  float: left;
-}
-/* line 200, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li {
-  *display: inline-block;
-  display: block;
-}
-/* line 93, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li:after {
-  content: " ";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-/* line 203, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li fieldset {
-  border: none;
-  position: relative;
-  margin-top: 0px;
-}
-/* line 207, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li legend {
-  display: block;
-  margin-bottom: 0;
-}
-/* line 210, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li .label {
-  display: block;
-  clear: both;
-  background: transparent;
-}
-/* line 215, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li ol {
-  float: left;
-  margin: 0;
-}
-/* line 218, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li ol li {
-  padding: 0;
-  border: 0;
-  display: inline;
-}
-/* line 310, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp fieldset {
-  width: 100%;
-}
-/* line 312, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp label {
-  float: left;
-  width: 18%;
-  text-align: left;
-  padding-left: 2%;
-}
-/* line 318, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li ol {
-  padding: 0 8% 0 20%;
-}
-/* line 321, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li fieldset legend, body.bp li fieldset legend .label {
-  display: block;
-}
-/* line 323, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li fieldset legend {
-  width: 18%;
-  text-align: left;
-  display: inline;
-  float: left;
-  clear: none;
-  padding-left: 2%;
-  width: 98%;
-}
-/* line 326, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li fieldset .label {
-  position: absolute;
-  width: 18%;
-  top: 0px;
-  left: 2%;
-}
-/* line 334, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li fieldset label {
-  padding-left: 0;
-}
-/* line 336, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li fieldset label, body.bp li fieldset input {
-  width: auto;
-  display: inline;
-  clear: none;
-  text-align: left;
-}
-/* line 341, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp li fieldset select {
-  padding: 0;
-  clear: both;
-  display: block;
-}
-/* line 345, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .inline-hints, body.bp .inline-errors, body.bp .errors {
-  margin: 0 0 0 20%;
-}
-/* line 347, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp input, body.bp textarea {
-  width: 72%;
-}
-/* line 349, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp select {
-  width: auto;
-}
-/* line 355, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .checkbox li, body.bp .radio li {
-  display: block;
-  clear: both;
-}
-/* line 358, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .checkbox input, body.bp .radio input {
-  border: none;
-}
-/* line 360, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .buttons {
-  padding-left: 20%;
-  width: 80%;
-}
-/* line 363, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .buttons input {
-  width: auto;
-}
-/* line 368, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp .buttons li {
-  width: auto;
-  float: left;
-  display: inline;
-}
-/* line 379, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp #errorExplanation {
-  margin-left: 20%;
-  width: 72%;
-}
-/* line 48, ../../app/stylesheets/screen.sass */
+/* line 19, ../../app/stylesheets/screen.sass */
 body.bp a {
   text-decoration: none;
 }
-/* line 50, ../../app/stylesheets/screen.sass */
+/* line 4, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/links/_hover_link.sass */
 body.bp a:hover {
   text-decoration: underline;
 }
-/* line 52, ../../app/stylesheets/screen.sass */
+/* line 21, ../../app/stylesheets/screen.sass */
 body.bp #container {
   width: 950px;
   margin: 0 auto;
-  *display: inline-block;
+  overflow: hidden;
+  display: inline-block;
 }
-/* line 93, ../../app/stylesheets/partials/_formtastic.sass */
-body.bp #container:after {
-  content: " ";
+/* line 5, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+body.bp #container {
   display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
 }
-/* line 54, ../../app/stylesheets/screen.sass */
-body.bp #footer, body.bp #content {
+/* line 23, ../../app/stylesheets/screen.sass */
+body.bp #footer {
   display: inline;
   float: left;
   margin-right: 0;
   width: 950px;
 }
 /* line 101, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
-* html body.bp #footer, * html body.bp #content {
+* html body.bp #footer {
   overflow-x: hidden;
 }
 
-/* line 58, ../../app/stylesheets/screen.sass */
-#topbar {
+/* line 28, ../../app/stylesheets/screen.sass */
+body.bp #header-wrap {
   width: 100%;
-  background-color: #471045;
+  background-color: #eeeeee;
 }
-/* line 61, ../../app/stylesheets/screen.sass */
-#topbar a {
-  color: #eeeeee;
-}
-/* line 63, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap {
+/* line 31, ../../app/stylesheets/screen.sass */
+body.bp #header-wrap #header {
   width: 950px;
   margin: 0 auto;
-  *display: inline-block;
+  overflow: hidden;
+  display: inline-block;
 }
-/* line 93, ../../app/stylesheets/partials/_formtastic.sass */
-#topbar #header-wrap:after {
-  content: " ";
+/* line 5, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
+body.bp #header-wrap #header {
   display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
 }
-/* line 65, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header {
-  display: inline;
-  float: left;
-  margin-right: 0;
-  width: 950px;
-}
-/* line 101, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
-* html #topbar #header-wrap #header {
-  overflow-x: hidden;
-}
-/* line 67, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header #search {
+/* line 33, ../../app/stylesheets/screen.sass */
+body.bp #header-wrap #header #search {
   float: right;
   clear: both;
   margin-top: 15px;
 }
-/* line 21, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header #main_navigation ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  float: left;
-  width: 100%;
-}
-/* line 27, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header #main_navigation ul li {
-  float: left;
-  margin: 0 1em 0 0;
-}
-/* line 30, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header #main_navigation ul li a {
-  text-decoration: none;
-  display: block;
-  width: 6em;
-  padding: 0 0.5em;
-  font-weight: bold;
-  border-bottom: 0.5em solid #eeeeee;
-  color: #eeeeee;
-}
-/* line 38, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header #main_navigation ul li a:hover, #topbar #header-wrap #header #main_navigation ul li a.current {
-  color: #aeaeae;
-  border-color: #aeaeae;
-}
-/* line 73, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header #user_login_box {
+/* line 37, ../../app/stylesheets/screen.sass */
+body.bp #header-wrap #header #user_login_box {
   margin-top: 10px;
   float: right;
-  color: white;
+  clear: both;
 }
-/* line 77, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header #user_login_box a {
-  color: white;
-}
-/* line 79, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header #user_login_box a:hover {
-  color: yellow;
-}
-/* line 81, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header h1 {
+/* line 41, ../../app/stylesheets/screen.sass */
+body.bp #header-wrap #header h1 {
   display: inline;
   font-size: 6em;
 }
-/* line 84, ../../app/stylesheets/screen.sass */
-#topbar #header-wrap #header h1 a {
+/* line 44, ../../app/stylesheets/screen.sass */
+body.bp #header-wrap #header h1 a {
   text-decoration: none;
 }
 
-/* line 87, ../../app/stylesheets/screen.sass */
-#content {
-  border: 1px solid #b1ad69;
-  background-color: white;
-  padding: 10px;
-  height: 100%;
+/* line 49, ../../app/stylesheets/screen.sass */
+body.bp #main-wrap {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, white));
+  background-image: -moz-linear-gradient(top, #eeeeee 0%, white 100%);
 }
-
-/* line 94, ../../app/stylesheets/screen.sass */
-#advertising {
+/* line 51, ../../app/stylesheets/screen.sass */
+body.bp #main-wrap #main_navigation {
+  display: inline;
+  float: left;
+  margin-right: 0;
   width: 950px;
+  border-style: dotted;
+  border-color: #471045;
+  border-width: 1px 0;
+  background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #eeddee), color-stop(100%, white));
+  background-image: -moz-linear-gradient(bottom, #eeddee 0%, white 100%);
+  display: block;
+  margin: 1em 0;
+}
+/* line 101, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html body.bp #main-wrap #main_navigation {
+  overflow-x: hidden;
+}
+/* line 13, ../../app/stylesheets/partials/_main_navigation.sass */
+body.bp #main-wrap #main_navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: right;
+}
+/* line 18, ../../app/stylesheets/partials/_main_navigation.sass */
+body.bp #main-wrap #main_navigation ul li {
+  float: left;
+  margin: 0 2em;
+}
+/* line 21, ../../app/stylesheets/partials/_main_navigation.sass */
+body.bp #main-wrap #main_navigation ul li a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: Arial, sans;
+  font-size: 1.6em;
+  line-height: 2em;
+  display: block;
   margin: 0 auto;
-  *display: inline-block;
+  color: #444444;
+}
+/* line 30, ../../app/stylesheets/partials/_main_navigation.sass */
+body.bp #main-wrap #main_navigation ul li a:hover, body.bp #main-wrap #main_navigation ul li a:active {
+  color: #ff8800;
+  text-decoration: underline;
+}
+/* line 54, ../../app/stylesheets/screen.sass */
+body.bp #main-wrap #flash {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 950px;
+}
+/* line 101, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html body.bp #main-wrap #flash {
+  overflow-x: hidden;
+}
+/* line 3, ../../app/stylesheets/partials/_flash_messages.sass */
+body.bp #main-wrap #flash span {
+  margin: 1.5em auto;
+  margin-top: 0;
+  text-align: center;
+  display: block;
+  border-top: 1px solid #bbbbbb;
+  border-bottom: 1px solid #bbbbbb;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-size: 1.3em;
+  line-height: 2em;
+}
+/* line 15, ../../app/stylesheets/partials/_flash_messages.sass */
+body.bp #main-wrap #flash.error span {
+  color: #8a1f11;
+  border-color: #fbc2c4;
+  background-color: #fbe3e4;
+}
+/* line 20, ../../app/stylesheets/partials/_flash_messages.sass */
+body.bp #main-wrap #flash.success span {
+  color: #264409;
+  border-color: #c6d880;
+  background-color: #e6efc2;
+}
+/* line 25, ../../app/stylesheets/partials/_flash_messages.sass */
+body.bp #main-wrap #flash.notice span {
+  color: #514721;
+  border-color: #ffd324;
+  background-color: #fff6bf;
+}
+/* line 56, ../../app/stylesheets/screen.sass */
+body.bp #main-wrap #content {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 950px;
+}
+/* line 101, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html body.bp #main-wrap #content {
+  overflow-x: hidden;
+}
+/* line 58, ../../app/stylesheets/screen.sass */
+body.bp #main-wrap #advertising {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 950px;
   margin: 30px auto;
 }
-/* line 93, ../../app/stylesheets/partials/_formtastic.sass */
-#advertising:after {
-  content: " ";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
+/* line 101, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html body.bp #main-wrap #advertising {
+  overflow-x: hidden;
 }
-/* line 97, ../../app/stylesheets/screen.sass */
-#advertising img {
+/* line 61, ../../app/stylesheets/screen.sass */
+body.bp #main-wrap #advertising img {
   display: block;
   margin: 0 auto;
 }
+/* line 64, ../../app/stylesheets/screen.sass */
+body.bp #main-wrap h1#main-title {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 950px;
+  color: #471045;
+  padding-bottom: 0.4em;
+  font-size: 2.5em;
+  border-bottom: 1px solid #bbbbbb;
+}
+/* line 101, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html body.bp #main-wrap h1#main-title {
+  overflow-x: hidden;
+}
 
-/* line 8, ../../app/stylesheets/base.sass */
+/* */
+/* line 10, ../../app/stylesheets/base.sass */
 body.bp #flash_notice {
   margin: 10px 0;
   padding: 5px 8px;
@@ -1319,7 +1012,7 @@ body.bp #flash_notice {
   background-color: #fff6bf;
   border: solid 1px #ffd324;
 }
-/* line 13, ../../app/stylesheets/base.sass */
+/* line 15, ../../app/stylesheets/base.sass */
 body.bp #flash_error {
   margin: 10px 0;
   padding: 5px 8px;
@@ -1327,38 +1020,27 @@ body.bp #flash_error {
   background-color: #fbe3e4;
   border: solid 1px #fbc2c4;
 }
-/* line 18, ../../app/stylesheets/base.sass */
-body.bp .fieldWithErrors {
-  display: inline;
-}
-/* line 20, ../../app/stylesheets/base.sass */
-body.bp #errorExplanation {
-  margin-bottom: 20px;
-  padding: 0 0 12px 0;
-  border: 2px solid #fbc2c4;
-  background-color: #fbe3e4;
-  width: 400px;
-}
-/* line 26, ../../app/stylesheets/base.sass */
-body.bp #errorExplanation h2 {
-  margin: 0;
-  padding: 8px;
-  text-align: left;
-  font-weight: bold;
-  font-size: 12px;
-  color: #8a1f11;
-}
-/* line 33, ../../app/stylesheets/base.sass */
-body.bp #errorExplanation p {
-  margin-bottom: 0;
-  padding: 8px;
-}
-/* line 36, ../../app/stylesheets/base.sass */
-body.bp #errorExplanation ul {
-  margin: 2px 24px;
-}
-/* line 38, ../../app/stylesheets/base.sass */
-body.bp #errorExplanation ul li {
-  font-size: 12px;
-  list-style: disc;
-}
+
+/* .fieldWithErrors
+ *   display: inline
+ * #errorExplanation
+ *   margin-bottom: 20px
+ *   padding: 0 0 12px 0
+ *   border= 2px "solid" !error_border_color
+ *   background-color= !error_bg_color
+ *   width: 400px
+ *   h2
+ *     margin: 0
+ *     padding: 8px
+ *     text-align: left
+ *     font-weight: bold
+ *     font-size: 12px
+ *     color= !error_color
+ *   p
+ *     margin-bottom: 0
+ *     padding: 8px
+ *   ul
+ *     margin: 2px 24px
+ *     li
+ *       font-size: 12px
+ *       list-style: disc */

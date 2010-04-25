@@ -1,20 +1,14 @@
 rails -v 2.3.5
 pg
-rails-footnotes
-cucumber
-formtastic
 authlogic
 will_paginate
 rails-geocoder
-factory_girl
 htmldiff
 compass --version '>= 0.10.0.pre9'
 compass-colors
 fancy-buttons
 state_machine
-shoulda
-mocha
 acts-as-taggable-on
-rcov
 acts_as_versioned
 validates_timeliness
+formtastic

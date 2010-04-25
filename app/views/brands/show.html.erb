@@ -44,9 +44,11 @@
 <% content_for :profile_sidebar do -%>
   <div id="profile-tags">
     <h2>Tags</h2>
-    <% tag_cloud(@tags, %w(tag-cloud1 tag-cloud2 tag-cloud3 tag-cloud4)) do |tag, css_class| %>
+    <div class="tag-cloud">
+      <% tag_cloud(@tags, tag_cloud_css_classes) do |tag, css_class| %>
         <%= brand_tag_link(tag, :class => css_class) %>
-    <% end %>
+      <% end %>
+    </div>
     <span class="bottom-links">
       <%
       # TODO : JavaScriptify this (some kind of facebox + autocomplete)

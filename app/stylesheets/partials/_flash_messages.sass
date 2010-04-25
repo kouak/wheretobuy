@@ -1,0 +1,28 @@
+=flash_messages
+  +column(24, true)
+  span
+    margin= 1.5em "auto"
+    margin-top= 0
+    text-align: center
+    display= "block"
+    border-top= 1px "solid" #bbb
+    border-bottom= 1px "solid" #bbb
+    padding-left= 2em
+    padding-right= 2em
+    font-size: 1.3em
+    line-height: 2em
+  &.error
+    span
+      color= !error_color
+      border-color= !error_border_color
+      background-color= !error_bg_color
+  &.success
+    span
+      color= !success_color
+      border-color= !success_border_color
+      background-color= !success_bg_color
+  &.notice
+    span
+      color= !notice_color
+      border-color= !notice_border_color
+      background-color= !notice_bg_color

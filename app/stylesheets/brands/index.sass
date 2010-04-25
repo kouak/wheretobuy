@@ -1,26 +1,32 @@
 @import blueprint
 @import theme
 
-#brands-wrapper
-  +column(16)
+
+
+#brands-left-column
+  +column(17)
   +colborder(!border_color)
   
 #brands-search
-  margin-bottom= 40px
+  +column(16, true)
+  margin-bottom= 2em
 
 
 #brands-taglist
   +column(4)
+  +colborder(!border_color)
   ul
     display= "block"
+    margin= 0
+    padding-left= 0
     li
       display= "block"
       font-family= "Lucida Grande"
       border-bottom= 1px "solid" !border_color
       font-size= 1.1em
+      padding-left= 1em
       line-height= 2em
       font-weight= "bold"
-      padding-left= 1em
       a
         color= !complement_support_color
         font-weight= "normal"
@@ -29,8 +35,7 @@
           text-decoration= "underline"
 
 #brands-list
-  +column(10)
-  +prepend(1)
+  +column(11, true)
   div.brand
     +clearfix
     margin-bottom= 10px

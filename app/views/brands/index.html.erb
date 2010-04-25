@@ -1,7 +1,7 @@
 <% title "Find brands" %>
 <%= stylesheet 'brands/index' %>
 
-<div id="brands-wrapper">
+<div id="brands-left-column">
   <div id="brands-search">
     <h3>Search brands</h3>
     <% search_box %>
@@ -30,6 +30,7 @@
     <p><%= link_to "New Brand", new_brand_path %></p>
   </div>
 </div>
+
 <div id="recommendations">
   <h3>See recommendations :</h3>
   <% for brand in @brands %>

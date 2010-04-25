@@ -7,13 +7,21 @@
 !complement_support_color = #f80
 !complement_accent_color = #471045
 
-!grey_background_color = #EEE
+!grey_background_color = #eee
 
-!border_color = !base_color
+!header_background_color = #eee
+
+!border_color = #bbb
 
 !complement_support_color ||= adjust_hue(!base_color, 180 + 30)
 !complement_accent_color  ||= adjust_hue(!base_color, 180 - 30)
 
+
+!link_color = !complement_accent_color
+!link_visited_color = !link_color
+!link_hover_color = !complement_support_color
+!link_active_color = !link_hover_color
+!link_focus_color = !link_hover_color
 
 
 !dark_base_color     = darken(!base_color, 25)

@@ -1,100 +1,73 @@
 @import blueprint/reset.sass
+
 +blueprint-global-reset
 
 @import partials/base.sass
 @import partials/buttons.sass
 @import blueprint
 
-
-@import partials/formtastic.sass
-@import partials/skintastic.sass
 @import theme.sass
 
-!fb_gradient_style = "matte"
-!fb_color = !complement_accent_color
-
-=form_formtastic
-  +bold-labels
-  +float-form-left(100%,20%,72%,2%)
-  
-=main_navigation
-  ul
-    list-style: none
-    padding: 0
-    margin: 0
-    float: left
-    width: 100%
-    li
-      float: left
-      margin: 0 1em 0 0
-      a
-        text-decoration: none
-        display: block
-        width: 6em
-        padding= 0 0.5em
-        font-weight= "bold"
-        border-bottom= 0.5em "solid" !grey_background_color
-        color= !grey_background_color
-        &:hover, &.current
-          color= darken(!grey_background_color, 25)
-          border-color= darken(!grey_background_color, 25)
+@import compass/utilities/links/hover_link.sass
+@import partials/main_navigation.sass
+@import partials/flash_messages
 
 
 body.bp
   +blueprint-typography(true)
-  background-color= !grey_background_color
-  form
-    +form_formtastic
   // Links
   a
-    text-decoration= "none"
-    &:hover
-      text-decoration= "underline"
+    +hover-link
   #container
     +container
-  #footer, #content
+  #footer
     +column(!blueprint_grid_columns, true)
 
 // Header
-#topbar
-  width= 100%
-  background-color= !complement_accent_color
-  a
-    color= !grey_background_color
+body.bp
   #header-wrap
-    +container
+    width= 100%
+    background-color= !header_background_color
     #header
-      +column(!blueprint_grid_columns, true)
+      +container
       #search
         float= "right"
         clear= "both"
         margin-top= 15px
-      #main_navigation
-        +main_navigation
       #user_login_box
         margin-top= 10px
         float= "right"
-        color= "white"
-        a
-          color= "white"
-          &:hover
-            color= "yellow"
+        clear= "both"
       h1
         display= "inline"
         font-size= 6em
         a
           text-decoration= "none"
 
-#content
-  border= 1px "solid" !border_color
-  background-color= "white"
-  padding= 10px
-  height= 100%
-  
+// Main-wrap
+body.bp
+  #main-wrap
+    +linear-gradient(color_stops(!header_background_color, #FFF))
+    #main_navigation
+      +column(24, true)
+      +main_navigation
+    #flash
+      +flash_messages
+    #content
+      +column(24, true)  
+    #advertising
+      +column(24, true)
+      margin= 30px "auto"
+      img
+        display= "block"
+        margin= 0 "auto"
+    h1#main-title
+      +column(24, true)
+      color= !complement_accent_color
+      padding-bottom: 0.4em
+      font-size: 2.5em
+      border-bottom= 1px "solid" !border_color
     
-#advertising
-  +container
-  margin= 30px "auto"
-  img
-    display= "block"
-    margin= 0 "auto"
+
+
+      

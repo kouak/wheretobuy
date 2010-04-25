@@ -1,6 +1,8 @@
 @import blueprint
 @import theme
 
+@import compass/utilities/general/tag_cloud.sass
+
 #profile-main
   +column(13)
   +colborder(!border_color)
@@ -9,6 +11,9 @@
   +column(6, true)
   hr
     +colruler(!border_color)
+  #profile-tags
+    .tag-cloud
+      +tag-cloud
   #profile-activity
     ul
       margin-bottom= 15px

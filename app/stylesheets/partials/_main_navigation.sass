@@ -1,0 +1,32 @@
+@import blueprint
+@import theme
+
+@import blueprint/fancy_type.sass
+
+=main_navigation
+  :border-style dotted
+  :border-color = !complement_accent_color
+  :border-width 1px 0
+  +linear-gradient(color_stops(#EDE, #FFF), "bottom")
+  :display block
+  :margin 1em 0
+  ul
+    list-style: none
+    padding: 0
+    margin: 0
+    float: right
+    li
+      float: left
+      margin: 0 2em
+      a
+        text-transform: uppercase
+        text-decoration: none
+        font-family: Arial, sans
+        font-size: 1.6em
+        line-height: 2em
+        display: block
+        margin: 0 auto
+        color= #444
+        &:hover, &:active
+          color= !complement_support_color
+          text-decoration: underline

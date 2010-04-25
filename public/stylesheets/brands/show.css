@@ -1,19 +1,90 @@
-#profile-main #score-container { float: left; padding: 0; margin: 0 15px; }
-#profile-main #score-container span { display: block; line-height: 10px; padding: 0; margin: 0; text-align: center; }
-#profile-main #score-container span#score { font-size: 2em; font-weight: bold; line-height: 1.8em; }
-#profile-main #pageviews { font-family: Lucida Grande; clear: both; }
-#profile-main #comments-count { font-family: Lucida Grande; }
-#profile-main #profile-pictures { border: 1px solid #999; float: right; margin: 10px; margin-bottom: 5px; padding: 3px; }
-#profile-main #profile-pictures a { float: right; font-size: 0.9em; font-family: Lucida Grande; font-weight: bold; }
-#profile-main #profile-pictures img { border: 1px solid #ccc; margin: 0; padding: 0; }
-#profile-main #profile-description { margin-top: 30px; clear: left; text-align: justify; }
-#profile-main #profile-description #profile-description-links { display: block; margin-top: 1em; margin-bottom: 1em; }
+/* line 5, ../../../app/stylesheets/brands/show.sass */
+#profile-main #score-container {
+  float: left;
+  padding: 0;
+  margin: 0 15px;
+}
+/* line 10, ../../../app/stylesheets/brands/show.sass */
+#profile-main #score-container span {
+  display: block;
+  line-height: 10px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+/* line 16, ../../../app/stylesheets/brands/show.sass */
+#profile-main #score-container span#score {
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.8em;
+}
+/* line 20, ../../../app/stylesheets/brands/show.sass */
+#profile-main #pageviews {
+  font-family: Lucida Grande;
+  clear: both;
+}
+/* line 23, ../../../app/stylesheets/brands/show.sass */
+#profile-main #comments-count {
+  font-family: Lucida Grande;
+}
+/* line 25, ../../../app/stylesheets/brands/show.sass */
+#profile-main #profile-pictures {
+  border: 1px solid #999;
+  float: right;
+  margin: 10px;
+  margin-bottom: 5px;
+  padding: 3px;
+}
+/* line 31, ../../../app/stylesheets/brands/show.sass */
+#profile-main #profile-pictures a {
+  float: right;
+  font-size: 0.9em;
+  font-family: Lucida Grande;
+  font-weight: bold;
+}
+/* line 36, ../../../app/stylesheets/brands/show.sass */
+#profile-main #profile-pictures img {
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+}
+/* line 40, ../../../app/stylesheets/brands/show.sass */
+#profile-main #profile-description {
+  margin-top: 30px;
+  clear: left;
+  text-align: justify;
+}
+/* line 44, ../../../app/stylesheets/brands/show.sass */
+#profile-main #profile-description #profile-description-links {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 
-#profile-sidebar #profile-fans span.fan-wrapper { float: left; width: 33%; margin: 0; margin-top: 10px; }
-#profile-sidebar #profile-fans span.fan-wrapper a { margin: 0; padding: 0; display: block; text-align: center; }
-#profile-sidebar #profile-fans span.fan-wrapper img { margin: 0 auto; padding: 2px; display: block; border: 1px solid #b1ad69; }
-#profile-sidebar #profile-fans a.bottom-links { margin-top: 10px; float: right; clear: both; }
-#profile-sidebar #profile-activity ul { margin-bottom: 15px; }
-#profile-sidebar #profile-activity ul li { display: block; border-bottom: 1px dotted #b1ad69; min-height: 20px; padding-left: 20px; background-image: url(/images/profile-news-feed/comment.png); background-repeat: no-repeat; background-position: center left; }
-#profile-sidebar #profile-activity ul li .time-ago { color: #666; }
-#profile-sidebar #profile-activity ul li.last { border-background: 0; }
+/* line 52, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-fans span.fan-wrapper {
+  float: left;
+  width: 33%;
+  margin: 0;
+  margin-top: 10px;
+}
+/* line 57, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-fans span.fan-wrapper a {
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: center;
+}
+/* line 62, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-fans span.fan-wrapper img {
+  margin: 0 auto;
+  padding: 2px;
+  display: block;
+  border: 1px solid #bbbbbb;
+}
+/* line 67, ../../../app/stylesheets/brands/show.sass */
+#profile-sidebar #profile-fans a.bottom-links {
+  margin-top: 10px;
+  float: right;
+  clear: both;
+}

@@ -30,7 +30,7 @@ div.vcard div.picture-wrapper a {
 }
 /* line 14, ../../../app/stylesheets/vcards/users.sass */
 div.vcard div.picture-wrapper a:hover {
-  border: 1px solid #b1ad69;
+  border: 1px solid #bbbbbb;
 }
 /* line 16, ../../../app/stylesheets/vcards/users.sass */
 div.vcard div.picture-wrapper a img {
