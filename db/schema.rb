@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100422123750) do
+ActiveRecord::Schema.define(:version => 20100423142257) do
 
   create_table "activities", :force => true do |t|
     t.integer  "author_id"
@@ -35,48 +35,48 @@ ActiveRecord::Schema.define(:version => 20100422123750) do
   add_index "brand_wiki_versions", ["brand_wiki_id"], :name => "index_brand_wiki_versions_on_brand_wiki_id"
 
   create_table "brand_wikis", :force => true do |t|
-    t.integer  "brand_id"
+    t.integer  "brand_id",        :null => false
     t.text     "version_comment"
-    t.text     "bio"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text     "bio",             :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "editor_id"
     t.text     "factbox_cache"
     t.integer  "version"
   end
 
   create_table "brands", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "comments_count"
-    t.integer  "pageviews",      :default => 0
-    t.integer  "votes_count",    :default => 0
+    t.string   "name",                          :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "comments_count", :default => 0, :null => false
+    t.integer  "pageviews",      :default => 0, :null => false
+    t.integer  "votes_count",    :default => 0, :null => false
     t.integer  "fan_count",      :default => 0
     t.integer  "creator_id"
   end
 
   create_table "cities", :force => true do |t|
-    t.string   "name"
-    t.integer  "country_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name",       :null => false
+    t.integer  "country_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
     t.integer  "status"
-    t.text     "body"
-    t.integer  "resource_id"
-    t.string   "resource_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text     "body",          :null => false
+    t.integer  "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "countries", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "friendships", :force => true do |t|
@@ -88,16 +88,16 @@ ActiveRecord::Schema.define(:version => 20100422123750) do
   end
 
   create_table "stores", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                          :null => false
     t.string   "url"
     t.string   "address"
     t.integer  "city_id"
     t.integer  "country_id"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "online_shop", :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.boolean  "online_shop", :default => true, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "taggings", :force => true do |t|
@@ -135,10 +135,11 @@ ActiveRecord::Schema.define(:version => 20100422123750) do
     t.boolean  "active"
     t.integer  "comments_count"
     t.integer  "city_id"
-    t.integer  "country_id",          :default => 0
-    t.boolean  "sex",                 :default => false
+    t.integer  "country_id"
+    t.boolean  "sex",                 :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "birthday"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -147,11 +148,11 @@ ActiveRecord::Schema.define(:version => 20100422123750) do
   create_table "votes", :force => true do |t|
     t.integer  "voter_id"
     t.integer  "voter_sex"
-    t.integer  "votable_id"
-    t.string   "votable_type"
-    t.integer  "score"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "votable_id",   :null => false
+    t.string   "votable_type", :null => false
+    t.integer  "score",        :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

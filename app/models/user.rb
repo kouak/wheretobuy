@@ -28,13 +28,13 @@ class User < ActiveRecord::Base
   
 
   attr_accessible :comments_count
-  attr_accessible :email, :username, :password, :password_confirmation, :old_password, :country_id, :city_name, :sex
+  attr_accessible :email, :username, :password, :password_confirmation, :old_password, :country_id, :city_name, :sex, :birthday
   attr_accessor :validates_password_change, :old_password, :city_name
   
   validates_uniqueness_of :username
   validates_length_of :username, :in => 2..30
   validates_inclusion_of :sex, :in => [true, false]
-  validates_date :birthday, :allow_blank => true, :allow_nil => true
+  validates_date :birthday, :allow_blank => true, :allow_nil => true, :before => Time.now
   
   
   before_validation :set_city_id
@@ -107,6 +107,18 @@ class User < ActiveRecord::Base
   
   def country_name
     self.city.try(:country).try(:to_s)
+  end
+  
+  # Return the age using the birthdate.
+  def age(today = Date.today)
+    today = Date.parse(today)
+    return nil if birthday.nil? || birthday > today
+    if (today.month > birthday.month) or (today.month == birthday.month and today.day >= birthday.day)
+      # Birthday has happened already this year.
+      today.year - birthday.year
+    else
+      today.year - birthday.year - 1
+    end
   end
   
   def set_city_id

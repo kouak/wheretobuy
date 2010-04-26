@@ -9,6 +9,35 @@ class UserTest < ActiveSupport::TestCase
   should_not_allow_values_for :email, "test"
   should_have_many :comments
   
+  should_not_allow_values_for :birthday, "99/21/1985", "1/1/2090", "bla"
+  should_allow_values_for :birthday, "20-09-1985", "2009/08/15", ""
+  
+  context "test age" do
+    setup {
+      birthday = "1973-04-17"
+      @user = Factory.build(:user, :birthday => birthday)
+    }
+    
+    # Birthday is 'today'.
+    should "equals 34 on birthday" do
+      assert_equal 34, @user.age("2007-04-17")
+    end
+    
+    # Birthday has already happenned this year 
+    should "equals 34 after birthday" do
+      %w(2007-04-18 2007-05-01 2007-12-10).each do |date|
+        assert_equal 34, @user.age(date)
+      end
+    end
+    
+    # Birthday has not happened this year.
+    should "equals 33 before birthday" do
+      %w(2007-01-20 2007-04-01 2007-04-16).each do |date|
+        assert_equal 33, @user.age(date)
+      end
+    end
+  end
+  
   def test_voted_on?
     voter = Factory.create(:user)
     b = Factory.create(:brand)
