@@ -27,13 +27,14 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.search '/search', :controller => 'search', :action => :index
-  map.login '/login', :controller => 'user_sessions', :action => :new
-  map.create_login '/login', :controller => 'user_sessions', :action => :create, :method => :post
-  map.logout '/logout', :controller => 'user_sessions', :action => :destroy
   
-  map.resource :user_session
   
-  map.resource :account, :except => :index, :controller => :account, :member => [:friends]
+  
+  map.resources :user_sessions, :only => [:create]
+  map.login '/login', :controller => 'user_sessions', :action => :new, :method => :get
+  map.logout '/logout', :controller => 'user_sessions', :action => :destroy, :method => :delete
+  
+  map.resource :account, :except => :index, :controller => :account, :member => [:edit_email, :edit_password, :edit_profile, :friends]
   
   map.resources :users, :only => [:index, :show] do |user|
     user.favorite_brands '/favorite_brands', :controller => :users, :action => :favorite_brands

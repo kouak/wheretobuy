@@ -11,13 +11,14 @@ class BrandsController < ApplicationController
   
   def index
     @brands = Brand.paginate(:page => params[:page], :per_page => PER_PAGE)
+    @top_tags = Brand.all_tag_counts(:order => 'count desc', :limit => 8)
   end
   
   def show
     @brand = Brand.find(params[:id], :include => [:votes, :brand_wiki])
     @comments = @brand.comments.find(:all, :limit => 10)
     @tags = @brand.top_tags(15)
-    @activities = @brand.activities.recent.find(:all, :limit => 10)
+    @activities = @brand.activities.recent.find(:all, :limit => 7)
     
   end
   

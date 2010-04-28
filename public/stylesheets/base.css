@@ -1004,7 +1004,8 @@ body.bp #main-wrap h1#main-title {
 }
 
 /* */
-/* line 10, ../../app/stylesheets/base.sass */
+/* */
+/* line 11, ../../app/stylesheets/base.sass */
 body.bp #flash_notice {
   margin: 10px 0;
   padding: 5px 8px;
@@ -1012,7 +1013,7 @@ body.bp #flash_notice {
   background-color: #fff6bf;
   border: solid 1px #ffd324;
 }
-/* line 15, ../../app/stylesheets/base.sass */
+/* line 16, ../../app/stylesheets/base.sass */
 body.bp #flash_error {
   margin: 10px 0;
   padding: 5px 8px;

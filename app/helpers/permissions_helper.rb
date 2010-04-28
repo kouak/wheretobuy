@@ -5,10 +5,10 @@ module PermissionsHelper
       true
     when User
       true
+    when Comment
+      resource.try(:author) && resource.try(:author) == requester
     else
       true
     end
   end
-  
-  
 end

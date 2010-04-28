@@ -1,19 +1,16 @@
-/* line 6, ../../../app/stylesheets/profile/sidebar.sass */
+/* line 9, ../../../app/stylesheets/profile/sidebar.sass */
 #profile-main {
   display: inline;
   float: left;
   margin-right: 10px;
   width: 510px;
-  padding-right: 24px;
-  margin-right: 25px;
-  border-right: 1px solid #bbbbbb;
 }
 /* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
 * html #profile-main {
   overflow-x: hidden;
 }
 
-/* line 10, ../../../app/stylesheets/profile/sidebar.sass */
+/* line 12, ../../../app/stylesheets/profile/sidebar.sass */
 #profile-sidebar {
   display: inline;
   float: left;
@@ -24,10 +21,10 @@
 * html #profile-sidebar {
   overflow-x: hidden;
 }
-/* line 12, ../../../app/stylesheets/profile/sidebar.sass */
+/* line 14, ../../../app/stylesheets/profile/sidebar.sass */
 #profile-sidebar hr {
-  background: #bbbbbb;
-  color: #bbbbbb;
+  background: #eeeeee;
+  color: #eeeeee;
   clear: both;
   float: none;
   width: 100%;
@@ -35,7 +32,23 @@
   margin: 0 0 1.45em;
   border: none;
 }
-/* line 15, ../../../app/stylesheets/profile/sidebar.sass */
+/* line 16, ../../../app/stylesheets/profile/sidebar.sass */
+#profile-sidebar >div {
+  background-color: white;
+  border: 1px solid #cccccc;
+  padding: 5px 15px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
+/* line 21, ../../../app/stylesheets/profile/sidebar.sass */
+#profile-sidebar .bottom-links {
+  margin-top: 10px;
+  text-align: right;
+  display: block;
+  clear: both;
+}
+/* line 27, ../../../app/stylesheets/profile/sidebar.sass */
 #profile-sidebar #profile-tags .tag-cloud {
   font-size: 1em;
   line-height: 1.2em;
@@ -68,13 +81,13 @@
 #profile-sidebar #profile-tags .tag-cloud .xxl {
   font-size: 2em;
 }
-/* line 18, ../../../app/stylesheets/profile/sidebar.sass */
+/* line 30, ../../../app/stylesheets/profile/sidebar.sass */
 #profile-sidebar #profile-activity ul {
   margin-bottom: 15px;
   padding: 0;
   width: 100%;
 }
-/* line 22, ../../../app/stylesheets/profile/sidebar.sass */
+/* line 34, ../../../app/stylesheets/profile/sidebar.sass */
 #profile-sidebar #profile-activity ul li {
   display: block;
   border-bottom: 1px dotted #bbbbbb;
@@ -82,13 +95,13 @@
   padding-left: 20px;
   background-image: url(/images/profile-news-feed/comment.png);
   background-repeat: no-repeat;
-  background-position: center left;
+  background-position: 0 2px;
 }
-/* line 23, ../../../app/stylesheets/profile/sidebar.sass */
+/* line 35, ../../../app/stylesheets/profile/sidebar.sass */
 #profile-sidebar #profile-activity ul li .time-ago {
   color: #666;
 }
-/* line 32, ../../../app/stylesheets/profile/sidebar.sass */
+/* line 44, ../../../app/stylesheets/profile/sidebar.sass */
 #profile-sidebar #profile-activity ul li.last {
   border-background: 0;
 }

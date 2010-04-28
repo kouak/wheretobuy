@@ -19,7 +19,7 @@
 
   <h1><%=h @brand.name %></h1>
   <span id="pageviews"><%= number_with_delimiter(@brand.pageviews.to_i) %> pageviews, <%= number_with_delimiter(@brand.votes_count.to_i) %> votes</span><br />
-  <span id="comments-count"><%= link_to "#{number_with_delimiter(@brand.comments_count.to_i)} comments", '#' %></span>
+  <span id="comments-count"><%= link_to pluralize(@brand.comments_count.to_i, 'comment'), '#' %></span>
   <br />
   
   <p id="profile-description">
@@ -29,13 +29,16 @@
     <% else %>
       <%=h @brand.brand_wiki.bio %><br/>
       <span id="profile-description-links">
-        <%= link_to "More", brand_brand_wiki_path(@brand) %> |
-        <%= link_to "Edit", edit_brand_brand_wiki_path(@brand) %>
+        <%= link_to "Edit", edit_brand_brand_wiki_path(@brand) %> |
+        <%= link_to "More ...", brand_brand_wiki_path(@brand) %>
       </span>
     <% end %>
   </p>
   <hr />
-  <h2>Comments (<%= @brand.comments_count %>)</h2>
+  <h2 class="comments">Comments</h2>
+  <% if current_user -%>
+    <%= render :partial => "comments/inline_form", :locals => {:commentable => @brand} %>
+  <% end -%>
   <%= render :partial => "comments/comment", :locals => {:commentable => @brand}, :collection => @comments %>
   <% if @brand.comments_count > @comments.count %>
     <%= link_to 'See more', brand_comments_path(@brand) %>
@@ -74,6 +77,7 @@
       <span class="fan-wrapper"><%= link_to "#{user_avatar(fan)} #{h(fan.to_s)}", fan %></span>
     <% end -%>
     <%= link_to "See all (#{@brand.fans.count})", brand_fans_path(@brand), :class => 'bottom-links' %>
+    <div class="clear"></div>
   </div>
   <hr />
 <% end -%>

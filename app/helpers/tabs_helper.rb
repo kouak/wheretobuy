@@ -43,17 +43,18 @@ module TabsHelper
     tabs(selected, links)
   end
   
-  def account_tabs(selected = 'Settings', user = current_user)
+  def account_tabs(selected = @selected_tab, user = current_user)
     links = [
-      {:title => 'Settings', :url => edit_account_path},
+      {:title => 'Dashboard', :url => account_path},
+      {:title => 'Edit my profile', :url => edit_account_path},
       {:title => 'My pictures', :url => '#'},
       {:title => 'My friends', :url => '#'},
-      {:title => 'See my profile', :url => user_path(user)},
+      {:title => 'See my profile', :url => user_path(user)}
     ]
     tabs(selected, links)
   end
   
-  def user_tabs(selected = 'User', user = @user)
+  def user_tabs(selected = @selected_tab, user = @user)
     links = [
       {:title => 'User', :url => user_path(user)},
       {:title => 'Activity', :url => '#'},

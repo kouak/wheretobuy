@@ -1,7 +1,8 @@
 require 'lib/votes/acts_as_voter'
 class User < ActiveRecord::Base
   acts_as_authentic do |c|
-    c.login_field = 'email'
+    c.login_field = :email
+    c.validate_login_field = false
   end # block optional
   
   # Sex field constants
@@ -28,12 +29,20 @@ class User < ActiveRecord::Base
   
 
   attr_accessible :comments_count
-  attr_accessible :email, :username, :password, :password_confirmation, :old_password, :country_id, :city_name, :sex, :birthday
-  attr_accessor :validates_password_change, :old_password, :city_name
+  attr_accessible :email, :username, :password, :password_confirmation, :current_password, :country_id, :city_name, :sex, :birthday, :email_confirmation
+  attr_accessor :skip_current_password_validation, :current_password, :city_name
+  
+  validates_presence_of :username
+  validates_presence_of :email
+  validates_confirmation_of :email
+  
+  validates_presence_of :password, :on => :create
+  validates_presence_of :password_confirmation, :on => :create
   
   validates_uniqueness_of :username
   validates_length_of :username, :in => 2..30
   validates_inclusion_of :sex, :in => [true, false]
+  
   validates_date :birthday, :allow_blank => true, :allow_nil => true, :before => Time.now
   
   
@@ -42,15 +51,15 @@ class User < ActiveRecord::Base
   acts_as_voter
   acts_as_tagger
   
-  # validates password change from account page
-  
+  # verify password changes against current password
   validate_on_update do |record|
-    if record.validates_password_change
-      unless record.password.blank? and record.password_confirmation.blank? and record.old_password.blank?
-        record.errors.add :old_password, 'Current password does not match' unless record.valid_password?(record.old_password)
+    if record.skip_current_password_validation == false # We can bypass this validation in the case of password resets or admin edition
+      if record.send(:password_changed?) || record.send(:email_changed?)
+        record.errors.add :current_password, 'Current password does not match' unless record.valid_password?(record.current_password)
       end
     end
   end
+
   
   def tag_with_activity_log(target, opts = {})
     
@@ -68,6 +77,10 @@ class User < ActiveRecord::Base
   
   def active?
     active
+  end
+  
+  def skip_current_password_validation
+    @skip_current_password_validation == true
   end
   
   def activate!
@@ -97,10 +110,6 @@ class User < ActiveRecord::Base
     id.to_s+'-'+ActiveSupport::Inflector.parameterize(to_s)
   end
   
-  def validate_password= (a)
-    self.class.ignore_blank_passwords = a
-  end
-  
   def city_name
     self.city.try(:to_s)
   end
@@ -110,8 +119,8 @@ class User < ActiveRecord::Base
   end
   
   # Return the age using the birthdate.
-  def age(today = Date.today)
-    today = Date.parse(today)
+  def age(today = nil)
+    today = today ? Date.parse(today) : Date.today
     return nil if birthday.nil? || birthday > today
     if (today.month > birthday.month) or (today.month == birthday.month and today.day >= birthday.day)
       # Birthday has happened already this year.

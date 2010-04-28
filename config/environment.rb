@@ -8,7 +8,8 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   
-  config.gem 'formtastic'
+  config.gem 'formtastic', :version => '>= 0.9.8'
+  config.gem 'validation_reflection'
   config.gem 'authlogic' # rails 3
   config.gem 'will_paginate' # rails 3
   config.gem 'rails-geocoder', :lib => 'geocoder'

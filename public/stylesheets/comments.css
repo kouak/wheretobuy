@@ -1,0 +1,19 @@
+div.comment { margin-bottom: 2em; }
+div.comment .author_picture { display: inline; float: left; margin-right: 10px; width: 70px; }
+* html div.comment .author_picture { overflow-x: hidden; }
+div.comment .author_picture img { border: 1px solid #666666; background-color: white; padding: 1px; }
+div.comment .column { display: inline; float: left; margin-right: 0; width: 430px; }
+* html div.comment .column { overflow-x: hidden; }
+div.comment .column .top { border-bottom: 1px solid #bbbbbb; }
+div.comment .column .top span { margin: 0; }
+div.comment .column .top span.author_name { font-family: 'Lucida Grande', Geneva, Helvetica, sans-serif; letter-spacing: 0.1em; font-weight: bold; text-transform: uppercase; }
+div.comment .column .top span.timestamp { font-family: Geneva, Tahoma, Verdana, sans-serif; text-transform: uppercase; letter-spacing: 0.1em; color: black; }
+div.comment .column .top span.actions { float: right; }
+div.comment .column .body { display: block; margin-top: 1em; text-align: justify; }
+div.comment form#new_comment.comment { padding: 0; margin: 0; }
+div.comment form#new_comment.comment li { padding: 0; padding-right: 2px; }
+div.comment form#new_comment.comment textarea { padding: 0; margin: 0; width: 100%; }
+div.comment form#new_comment.comment fieldset.buttons { padding: 0; margin: 0; margin-top: 0.5em; margin-bottom: 1em; float: right; }
+div.comment form#new_comment.comment fieldset.buttons ol { float: right; padding: 0; margin: 0; }
+div.comment form#new_comment.comment fieldset.buttons ol input { margin: 0; padding: 0; padding-left: 25px; padding-right: 1em; color: #264409; background: url(/images/icons/tick.png) 5px center no-repeat; background-color: white; min-height: 20px; line-height: 2em; }
+div.comment form#new_comment.comment fieldset.buttons ol input:hover { border-color: #264409; background-color: #e6efc2; }

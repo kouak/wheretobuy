@@ -10,8 +10,9 @@
   <div id="brands-taglist">
     <ul>
       <li>All</li>
-      <li><%= link_to 'classic', '#' %></li>
-      <li><%= link_to 'dark', '#' %></li>
+      <% @top_tags.sort{|t1, t2| t1.name <=> t2.name}.each do |tag| -%>
+      <li><%= link_to(tag.to_s.downcase, '#') %></li>
+      <% end -%>
     </ul>
     <br />
   </div>

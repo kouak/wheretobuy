@@ -13,7 +13,7 @@ class AccountController < ApplicationController
     @user = User.new(params[:user])
     if @user.save_without_session_maintenance
       @user.deliver_activation_instructions!
-      flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
+      flash[:success] = "Your account has been created. Please check your e-mail for your account activation instructions!"
       redirect_to root_url
     else
       render :action => :new
@@ -22,17 +22,33 @@ class AccountController < ApplicationController
 
   def show # Dashboard style stuff
     @user = current_user
+    @selected_tab = 'Dashboard'
   end
 
+  def edit_password
+    @user = current_user
+    @selected_tab = 'Edit my profile'
+  end
+  
+  def edit_profile
+    @user = current_user
+    @selected_tab = 'Edit my profile'
+  end
+  
+  def edit_email
+    @user = current_user
+    @selected_tab = 'Edit my profile'
+  end
+  
   def edit # Edit my own account
     @user = current_user
+    @selected_tab = 'Edit my profile'
   end
   
   def update # Update my own account
     @user = current_user
-    @user.validates_password_change = true # only allow password change provided a current valid password
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
+      flash[:success] = "Account updated!"
       redirect_to account_url
     else
       render :action => :edit
@@ -41,7 +57,7 @@ class AccountController < ApplicationController
   
   def destroy
     current_user.destroy
-    flash[:notice] = "Your account has been deleted. We hope to see you again soon !"
+    flash[:success] = "Your account has been deleted. We hope to see you again soon !"
     redirect_to root_url
   end
   

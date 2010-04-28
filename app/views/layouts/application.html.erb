@@ -6,7 +6,7 @@
   <%= #javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js' 
   %>
   <%= javascript_include_tag 'application' %>
-  <%= stylesheet_link_tag 'base.css', 'forms.css', :media => 'screen, projection' %>
+  <%= stylesheet_link_tag 'screen.css', 'forms.css', :media => 'screen, projection' %>
 
   <%= stylesheet_link_tag 'print.css', :media => 'print' %>
   <!--[if lt IE 8]>
@@ -23,10 +23,10 @@
           <% if user_signed_in? %>
             <%= content_tag('span', h(current_user)) %> |
             <%= link_to 'My account', account_path, :id => 'my_account' %> |
-            <%= link_to 'Sign out', user_session_path, :method => :delete %>
+            <%= link_to 'Sign out', logout_path, :method => :delete %>
           <% else %>
             <%= link_to 'Sign up', new_account_path %> |
-            <%= link_to 'Sign in', new_user_session_path %>
+            <%= link_to 'Sign in', login_path %>
           <% end %>
       </div>
       <div id="search">

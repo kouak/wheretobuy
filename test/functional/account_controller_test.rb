@@ -64,13 +64,24 @@ class AccountControllerTest < ActionController::TestCase
       should_assign_to(:user){ @u }
     end
     
-    
-    %w[edit friends].each do |action|
+    %w[edit edit_email edit_password edit_profile].each do |action|
       context "getting #{action}" do
         setup { get action }
         should_respond_with :success
         should_assign_to(:user){ @u }
+        should_assign_to(:selected_tab)
+        should_render_template(action.to_sym)
+        unless action == 'edit'
+          should_render_form_for(:user)
+        end
       end
+    end
+    
+    context "getting friends" do
+      setup { get :friends }
+      should_respond_with :success
+      should_assign_to(:selected_tab)
+      should_assign_to(:user){ @u }
     end
     
     context "putting to update" do

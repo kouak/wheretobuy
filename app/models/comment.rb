@@ -3,7 +3,9 @@ class Comment < ActiveRecord::Base
   belongs_to :resource, :polymorphic => true, :counter_cache => true
   belongs_to :author, :class_name => "User"
   
+  validates_presence_of :body
   validates_length_of :body, :minimum => 2
+  
   validates_presence_of :author
   validates_presence_of :resource_type
   validates_presence_of :resource_id

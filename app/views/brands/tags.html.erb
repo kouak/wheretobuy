@@ -1,10 +1,11 @@
 <% content_for :profile_tabs do -%>
 <%= brand_tabs('Tags') %>
 <% end -%>
+<% stylesheet('profile/tags') %>
 <%= brand_title 'Tags' %>
 <hr />
 <div id="tag-list">
-  <% tag_cloud(@tags, %w(tag-cloud1 tag-cloud2 tag-cloud3 tag-cloud4)) do |tag, css_class| %>
+  <% tag_cloud(@tags, tag_cloud_css_classes) do |tag, css_class| %>
       <%= link_to tag.name, { :action => :search, :tag => tag.name }, :class => css_class %>
   <% end %>
 </div>

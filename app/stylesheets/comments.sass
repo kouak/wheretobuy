@@ -1,0 +1,71 @@
+@import blueprint
+@import theme
+
+@import partials/profile/columns
+
+!author_picture_columns = 2
+
+
+div.comment
+  margin-bottom= 2em
+  .author_picture
+    +column(!author_picture_columns)
+    img
+      border= 1px "solid" #666
+      background-color= #fff
+      padding= 1px
+  .column
+    +column(!profile_main_columns_with_sidebar - !author_picture_columns, true)
+    .top
+      border-bottom= 1px "solid" !border_color
+      span
+        margin= 0
+        &.author_name
+          font-family: 'Lucida Grande', Geneva, Helvetica, sans-serif
+          letter-spacing= 0.1em
+          font-weight= "bold"
+          text-transform= "uppercase"
+        &.timestamp
+          font-family: Geneva, Tahoma, Verdana, sans-serif
+          text-transform= "uppercase"
+          letter-spacing= 0.1em
+          color= #000
+        &.actions
+          float= "right"
+    .body
+      :display block
+      margin-top= 1em
+      text-align= "justify"
+  form#new_comment.comment
+    padding= 0
+    margin= 0
+    li
+      padding= 0
+      padding-right= 2px
+    textarea
+      padding= 0
+      margin= 0
+      width= 100%
+    fieldset.buttons
+      padding= 0
+      margin= 0
+      margin-top= 0.5em
+      margin-bottom= 1em
+      float= "right"
+      ol
+        float= "right"
+        padding= 0
+        margin= 0
+        input
+          margin= 0
+          padding= 0
+          padding-left= 25px
+          padding-right= 1em
+          color= !success_color
+          background= "url(/images/icons/tick.png)" "5px" "center" "no-repeat"
+          background-color= "white"
+          min-height= 20px
+          line-height= 2em
+          &:hover
+            border-color= !success_color
+            background-color= !success_bg_color

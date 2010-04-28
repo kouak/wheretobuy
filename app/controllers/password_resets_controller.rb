@@ -26,7 +26,7 @@ class PasswordResetsController < ApplicationController
   def update
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
-    @user.validate_password = 1
+    @user.skip_current_password_validation = true
     if @user.save
       flash[:notice] = "Password successfully updated"
       UserSession.create(@user, true).save # Logs in the user and set cookie

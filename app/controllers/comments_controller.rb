@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @comment = parent.comments.new(params[:comment])
     @comment.author = current_user
     if @comment.save
-      flash[:notice] = "Successfully created comment."
+      flash[:success] = "Successfully created comment"
       redirect_to @comment.resource
     else
       @commentable = parent
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update_attributes(params[:comment])
-      flash[:notice] = "Successfully updated comment."
+      flash[:success] = "Successfully updated comment"
       redirect_to @comment
     else
       render :action => 'edit'
@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     commentable = @comment.resource
     @comment.destroy
-    flash[:notice] = "Successfully destroyed comment."
+    flash[:success] = "Successfully destroyed comment"
     redirect_to polymorphic_path([commentable, :comments])
   end
   

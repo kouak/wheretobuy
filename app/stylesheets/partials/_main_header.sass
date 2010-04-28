@@ -1,0 +1,29 @@
+@import blueprint
+@import theme
+
+@import blueprint/fancy_type.sass
+
+
+=main-header
+  #header-wrap
+    width= 100%
+    background-color= !header_background_color
+    #header
+      +container
+      #search
+        float= "right"
+        clear= "both"
+        margin-top= 15px
+      #user_login_box
+        margin-top= 10px
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+        letter-spacing= 0.1em
+        float= "right"
+        clear= "both"
+      h1
+        font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif
+        font-variant: small-caps
+        display= "inline"
+        font-size= 6em
+        a
+          text-decoration= "none"

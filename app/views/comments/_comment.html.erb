@@ -1,6 +1,17 @@
-<div>
-  <span>Par <%= user_profile_link(comment.author) %> -- <%= link_to "[X]", comment_path(comment), :confirm => 'Are you sure?', :method => :delete %></span><br />
-  <span>Le <%= comment.created_at %></span><br />
-  <span><%=h comment.body%></span><br />
+<% stylesheet('comments') %>
+<div class="comment <%= cycle("even", "odd") -%>">
+  <span class="author_picture"><%= user_avatar_for_comments(comment.author) -%></span>
+  <div class="column">
+    <div class="top">
+      <span class="author_name"><%= user_profile_link(comment.author) -%></span>
+      <span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span>
+      <span class="actions">
+        <% if can_edit?(comment, current_user) -%>
+          <%= delete_button comment_path(comment) %>
+        <% end -%>
+      </span>
+    </div>
+    <span class="body"><%=h comment.body%></span>
+  </div>
+  <div class="clear"></div>
 </div>
-<hr />

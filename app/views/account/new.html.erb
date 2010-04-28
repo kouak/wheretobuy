@@ -1,15 +1,15 @@
 <% title 'Sign Up' -%>
 
 <% semantic_form_for :user, @user, :url => { :action => "create" }do |f| -%>
-  <%= f.error_messages %>
   <% f.inputs 'Login details' do -%>
     <%= f.input :email, :hint => 'Please provide valid email' %>
-    <%= f.input :password %>
+    <%= f.input :email_confirmation %>
+    <%= f.input :password, :hint => 'Min. 4 characters' %>
     <%= f.input :password_confirmation %>
   <% end -%>
   <% f.inputs 'About you' do -%>
-    <%= f.input :username %>
-    <%= f.input :birthday %>
+    <%= f.input :username, :hint => 'Min. 2 characters' %>
+    <%= f.input :birthday, :order => [:day, :month, :year], :selected => false, :start_year => (Date.today.year - 100), :end_year => (Date.today.year - 8) %>
     <%= f.input :sex, :as => :radio, :collection => [["Male", User::MALE], ["Female", User::FEMALE]] %>
   <% end -%>
   <% f.buttons do -%>

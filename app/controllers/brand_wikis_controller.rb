@@ -37,7 +37,7 @@ class BrandWikisController < ApplicationController
     end
     
     if @brand_wiki.save # And save
-      flash[:notice] = "Successfully edited brand wiki."
+      flash[:success] = "Successfully edited brand wiki."
       redirect_to @brand
     else
       render :action => 'edit'
@@ -58,7 +58,7 @@ class BrandWikisController < ApplicationController
   
   def find_brand_wiki_or_redirect
     if @brand.brand_wiki.nil?
-      flash[:notice] = "This brand does not have information yet. Feel free to contribute !"
+      flash[:success] = "This brand does not have information yet. Feel free to contribute !"
       redirect_to edit_brand_brand_wiki_path(@brand)
       return false # prevents action from being triggered
     else

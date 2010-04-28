@@ -1,0 +1,11 @@
+<% semantic_form_for :user, current_user, :url => {:action => :update}, :html => {:method => :put} do |f| %>
+  <%= f.error_messages %>
+  <% f.inputs :name => "Change your email" do  %>
+    <%= f.input :current_password, :as => :password, :label => "Current password", :param_only => true, :required => true %>
+    <%= f.input :email %>
+    <%= f.input :email_confirmation, :required => true %>
+  <% end -%>
+  <% f.buttons do -%>
+    <%= f.submit %>
+  <% end -%>
+<% end -%>

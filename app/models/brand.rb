@@ -4,6 +4,7 @@ class Brand < ActiveRecord::Base
   attr_accessible :name, :fan_count, :vote_count, :tag_list
   attr_accessible :creator_id, :creator
   
+  validates_presence_of :name
   validates_length_of :name, :in => 2..70
   validates_uniqueness_of :name
   

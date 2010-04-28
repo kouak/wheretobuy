@@ -7,7 +7,7 @@ class VotesController < ApplicationController
     @current_user.vote_for(@votable)
     respond_to do |format|
       format.html {
-        flash[:notice] = "Voted up !"
+        flash[:success] = "Voted up !"
         redirect_to @votable
       }
       format.json { render :json => true }
@@ -18,7 +18,7 @@ class VotesController < ApplicationController
     @current_user.vote_against(@votable)
     respond_to do |format|
       format.html {
-        flash[:notice] = "Voted down !"
+        flash[:success] = "Voted down !"
         redirect_to @votable
       }
       format.json { render :json => true }
@@ -29,7 +29,7 @@ class VotesController < ApplicationController
     @current_user.vote_nil(@votable)
     respond_to do |format|
       format.html {
-        flash[:notice] = "Removed vote !"
+        flash[:success] = "Removed vote !"
         redirect_to @votable
       }
       format.json { render :json => true }

@@ -1,5 +1,7 @@
 <% title "New Comment - " + @commentable.to_s %>
 
+<%= @comment.to_yaml %>
+
 <%= render :partial => 'form', :locals => {:comment => @comment, :commentable => @commentable} %>
 
 <p><%= link_to "Back to List", polymorphic_path(@commentable) %></p>

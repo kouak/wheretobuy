@@ -1,0 +1,14 @@
+<div class="comment">
+  <span class="author_picture"><%= user_avatar_for_comments(current_user) -%></span>
+  <div class="column">
+    <% semantic_form_for [commentable, Comment.new] do |f| %>
+    <% 
+    # In the first case, we have an edit form, in the second case, this is a new form called from nested resource
+    %>
+      <%= f.input :body, :label => false, :class => 'autogrow', :input_html => {:rows => 5, :cols => nil} %>
+      <% f.buttons do -%>
+        <%= f.submit 'Post' %>
+      <% end -%>
+    <% end %>
+  </div>
+</div>

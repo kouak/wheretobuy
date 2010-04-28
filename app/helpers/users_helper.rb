@@ -50,22 +50,26 @@ module UsersHelper
   end
   
   def user_sex_to_s(user = @user)
-    raise ArgumentError unless user.is_a?(User)
-    case user.sex
+    case user.try(:sex)
     when User::MALE
       'Male'
     when User::FEMALE
       'Female'
+    else
+      ''
     end
   end
   
   def user_location_to_s(user = @user)
-    raise ArgumentError unless user.is_a?(User)
-    return h("#{user.city_name} (#{user.country_name})") unless user.city.nil?
-    'unknown'
+    return h("#{user.city_name} (#{user.country_name})") unless user.try(:city).nil?
+    ''
+  end
+  
+  def user_age_to_s(user)
+    user.try(:age).nil? ? '' : "#{user.age.to_s} y.o"
   end
   
   def user_short_infos(user = @user)
-    h(['22 years old', user_sex_to_s(user).downcase, user.city_name, nil, user.country_name].compact.join(', '))
+    h([user_age_to_s(user), user_sex_to_s(user).downcase, user.city_name, nil, user.country_name].compact.join(', '))
   end
 end

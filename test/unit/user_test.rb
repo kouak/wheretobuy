@@ -4,13 +4,40 @@ class UserTest < ActiveSupport::TestCase
   subject { Factory(:user) }
   
   should_validate_uniqueness_of :username, :email
-  
   should_allow_values_for :email, "test@example.com"
   should_not_allow_values_for :email, "test"
+  should_validate_date_of :birthday
+  
+  should_ensure_length_in_range :username, 2..30
+  
   should_have_many :comments
   
-  should_not_allow_values_for :birthday, "99/21/1985", "1/1/2090", "bla"
-  should_allow_values_for :birthday, "20-09-1985", "2009/08/15", ""
+  context "updating email or password" do
+    setup {
+      @user = Factory.create(:user, :password => '123456', :password_confirmation => '123456')
+    }
+    
+    should "not perform with no current_password set" do
+      @user.update_attributes(:email => 'a@a.com')
+      assert_equal false, @user.errors.on(:current_password).empty?
+    end
+    
+    should "not perform with a wrong current_password provided" do
+      @user.update_attributes(:password => '654321', :current_password => 'wrong')
+      assert_equal false, @user.errors.on(:current_password).empty?
+    end
+    
+    should "perform given a correct current_password" do
+      @user.update_attributes(:email => 'a@a.com', :current_password => '123456')
+      assert @user.errors.on(:current_password).nil?
+    end
+    
+    should "perform with skip_current_password_check set to true" do
+      @user.skip_current_password_validation = true
+      @user.update_attributes(:email => 'a@a.com')
+      assert @user.errors.on(:current_password).nil?
+    end
+  end
   
   context "test age" do
     setup {
@@ -38,27 +65,30 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
-  def test_voted_on?
-    voter = Factory.create(:user)
-    b = Factory.create(:brand)
-    
-    assert_equal false, voter.voted_on?(b)
-    
-    voter.vote_for(b)
-    assert voter.voted_on?(b)
+  context "is votable" do
+    setup {
+      @voter = Factory.create(:user)
+      @votable = Factory.create(:brand)
+    }
+    context "vote_for" do
+      setup {
+        @voter.vote_for(@votable)
+      }
+      should_change("voted_on? returns value", :from => false, :to => true) { @voter.voted_on?(@votable) }
+      should_change("votable.votes count", :from => 0, :to => 1) { @votable.votes.count }
+      should_create(:vote)
+    end
+    context "with existant vote" do
+      setup {
+        @voter.vote_against(@votable)
+      }
+      context "vote_for" do
+        setup { @voter.vote_for(@votable) }
+      
+        should_not_change("voted_on? returns value") { @voter.voted_on?(@votable) }
+        should_not_change("votable.votes count") { @votable.votes.count }
+        should_not_change("vote.count"){ Vote.count }
+      end
+    end
   end
-  
-  def test_single_vote_per_user_and_voteable
-    voter = Factory.create(:user)
-    b = Factory.create(:brand)
-    assert_equal 0, b.votes.count
-    
-    voter.vote_for(b)
-    assert_equal 1, b.votes.count
-    
-    voter.vote_against(b)
-    assert_equal 1, b.votes.count
-    
-  end
-  
 end

@@ -585,12 +585,13 @@ a.button.spade.disabled:active, a.button.spade[disabled], button.spade.disabled:
   border-width: 2px;
 }
 
-/* line 16, ../../app/stylesheets/screen.sass */
+/* line 17, ../../app/stylesheets/screen.sass */
 body.bp {
   line-height: 1.5;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   color: #333333;
   font-size: 75%;
+  font-family: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", Lucida, Verdana, Tahoma, sans-serif;
 }
 /* line 58, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_typography.sass */
 body.bp h1 {
@@ -797,7 +798,7 @@ body.bp .quiet {
 body.bp .loud {
   color: #111111;
 }
-/* line 19, ../../app/stylesheets/screen.sass */
+/* line 21, ../../app/stylesheets/screen.sass */
 body.bp a {
   text-decoration: none;
 }
@@ -805,7 +806,7 @@ body.bp a {
 body.bp a:hover {
   text-decoration: underline;
 }
-/* line 21, ../../app/stylesheets/screen.sass */
+/* line 23, ../../app/stylesheets/screen.sass */
 body.bp #container {
   width: 950px;
   margin: 0 auto;
@@ -816,7 +817,7 @@ body.bp #container {
 body.bp #container {
   display: block;
 }
-/* line 23, ../../app/stylesheets/screen.sass */
+/* line 25, ../../app/stylesheets/screen.sass */
 body.bp #footer {
   display: inline;
   float: left;
@@ -828,12 +829,12 @@ body.bp #footer {
   overflow-x: hidden;
 }
 
-/* line 28, ../../app/stylesheets/screen.sass */
+/* line 8, ../../app/stylesheets/partials/_main_header.sass */
 body.bp #header-wrap {
   width: 100%;
   background-color: #eeeeee;
 }
-/* line 31, ../../app/stylesheets/screen.sass */
+/* line 11, ../../app/stylesheets/partials/_main_header.sass */
 body.bp #header-wrap #header {
   width: 950px;
   margin: 0 auto;
@@ -844,34 +845,38 @@ body.bp #header-wrap #header {
 body.bp #header-wrap #header {
   display: block;
 }
-/* line 33, ../../app/stylesheets/screen.sass */
+/* line 13, ../../app/stylesheets/partials/_main_header.sass */
 body.bp #header-wrap #header #search {
   float: right;
   clear: both;
   margin-top: 15px;
 }
-/* line 37, ../../app/stylesheets/screen.sass */
+/* line 17, ../../app/stylesheets/partials/_main_header.sass */
 body.bp #header-wrap #header #user_login_box {
   margin-top: 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.1em;
   float: right;
   clear: both;
 }
-/* line 41, ../../app/stylesheets/screen.sass */
+/* line 23, ../../app/stylesheets/partials/_main_header.sass */
 body.bp #header-wrap #header h1 {
+  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+  font-variant: small-caps;
   display: inline;
   font-size: 6em;
 }
-/* line 44, ../../app/stylesheets/screen.sass */
+/* line 28, ../../app/stylesheets/partials/_main_header.sass */
 body.bp #header-wrap #header h1 a {
   text-decoration: none;
 }
 
-/* line 49, ../../app/stylesheets/screen.sass */
+/* line 34, ../../app/stylesheets/screen.sass */
 body.bp #main-wrap {
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, white));
   background-image: -moz-linear-gradient(top, #eeeeee 0%, white 100%);
 }
-/* line 51, ../../app/stylesheets/screen.sass */
+/* line 36, ../../app/stylesheets/screen.sass */
 body.bp #main-wrap #main_navigation {
   display: inline;
   float: left;
@@ -880,8 +885,7 @@ body.bp #main-wrap #main_navigation {
   border-style: dotted;
   border-color: #471045;
   border-width: 1px 0;
-  background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #eeddee), color-stop(100%, white));
-  background-image: -moz-linear-gradient(bottom, #eeddee 0%, white 100%);
+  background-color: #fff;
   display: block;
   margin: 1em 0;
 }
@@ -903,21 +907,22 @@ body.bp #main-wrap #main_navigation ul li {
 }
 /* line 21, ../../app/stylesheets/partials/_main_navigation.sass */
 body.bp #main-wrap #main_navigation ul li a {
-  text-transform: uppercase;
   text-decoration: none;
-  font-family: Arial, sans;
+  font-family: Geneva, Tahoma, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
   font-size: 1.6em;
   line-height: 2em;
   display: block;
   margin: 0 auto;
   color: #444444;
 }
-/* line 30, ../../app/stylesheets/partials/_main_navigation.sass */
+/* line 31, ../../app/stylesheets/partials/_main_navigation.sass */
 body.bp #main-wrap #main_navigation ul li a:hover, body.bp #main-wrap #main_navigation ul li a:active {
   color: #ff8800;
   text-decoration: underline;
 }
-/* line 54, ../../app/stylesheets/screen.sass */
+/* line 39, ../../app/stylesheets/screen.sass */
 body.bp #main-wrap #flash {
   display: inline;
   float: left;
@@ -959,7 +964,7 @@ body.bp #main-wrap #flash.notice span {
   border-color: #ffd324;
   background-color: #fff6bf;
 }
-/* line 56, ../../app/stylesheets/screen.sass */
+/* line 41, ../../app/stylesheets/screen.sass */
 body.bp #main-wrap #content {
   display: inline;
   float: left;
@@ -970,7 +975,7 @@ body.bp #main-wrap #content {
 * html body.bp #main-wrap #content {
   overflow-x: hidden;
 }
-/* line 58, ../../app/stylesheets/screen.sass */
+/* line 43, ../../app/stylesheets/screen.sass */
 body.bp #main-wrap #advertising {
   display: inline;
   float: left;
@@ -982,12 +987,12 @@ body.bp #main-wrap #advertising {
 * html body.bp #main-wrap #advertising {
   overflow-x: hidden;
 }
-/* line 61, ../../app/stylesheets/screen.sass */
+/* line 46, ../../app/stylesheets/screen.sass */
 body.bp #main-wrap #advertising img {
   display: block;
   margin: 0 auto;
 }
-/* line 64, ../../app/stylesheets/screen.sass */
+/* line 49, ../../app/stylesheets/screen.sass */
 body.bp #main-wrap h1#main-title {
   display: inline;
   float: left;
@@ -1001,4 +1006,13 @@ body.bp #main-wrap h1#main-title {
 /* line 101, ../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
 * html body.bp #main-wrap h1#main-title {
   overflow-x: hidden;
+}
+
+/* line 57, ../../app/stylesheets/screen.sass */
+div.clear {
+  clear: both;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
