@@ -26,9 +26,9 @@ module ActiveRecord #:nodoc:
             true
           end
           
-          def recalculate_fan_counts!
+          def recalculate_fans_counts!
             self.all.each do |b|
-              return false unless b.recalculate_fan_count!
+              return false unless b.recalculate_fans_count!
             end
             true
           end
@@ -90,10 +90,10 @@ module ActiveRecord #:nodoc:
             self.fans.find(:all, :offset => ( self.fans.count * rand ).to_i, :limit => limit)
           end
           
-          def recalculate_fan_count!
-            raise StatementInvalid unless has_attribute?(:fan_count)
+          def recalculate_fans_count!
+            raise StatementInvalid unless has_attribute?(:fans_count)
             
-            update_attributes!(:fan_count => fans.count)
+            update_attributes!(:fans_count => fans.count)
             reload
           end
 

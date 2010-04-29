@@ -15,9 +15,9 @@ class Vote < ActiveRecord::Base
   named_scope :recent,       lambda { |*args| {:conditions => ["updated_at > ?", (args.first || 2.weeks.ago).to_s(:db)]} }
   named_scope :descending, :order => "updated_at DESC"
   
-  after_create :after_create_fan_count
-  after_update :after_update_fan_count
-  after_destroy :after_destroy_fan_count
+  after_create :after_create_fans_count
+  after_update :after_update_fans_count
+  after_destroy :after_destroy_fans_count
   
   after_save do |vote| # Activity logging
     a = Activity.voted(vote)
@@ -50,18 +50,18 @@ class Vote < ActiveRecord::Base
     self.find_by_voter_and_votable(voter, votable).try(:destroy)
   end
   
-  # fan_count callback
-  def after_destroy_fan_count
-    increment_or_decrement_fan_count!(self.score, 0)
+  # fans_count callback
+  def after_destroy_fans_count
+    increment_or_decrement_fans_count!(self.score, 0)
   end
   
-  def after_create_fan_count
-    increment_or_decrement_fan_count!(0, self.score)
+  def after_create_fans_count
+    increment_or_decrement_fans_count!(0, self.score)
   end
   
-  def after_update_fan_count
+  def after_update_fans_count
     changed_attributes = self.send(:changed_attributes)
-    increment_or_decrement_fan_count!(changed_attributes['score'], self.score) if changed_attributes['score']
+    increment_or_decrement_fans_count!(changed_attributes['score'], self.score) if changed_attributes['score']
   end
   
   # dirty looking method but quite simple in fact :
@@ -71,26 +71,26 @@ class Vote < ActiveRecord::Base
   # old_score == 0 |   +1      |     0      |     0     |
   # old_score < 0  |   +1      |     0      |     0     |
   
-  def increment_or_decrement_fan_count!(old_score, score)
+  def increment_or_decrement_fans_count!(old_score, score)
     old_score, score = old_score.to_i, score.to_i
     return if (old_score * score) > 0 # both not null and same sign, we don't care
     
     # here, we can count on the fact that either score or old_score is not null
     if old_score > 0
-      decrement_fan_count!
+      decrement_fans_count!
     elsif score > 0
-      increment_fan_count!
+      increment_fans_count!
     end
   end
   
-  def increment_fan_count!
-    return unless votable.has_attribute?(:fan_count)
-    votable.increment!(:fan_count)
+  def increment_fans_count!
+    return unless votable.has_attribute?(:fans_count)
+    votable.increment!(:fans_count)
   end
   
-  def decrement_fan_count!
-    return unless votable.has_attribute?(:fan_count)
-    votable.decrement!(:fan_count) if votable.fan_count > 0 # this prevents getting negative fan count
+  def decrement_fans_count!
+    return unless votable.has_attribute?(:fans_count)
+    votable.decrement!(:fans_count) if votable.fans_count > 0 # this prevents getting negative fans count
   end
   
   private

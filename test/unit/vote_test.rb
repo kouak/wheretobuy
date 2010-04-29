@@ -10,7 +10,7 @@ class VoteTest < ActiveSupport::TestCase
     v = Vote.new(:score => 1)
     assert_equal false, b.votes << v
   end
-  
+
   def test_associated_should_be_valid
     b = Factory.create(:brand)
     u = Factory.create(:user)
@@ -155,53 +155,53 @@ class VoteTest < ActiveSupport::TestCase
     assert_equal [], b.fans
   end
   
-  def test_fan_count
+  def test_fans_count
     b = Factory.create(:brand)
     u = Factory.create(:user)
     u2 = Factory.create(:other_user)
     
-    assert_equal 0, b.fan_count
+    assert_equal 0, b.fans_count
     
     u.vote_for(b)
     b.reload
-    assert_equal 1, b.fan_count
+    assert_equal 1, b.fans_count
     
     u.vote_against(b)
     b.reload
-    assert_equal 0, b.fan_count
+    assert_equal 0, b.fans_count
     
     u.vote_for(b)
     b.reload
     u2.vote_for(b)
     b.reload
-    assert_equal 2, b.fan_count
+    assert_equal 2, b.fans_count
     
     u.vote_for(b)
     b.reload
-    assert_equal 2, b.fan_count
+    assert_equal 2, b.fans_count
     
     # tricky case now
     u.vote_against(b)
     b.reload
-    assert_equal 1, b.fan_count
+    assert_equal 1, b.fans_count
     
     u2.vote_nil(b)
     b.reload
-    assert_equal 0, b.fan_count
+    assert_equal 0, b.fans_count
     
   end
   
-  def test_recalculate_fan_count!
+  def test_recalculate_fans_count!
     
     brand = Factory.create(:brand)
     
-    brand.update_attributes!(:fan_count => -34)
+    brand.update_attributes!(:fans_count => -34)
     
-    assert Brand.recalculate_fan_counts!
+    assert Brand.recalculate_fans_counts!
     
     brand.reload
     
-    assert_equal 0, brand.fan_count
+    assert_equal 0, brand.fans_count
     
     user = Factory.create(:user)
     other_user = Factory.create(:other_user)
@@ -209,8 +209,8 @@ class VoteTest < ActiveSupport::TestCase
     user.vote_for(brand)
     other_user.vote_for(brand)
     
-    brand.recalculate_fan_count!
-    assert_equal 2, brand.fan_count
+    brand.recalculate_fans_count!
+    assert_equal 2, brand.fans_count
     
   end
   

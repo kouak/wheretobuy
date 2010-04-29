@@ -1,7 +1,7 @@
 require 'lib/votes/acts_as_votable'
 class Brand < ActiveRecord::Base
   attr_accessible :comments_count
-  attr_accessible :name, :fan_count, :vote_count, :tag_list
+  attr_accessible :name, :fans_count, :vote_count, :tag_list
   attr_accessible :creator_id, :creator
   
   validates_presence_of :name
