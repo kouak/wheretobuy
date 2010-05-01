@@ -13,3 +13,4 @@ acts_as_versioned
 validates_timeliness
 formtastic
 validation_reflection
+cucumber
