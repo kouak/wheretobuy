@@ -1,6 +1,6 @@
 <% stylesheet('comments') %>
 <div class="comment <%= cycle("even", "odd") -%>">
-  <span class="author_picture"><%= user_avatar_for_comments(comment.author) -%></span>
+  <span class="author_picture"><%= user_avatar_for_comments(comment.author, :with_link => true) -%></span>
   <div class="column">
     <div class="top">
       <span class="author_name"><%= user_profile_link(comment.author) -%></span>

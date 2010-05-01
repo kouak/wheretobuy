@@ -5,7 +5,6 @@
 
 !author_picture_columns = 2
 
-
 div.comment
   margin-bottom= 2em
   .author_picture
@@ -24,12 +23,14 @@ div.comment
           font-family: 'Lucida Grande', Geneva, Helvetica, sans-serif
           letter-spacing= 0.1em
           font-weight= "bold"
-          text-transform= "uppercase"
         &.timestamp
           font-family: Geneva, Tahoma, Verdana, sans-serif
           text-transform= "uppercase"
           letter-spacing= 0.1em
-          color= #000
+          :color #966
+          &:before
+            :content " --  "
+            :color #966
         &.actions
           float= "right"
     .body

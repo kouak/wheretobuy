@@ -1,22 +1,24 @@
 <% title "Find brands" %>
 <%= stylesheet 'brands/index' %>
 
-<div id="brands-left-column">
+<div id="brands-wrapper">
   <div id="brands-search">
     <h3>Search brands</h3>
     <% search_box %>
   </div>
 
   <div id="brands-taglist">
-    <ul>
-      <li>All</li>
-      <% @top_tags.sort{|t1, t2| t1.name <=> t2.name}.each do |tag| -%>
-      <li><%= link_to(tag.to_s.downcase, '#') %></li>
-      <% end -%>
-    </ul>
+    <%-
+    # Let's build a list so that we can use our tabs_helper
+    foo = [{:title => 'all', :url => brands_path}]
+    @top_tags.sort{|t1, t2| t1.name <=> t2.name}.each do |tag|
+      foo += [{:title => tag.name.to_s.downcase, :url => '#'}]
+    end
+    -%>
+    <%= tabs(@selected_tab || 'all', foo) -%>
     <br />
   </div>
-  <div id="brands-list">
+  <div id="brands-main">
     <% for brand in @brands %>
       <div class="brand">
         <span class="brand-picture">
@@ -24,7 +26,7 @@
         </span>
         <h3><%= link_to h(brand.name), brand %></h3>
         <span class="score">
-          <%= number_with_delimiter(brand.pageviews.to_i) %> pageviews, <%= number_with_delimiter(brand.fans_count.to_i) %> fans
+          <%= pluralize(brand.pageviews.to_i, 'pageview') %>, <%= pluralize(brand.fans_count.to_i, 'fan') %>
         </span>
       </div>
     <% end %>
@@ -32,7 +34,7 @@
   </div>
 </div>
 
-<div id="recommendations">
+<div id="brands-sidebar">
   <h3>See recommendations :</h3>
   <% for brand in @brands %>
     <div class="recommendation">

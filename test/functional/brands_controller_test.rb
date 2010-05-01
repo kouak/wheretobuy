@@ -80,7 +80,7 @@ class BrandsControllerTest < ActionController::TestCase
     setup {
       @brand ||= Factory.build(:brand)
       Brand.stubs(:find).returns(@brand)
-      Brand.any_instance.stub_chain(:activities, :recent).returns(3.times.map { Factory.stub(:activity, :author => Factory.stub(:user), :target => @brand) })
+      Brand.any_instance.stub_chain(:activities, :recent, :find).returns([])
       get :activity, :id => @brand.to_param
     }
     

@@ -64,8 +64,8 @@
   <div id="profile-activity">
     <h2>News feed</h2>
     <ul>
-      <% @activities.each do |activity| -%>
-        <%= brand_activity(activity, :last => activity == @activities.last) %>
+      <% @activities.to_a.each do |activity| -%>
+        <%= li_activity(activity, :last => activity == @activities.last) %>
       <% end %>
     </ul>
     <%= link_to "See more", brand_activity_path(@brand), :class => 'bottom-links' %>

@@ -2,6 +2,9 @@
 #tag-list {
   font-size: 1em;
   line-height: 1.2em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #bbbbbb;
+  margin-bottom: 1em;
 }
 /* line 5, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_tag_cloud.sass */
 #tag-list .xxs, #tag-list .xs, #tag-list .s, #tag-list .l, #tag-list .xl, #tag-list .xxl {

@@ -8,6 +8,6 @@
 <hr />
 <div id="fan-list">
   <% for vote in @votes %>
-    <%= render :partial => 'users/vcard', :locals => {:user => vote.voter, :custom_infos => time_ago_in_words(vote.updated_at) + ' ago' } %>
+    <%= render :partial => 'users/vcard', :locals => {:user => vote.voter, :custom_infos => 'Became fan ' + time_ago_in_words(vote.updated_at) + ' ago' } %>
   <% end -%>
 </div>

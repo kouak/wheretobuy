@@ -2,39 +2,11 @@
 @import theme
 @import partials/border-radius
 @import partials/profile/columns
+@import partials/profile/navigation_tabs
 
 #profile-tabs
   +column(!profile_tabs_columns)
-  ul
-    display= "block"
-    padding= 0
-    margin= 0
-    margin-right= 1em
-    //border= 1px "solid" !border_color
-    border-bottom= 0
-    li
-      display= "block"
-      font-family: Geneva, Tahoma, Verdana, sans-serif
-      text-transform= "uppercase"
-      letter-spacing= 0.2em
-      line-height= 2em
-      font-weight= "bold"
-      padding-left = 1.2em
-      margin = 0 "auto"
-      //text-align= "right"
-      //border-bottom= 1px "solid" !border_color
-      &.selected
-        background-color= !complement_support_color
-        +border-radius("10px")
-        a
-          text-decoration= "none"
-          color= #fff
-      a
-        color= "#666"
-        font-weight= "normal"
-        //text-decoration= "underline"
-        &:hover
-          color= !complement_support_color
+  +profile_navigation_tabs
 
 #main-pagination, #comments-pagination
   float= "right"

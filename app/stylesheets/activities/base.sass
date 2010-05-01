@@ -1,0 +1,35 @@
+@import blueprint
+@import theme
+
+@import partials/profile/columns
+
+!author_picture_columns = 2
+
+div.activity
+  margin-bottom= 1em
+  padding-bottom= 1em
+  border-bottom= 1px "solid" #ccc
+  font-size= 1.2em
+  +column(!profile_main_columns)
+  .author_picture
+    +column(!author_picture_columns)
+    img
+      border= 1px "solid" #666
+      background-color= #fff
+      padding= 1px
+  .column
+    +column(!profile_main_columns - !author_picture_columns, true)
+    span
+      margin= 0
+      &.author_name, &.what
+        font-family: 'Lucida Grande', Geneva, Helvetica, sans-serif
+        letter-spacing= 0.1em
+        font-weight= "bold"
+      &.what
+        letter-spacing= "normal"
+        font-weight= "normal"
+      &.when
+        font-family: Geneva, Tahoma, Verdana, sans-serif
+        display= "block"
+        letter-spacing= 0.1em
+        color= #666

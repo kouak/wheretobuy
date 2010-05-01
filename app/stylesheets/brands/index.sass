@@ -1,58 +1,42 @@
 @import blueprint
 @import theme
 
+@import partials/profile/columns
+@import partials/profile/navigation_tabs
 
 
-#brands-left-column
-  +column(17)
-  +colborder(!border_color)
+
+#brands-wrapper
+  +column(!profile_tabs_columns + !profile_main_columns_with_sidebar)
   
-#brands-search
-  +column(16, true)
-  margin-bottom= 2em
+  
+#brands-sidebar
+  +column(!profile_sidebar_columns, true)
 
-
-#brands-taglist
-  +column(4)
-  +colborder(!border_color)
-  ul
-    display= "block"
-    margin= 0
-    padding-left= 0
-    li
-      display= "block"
-      font-family= "Lucida Grande"
+#brands-wrapper
+  #brands-search
+    +column(!profile_tabs_columns + !profile_main_columns_with_sidebar)
+    text-align= "right"
+    margin-bottom= 2em
+  #brands-taglist
+    +column(!profile_tabs_columns)
+    +profile_navigation_tabs
+  #brands-main
+    +column(!profile_main_columns_with_sidebar, true)
+    div.brand
+      +clearfix
+      margin-bottom= 10px
+      padding-bottom= 10px
       border-bottom= 1px "solid" !border_color
-      font-size= 1.1em
-      padding-left= 1em
-      line-height= 2em
-      font-weight= "bold"
-      a
-        color= !complement_support_color
-        font-weight= "normal"
-        text-decoration= "none"
-        &:hover
-          text-decoration= "underline"
-
-#brands-list
-  +column(11, true)
-  div.brand
-    +clearfix
-    margin-bottom= 10px
-    padding-bottom= 10px
-    border-bottom= 1px "solid" !border_color
-    span.brand-picture
-      margin= 0 10px 0 0
-      padding-top= 0
-      float= "left"
-      border= 1px "solid" "black"
-    h3
-      display= "block"
-      padding= 0
-      margin= 0
-    span.score
-      padding= 0
-      margin= 0
-
-#recommendations
-  +column(6, true)
+      span.brand-picture
+        margin= 0 10px 0 0
+        padding-top= 0
+        float= "left"
+        border= 1px "solid" "black"
+      h3
+        display= "block"
+        padding= 0
+        margin= 0
+      span.score
+        padding= 0
+        margin= 0

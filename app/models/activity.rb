@@ -6,6 +6,7 @@ class Activity < ActiveRecord::Base
   serialize :data
   
   named_scope :recent, :order => 'created_at DESC'
+  named_scope :regarding_user, lambda { |*args| {:conditions => ['author_id = ? OR (target_id = ? AND target_type = ?)', args.first.id, args.first.id, args.first.class.to_s] } }
   
   validates_presence_of :author_id, :target_id, :target_type
   validates_numericality_of :author_id, :target_id

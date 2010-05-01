@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100423142257) do
+ActiveRecord::Schema.define(:version => 20100429143041) do
 
   create_table "activities", :force => true do |t|
     t.integer  "author_id"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(:version => 20100423142257) do
     t.integer  "comments_count", :default => 0, :null => false
     t.integer  "pageviews",      :default => 0, :null => false
     t.integer  "votes_count",    :default => 0, :null => false
-    t.integer  "fan_count",      :default => 0
+    t.integer  "fans_count",     :default => 0
     t.integer  "creator_id"
   end
 

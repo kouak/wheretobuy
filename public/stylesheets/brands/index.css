@@ -1,85 +1,104 @@
-/* line 6, ../../../app/stylesheets/brands/index.sass */
-#brands-left-column {
+/* line 9, ../../../app/stylesheets/brands/index.sass */
+#brands-wrapper {
   display: inline;
   float: left;
   margin-right: 10px;
-  width: 670px;
-  padding-right: 24px;
-  margin-right: 25px;
-  border-right: 1px solid #bbbbbb;
+  width: 710px;
 }
 /* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
-* html #brands-left-column {
+* html #brands-wrapper {
   overflow-x: hidden;
 }
 
-/* line 10, ../../../app/stylesheets/brands/index.sass */
-#brands-search {
+/* line 13, ../../../app/stylesheets/brands/index.sass */
+#brands-sidebar {
   display: inline;
   float: left;
   margin-right: 0;
-  width: 630px;
+  width: 230px;
+}
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html #brands-sidebar {
+  overflow-x: hidden;
+}
+
+/* line 17, ../../../app/stylesheets/brands/index.sass */
+#brands-wrapper #brands-search {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 710px;
+  text-align: right;
   margin-bottom: 2em;
 }
 /* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
-* html #brands-search {
+* html #brands-wrapper #brands-search {
   overflow-x: hidden;
 }
-
-/* line 15, ../../../app/stylesheets/brands/index.sass */
-#brands-taglist {
+/* line 21, ../../../app/stylesheets/brands/index.sass */
+#brands-wrapper #brands-taglist {
   display: inline;
   float: left;
   margin-right: 10px;
-  width: 150px;
-  padding-right: 24px;
-  margin-right: 25px;
-  border-right: 1px solid #bbbbbb;
+  width: 190px;
 }
 /* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
-* html #brands-taglist {
+* html #brands-wrapper #brands-taglist {
   overflow-x: hidden;
 }
-/* line 18, ../../../app/stylesheets/brands/index.sass */
-#brands-taglist ul {
+/* line 5, ../../../app/stylesheets/partials/profile/_navigation_tabs.sass */
+#brands-wrapper #brands-taglist ul {
   display: block;
+  padding: 0;
   margin: 0;
-  padding-left: 0;
+  margin-right: 1em;
+  border-bottom: 0;
 }
-/* line 22, ../../../app/stylesheets/brands/index.sass */
-#brands-taglist ul li {
+/* line 12, ../../../app/stylesheets/partials/profile/_navigation_tabs.sass */
+#brands-wrapper #brands-taglist ul li {
   display: block;
-  font-family: Lucida Grande;
-  border-bottom: 1px solid #bbbbbb;
-  font-size: 1.1em;
-  padding-left: 1em;
+  font-family: Geneva, Tahoma, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
   line-height: 2em;
   font-weight: bold;
+  padding-left: 1.2em;
+  margin: 0 auto;
 }
-/* line 30, ../../../app/stylesheets/brands/index.sass */
-#brands-taglist ul li a {
-  color: #ff8800;
-  font-weight: normal;
+/* line 23, ../../../app/stylesheets/partials/profile/_navigation_tabs.sass */
+#brands-wrapper #brands-taglist ul li.selected {
+  background-color: #ff8800;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+/* line 26, ../../../app/stylesheets/partials/profile/_navigation_tabs.sass */
+#brands-wrapper #brands-taglist ul li.selected a {
   text-decoration: none;
+  color: white;
 }
-/* line 34, ../../../app/stylesheets/brands/index.sass */
-#brands-taglist ul li a:hover {
-  text-decoration: underline;
+/* line 29, ../../../app/stylesheets/partials/profile/_navigation_tabs.sass */
+#brands-wrapper #brands-taglist ul li a {
+  color: #666;
+  font-weight: normal;
 }
-
-/* line 37, ../../../app/stylesheets/brands/index.sass */
-#brands-list {
+/* line 33, ../../../app/stylesheets/partials/profile/_navigation_tabs.sass */
+#brands-wrapper #brands-taglist ul li a:hover {
+  color: #ff8800;
+}
+/* line 24, ../../../app/stylesheets/brands/index.sass */
+#brands-wrapper #brands-main {
   display: inline;
   float: left;
   margin-right: 0;
-  width: 430px;
+  width: 510px;
 }
 /* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
-* html #brands-list {
+* html #brands-wrapper #brands-main {
   overflow-x: hidden;
 }
-/* line 39, ../../../app/stylesheets/brands/index.sass */
-#brands-list div.brand {
+/* line 26, ../../../app/stylesheets/brands/index.sass */
+#brands-wrapper #brands-main div.brand {
   overflow: hidden;
   display: inline-block;
   margin-bottom: 10px;
@@ -87,36 +106,24 @@
   border-bottom: 1px solid #bbbbbb;
 }
 /* line 5, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
-#brands-list div.brand {
+#brands-wrapper #brands-main div.brand {
   display: block;
 }
-/* line 44, ../../../app/stylesheets/brands/index.sass */
-#brands-list div.brand span.brand-picture {
+/* line 31, ../../../app/stylesheets/brands/index.sass */
+#brands-wrapper #brands-main div.brand span.brand-picture {
   margin: 0 10px 0 0;
   padding-top: 0;
   float: left;
   border: 1px solid black;
 }
-/* line 49, ../../../app/stylesheets/brands/index.sass */
-#brands-list div.brand h3 {
+/* line 36, ../../../app/stylesheets/brands/index.sass */
+#brands-wrapper #brands-main div.brand h3 {
   display: block;
   padding: 0;
   margin: 0;
 }
-/* line 53, ../../../app/stylesheets/brands/index.sass */
-#brands-list div.brand span.score {
+/* line 40, ../../../app/stylesheets/brands/index.sass */
+#brands-wrapper #brands-main div.brand span.score {
   padding: 0;
   margin: 0;
-}
-
-/* line 57, ../../../app/stylesheets/brands/index.sass */
-#recommendations {
-  display: inline;
-  float: left;
-  margin-right: 0;
-  width: 230px;
-}
-/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
-* html #recommendations {
-  overflow-x: hidden;
 }

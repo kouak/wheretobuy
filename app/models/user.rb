@@ -115,7 +115,7 @@ class User < ActiveRecord::Base
   end
   
   def country_name
-    self.city.try(:country).try(:to_s)
+    self.country.try(:to_s)
   end
   
   # Return the age using the birthdate.

@@ -30,7 +30,7 @@ class BrandsController < ApplicationController
   
   def activity
     @brand = Brand.find(params[:brand_id])
-    @activities = @brand.activities.recent.paginate(:page => params[:page], :per_page => 2)
+    @activities = @brand.activities.recent.find(:all, :limit => (params[:page] || 1).to_i * 15)
     @selected_tab = 'Activity'
   end
   

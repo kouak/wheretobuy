@@ -1,0 +1,65 @@
+/* line 8, ../../../app/stylesheets/activities/base.sass */
+div.activity {
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #cccccc;
+  font-size: 1.2em;
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 750px;
+}
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html div.activity {
+  overflow-x: hidden;
+}
+/* line 14, ../../../app/stylesheets/activities/base.sass */
+div.activity .author_picture {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 70px;
+}
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html div.activity .author_picture {
+  overflow-x: hidden;
+}
+/* line 16, ../../../app/stylesheets/activities/base.sass */
+div.activity .author_picture img {
+  border: 1px solid #666666;
+  background-color: white;
+  padding: 1px;
+}
+/* line 20, ../../../app/stylesheets/activities/base.sass */
+div.activity .column {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 670px;
+}
+/* line 101, ../../../../../../.rvm/gems/ruby-1.8.7-p174/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_grid.sass */
+* html div.activity .column {
+  overflow-x: hidden;
+}
+/* line 22, ../../../app/stylesheets/activities/base.sass */
+div.activity .column span {
+  margin: 0;
+}
+/* line 24, ../../../app/stylesheets/activities/base.sass */
+div.activity .column span.author_name, div.activity .column span.what {
+  font-family: 'Lucida Grande', Geneva, Helvetica, sans-serif;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+/* line 28, ../../../app/stylesheets/activities/base.sass */
+div.activity .column span.what {
+  letter-spacing: normal;
+  font-weight: normal;
+}
+/* line 31, ../../../app/stylesheets/activities/base.sass */
+div.activity .column span.when {
+  font-family: Geneva, Tahoma, Verdana, sans-serif;
+  display: block;
+  letter-spacing: 0.1em;
+  color: #666666;
+}

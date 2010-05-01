@@ -3,53 +3,64 @@
 <%= user_tabs('User') %>
 <% end -%>
 <% content_for :profile_main do -%>
-<% title "User - " + h(@user), false %>
-<div id="profile-picture"><%= image_tag 'blank-profile-150x150.png', :height => 80 %></div>
+  <% title "User - " + h(@user), false %>
+  <div id="profile-picture"><%= image_tag 'blank-profile-150x150.png', :height => 80 %></div>
 
-<h1><%=h @user %></h1>
-<span id="activity">Activity : 123,346</span><br />
-<span id="comments-count"><%= link_to "#{number_with_delimiter(@user.comments_count.to_i)} comments", '#' %></span><br />
+  <h1><%=h @user %></h1>
+  <span id="activity">Activity : 123,346</span><br />
+  <span id="comments-count"><%= link_to pluralize(@user.comments_count.to_i, 'comment'), '#' %></span>
+  <br />
 
-<% if current_user %>
-  <% if fr = @user.friendships.pending.with_friend(current_user).first
-    # This user requested friendship with current_user. We show a request friendship button which will approve the friendship
-  %>
-    <span id="request-friendship"><%= button_to 'request friendship', approve_user_friendship_path(@user, fr), :method => :put %></span>
-  <% elsif Friendship.requestable_between?(current_user, @user) %>
-    <span id="request-friendship"><%= button_to 'request friendship', user_friendships_path(@user) %></span>
-  <% elsif current_user.friendships.pending.map(&:friend).include?(@user) %>
-    <span id="request-friendship"><%= button_to 'request friendship', user_friendships_path(@user), :disabled => true %></span>
+  <% if current_user %>
+    <% if fr = @user.friendships.pending.with_friend(current_user).first
+      # This user requested friendship with current_user. We show a request friendship button which will approve the friendship
+    %>
+      <span id="request-friendship"><%= button_to 'request friendship', approve_user_friendship_path(@user, fr), :method => :put %></span>
+    <% elsif Friendship.requestable_between?(current_user, @user) %>
+      <span id="request-friendship"><%= button_to 'request friendship', user_friendships_path(@user) %></span>
+    <% elsif current_user.friendships.pending.map(&:friend).include?(@user) %>
+      <span id="request-friendship"><%= button_to 'request friendship', user_friendships_path(@user), :disabled => true %></span>
+    <% end %>
   <% end %>
-<% end %>
-<table id="user-infos">
-  <tr>
-    <td class="legend">Sex:</td>
-    <td class="info"><%= user_sex_to_s(@user)%></td>
-  </tr>
-  <tr>
-    <td class="legend">Last seen:</td>
-    <td class="info"><%= @user.last_request_at ? time_ago_in_words(@user.last_request_at) : 'never' %></td>
-  </tr>
-  <tr>
-    <td class="legend">Location:</td>
-    <td class="info"><%= user_location_to_s(@user) %></td>
-  </tr>
-</table>
+  <table id="user-infos">
+    <tr>
+      <td class="legend">Sex:</td>
+      <td class="info"><%= user_sex_to_s(@user)%></td>
+    </tr>
+    <tr>
+      <td class="legend">Last seen:</td>
+      <td class="info"><%= @user.last_request_at ? time_ago_in_words(@user.last_request_at) : 'never' %></td>
+    </tr>
+    <tr>
+      <td class="legend">Location:</td>
+      <td class="info"><%= user_location_to_s(@user) %></td>
+    </tr>
+  </table>
 
-<% if can_edit?(@user) %>
-<p>
-  <%= link_to "Edit", edit_account_path %>
-</p>
-<% end -%>
+  <% if can_edit?(@user) %>
+  <p>
+    <%= link_to "Edit", edit_account_path %>
+  </p>
+  <% end -%>
 
-<hr />
-<h2>Comments (<%= @user.comments_count.to_i %>)</h2>
-<%= render :partial => "comments/comment", :locals => {:commentable => @user}, :collection => @comments %>
-<% if @user.comments_count.to_i > @comments.count %>
-  <%= link_to 'See more', user_comments_path(@user) %>
-<% end -%>
+  <hr />
+  <h2 class="comments">Comments</h2>
+  <% if current_user -%>
+    <%= render :partial => "comments/inline_form", :locals => {:commentable => @user} %>
+  <% end -%>
+  <%= render :partial => "comments/comment", :locals => {:commentable => @user}, :collection => @comments %>
+  <% if (@user.comments_count || 0) > @comments.count %>
+    <%= link_to 'See more', user_comments_path(@user) %>
+  <% end -%>
 <% end -%>
 <% content_for :profile_sidebar do -%>
-CACABOUDIN !
-
+  <div id="profile-activity">
+    <h2>News feed</h2>
+    <ul>
+      <% @activities.to_a.each do |activity| -%>
+        <%= li_activity(activity, :last => activity == @activities.last) %>
+      <% end %>
+    </ul>
+    <%= link_to "See more", brand_activity_path(@brand), :class => 'bottom-links' %>
+  </div>
 <% end -%>

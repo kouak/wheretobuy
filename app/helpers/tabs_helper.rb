@@ -21,7 +21,7 @@ module TabsHelper
     
     rtn = links.inject('') do |s, l|
       i = l[:class]
-      s + content_tag('li', link_to(l[:title], l[:url]), :class => l[:class])
+      s + content_tag('li', link_to(h(l[:title]), l[:url]), :class => l[:class])
     end
     
     rtn = content_tag('ul', rtn)
@@ -57,7 +57,7 @@ module TabsHelper
   def user_tabs(selected = @selected_tab, user = @user)
     links = [
       {:title => 'User', :url => user_path(user)},
-      {:title => 'Activity', :url => '#'},
+      {:title => 'Activity', :url => user_activity_path(user)},
       {:title => 'Friends', :url => user_friends_path(user)},
       {:title => 'Favorite brands', :url => user_favorite_brands_path(user)},
       {:title => 'Comments', :url => user_comments_path(user)}

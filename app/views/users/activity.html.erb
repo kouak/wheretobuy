@@ -1,9 +1,6 @@
-<% content_for :profile_tabs do -%>
-<%= brand_tabs('Activity') %>
-<% end -%>
 <% content_for :profile_main do -%>
   <% stylesheet('pagination', 'activities/base') %>
-  <%= brand_title 'Activity' %>
+  <%= user_title 'Activity' %>
   <hr />
   <% @activities.to_a.each do |activity| %>
     <%= big_activity(activity) %>

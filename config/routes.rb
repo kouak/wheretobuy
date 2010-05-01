@@ -40,6 +40,7 @@ ActionController::Routing::Routes.draw do |map|
     user.favorite_brands '/favorite_brands', :controller => :users, :action => :favorite_brands
     user.resources :comments, :only => [:new, :create]
     user.comments '/comments', :controller => :users, :action => :comments
+    user.activity '/activity', :controller => :users, :action => :activity
     user.resources :friendships, :only => [:create, :destroy], :member => {:approve => :put}
     user.friends '/friends', :controller => :users, :action => :friends
   end

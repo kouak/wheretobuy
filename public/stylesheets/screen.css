@@ -1016,3 +1016,8 @@ div.clear {
   margin: 0;
   overflow: hidden;
 }
+
+/* line 65, ../../app/stylesheets/screen.sass */
+textarea {
+  resize: vertical;
+}

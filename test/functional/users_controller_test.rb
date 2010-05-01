@@ -27,12 +27,14 @@ class UsersControllerTest < ActionController::TestCase
         setup {
           User.expects(:find).with(@user.to_param).returns(@user)
           User.any_instance.stub_chain(:comments, :all).returns([])
+          Activity.stub_chain(:recent, :regarding_user, :find).returns([])
           get :show, :id => @user.to_param
         }
         
         should_respond_with :success
         should_render_template :show
         should_assign_to :user, :class => User
+        should_assign_to :activities
         should_assign_to :comments
         should_not_set_the_flash
       end
@@ -50,6 +52,20 @@ class UsersControllerTest < ActionController::TestCase
     should_render_template :friends
     should_assign_to :user, :class => User
     should_assign_to :friendships
+    should_not_set_the_flash
+  end
+  
+  context "get activity" do
+    setup {
+      user = Factory.stub(:active_user)
+      User.expects(:find).with(user.to_param).returns(user)
+      Activity.stub_chain(:recent, :regarding_user, :find).returns([])
+      get :activity, :id => user.to_param
+    }
+    should_respond_with :success
+    should_render_template :activity
+    should_assign_to :user, :class => User
+    should_assign_to :activities
     should_not_set_the_flash
   end
   

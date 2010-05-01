@@ -9,7 +9,6 @@
       <%= link_to tag.name, { :action => :search, :tag => tag.name }, :class => css_class %>
   <% end %>
 </div>
-
 <div id="tag-actions">
   <%= link_to 'Tag this brand', new_brand_tagging_path(@brand) %>
 </div>

@@ -34,9 +34,9 @@ module UsersHelper
     user = configuration[:user]
     case user
     when User
-      title = link_to(user)
+      title = link_to(h(user.to_s), user_path(user))
     else
-      title = user.to_s or raise ArgumentError
+      title = h(user.to_s) or raise ArgumentError
     end
     
     title = content_tag(configuration[:title_tag], title)
@@ -56,20 +56,22 @@ module UsersHelper
     when User::FEMALE
       'Female'
     else
-      ''
+      nil
     end
   end
   
   def user_location_to_s(user = @user)
     return h("#{user.city_name} (#{user.country_name})") unless user.try(:city).nil?
-    ''
+    return h("#{user.country_name}") unless user.try(:country).nil?
+    nil
   end
   
   def user_age_to_s(user)
-    user.try(:age).nil? ? '' : "#{user.age.to_s} y.o"
+    return h("#{user.age.to_s} years old") unless user.try(:age).nil?
+    nil
   end
   
   def user_short_infos(user = @user)
-    h([user_age_to_s(user), user_sex_to_s(user).downcase, user.city_name, nil, user.country_name].compact.join(', '))
+    [user_age_to_s(user), user_sex_to_s(user).downcase, user_location_to_s(user)].compact.join(', ')
   end
 end

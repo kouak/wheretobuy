@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def show
     @comments = @user.comments.all(:limit => 5)
+    @activities = Activity.recent.regarding_user(@user).find(:all, :limit => 8)
   end
 
   def friends
@@ -24,6 +25,11 @@ class UsersController < ApplicationController
   def comments
     @comments = @user.comments.paginate(:page => params[:page], :per_page => 2)
     @selected_tab = 'Comments'
+  end
+  
+  def activity
+    @activities = Activity.recent.regarding_user(@user).find(:all, :limit => (params[:page] || 1).to_i * 15)
+    @selected_tab = 'Activity'
   end
   
   private
