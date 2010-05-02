@@ -8,7 +8,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   
-  config.gem 'formtastic', :version => '>= 0.9.8'
+  config.gem 'formtastic', :version => '>= 0.9.8' # rails 3 (github)
   config.gem 'validation_reflection'
   config.gem 'authlogic' # rails 3
   config.gem 'will_paginate' # rails 3
@@ -17,9 +17,9 @@ Rails::Initializer.run do |config|
   config.gem 'compass' # rails 3
   config.gem 'compass-colors' # rails 3
   config.gem 'fancy-buttons' # rails 3
-  config.gem 'state_machine'
+  config.gem 'state_machine' # rails 3
 
-  config.gem 'acts-as-taggable-on'
+  config.gem 'acts-as-taggable-on' # rails 3
   config.gem 'validates_timeliness'
   config.gem 'haml'
   
