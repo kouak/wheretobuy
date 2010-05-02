@@ -14,3 +14,4 @@ validates_timeliness
 formtastic
 validation_reflection
 cucumber
+rcov
